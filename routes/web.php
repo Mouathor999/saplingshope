@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses'=>'productController@index',
+    'as'=>'product.index'
+]);
+
+Route::get('/detail', [
+    'uses'=>'productController@productdetail',
+    'as'=>'product.productdetail'
+]);
+Route::get('/sapling', [
+    'uses'=>'productController@saplingtree',
+    'as'=>'product.saplingtree'
+]);
+
+
+
