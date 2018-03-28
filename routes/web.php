@@ -38,5 +38,32 @@ Route::get('/test', function (){
     return view("frontEnd.test");
 });
 
+// back end
+
+
+Route::get('/admin', function (){
+    return view("backEnd/admin");
+});
+Route::get('/insert', function (){
+    return view("backEnd/insert");
+});
+Route::get('/signup', function (){
+    return view("backEnd/signup");
+});
+Route::get('/login', function (){
+    return view("backEnd/login");
+});
+Route::get('/supplier', function (){
+    return view("backEnd/supplier");
+});
+Route::get('/employee', function (){
+    return view("backEnd/employee");
+});
+Route::get('/import', function (){
+    return view("backEnd/inport");
+});
+Route::get('/comfirm', function (){
+    return view("backEnd/comfirm");
+});
 
 
