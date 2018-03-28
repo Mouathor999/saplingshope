@@ -24,6 +24,19 @@ Route::get('/sapling', [
     'uses'=>'productController@saplingtree',
     'as'=>'product.saplingtree'
 ]);
+Route::get('/flowers', [
+    'uses'=>'productController@flowers',
+    'as'=>'flowers'
+]);
+
+Route::get('/cart', [
+    'uses'=>'productController@cart',
+    'as'=>'cart'
+]);
+
+Route::get('/test', function (){
+    return view("frontEnd.test");
+});
 
 
 

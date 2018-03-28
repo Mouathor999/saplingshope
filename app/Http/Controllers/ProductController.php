@@ -15,9 +15,14 @@ class productController extends Controller
     public function saplingtree(){
         return view("frontEnd\saplingtree");
     }
-
-
-
+    public function cart(){
+        return view("frontEnd\cart");
+    }
+    public  function flowers(){
+        return view("frontEnd\Flowers");
+    }
 
 
 }
+
+

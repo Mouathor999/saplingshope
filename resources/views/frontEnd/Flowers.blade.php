@@ -21,7 +21,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="card-columns">
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -101,7 +101,26 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">card-title</h4>
+                        <div class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
+                        </div>
+                        <div>$12</div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -121,7 +140,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -141,7 +160,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -161,26 +180,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -200,7 +200,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -220,7 +220,26 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">card-title</h4>
+                        <div class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
+                        </div>
+                        <div>$12</div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -240,26 +259,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,s
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -279,7 +279,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -299,7 +299,26 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">card-title</h4>
+                        <div class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
+                        </div>
+                        <div>$12</div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -319,7 +338,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
                     <div class="card-body">
                         <h4 class="card-title">card-title</h4>
                         <div class="card-text">
@@ -338,6 +357,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/flower2.jpg')}}" alt="" style="width: 100%; height: 10%"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">card-title</h4>
+                        <div class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
+                        </div>
+                        <div>$12</div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
 
 
             </div>
@@ -488,9 +529,9 @@
 {{--End of swiper slide--}}
 
 {{--Footer--}}
-       <div class="footer" style="margin-top: 2%">
-           @include('frontEnd.masterpage.footer')
-       </div> {{--EndFooter--}}
+<div class="footer" style="margin-top: 2%">
+    @include('frontEnd.masterpage.footer')
+</div> {{--EndFooter--}}
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script>

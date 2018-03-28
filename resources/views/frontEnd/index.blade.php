@@ -15,8 +15,594 @@
 <body>
   @include('frontEnd.masterpage.master')
    <div class="mainConten">
+       <div class="adverting-product">
+           <h2 style="margin-left: 1%"><b>New product</b></h2>
+           <div class="adverting-product-content">
+               <div class="row">
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/flower1.JPG')}}" alt="" style="height: 200px">
+                           </a>
 
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/flower1.JPG')}}" alt="" style="height: 200px">
+                           </a>
+
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/flower2.JPG')}}" alt="" style="height: 200px">
+                           </a>
+
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/flower1.JPG')}}" alt="" style="height: 200px">
+                           </a>
+
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/flower1.JPG')}}" alt="" style="height: 200px">
+                           </a>
+
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling1.jpg')}}" alt="" style="height: 200px">
+                           </a>
+
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling1.jpg')}}" alt="" style="height: 200px">
+                           </a>
+
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling1.jpg')}}" alt="" style="height: 200px">
+                           </a>
+
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+
+               </div>
+           </div>
+       </div>
+       <br/>
+       <div class="adverting-product">
+           <br/>
+           <h2 style="margin-left: 1%"><b>best sales product</b></h2>
+           <div class="adverting-product-content">
+               <div class="row">
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+
+
+               </div>
+           </div>
+       </div>
+       <br/>
+       <div class="adverting-product">
+           <br/>
+           <h2 style="margin-left: 1%"><b>Recommended product</b></h2>
+           <div class="adverting-product-content">
+               <div class="row">
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling3.jpg')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling3.jpg')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling3.jpg')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling3.jpg')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling3.jpg')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling3.jpg')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling3.jpg')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling3.jpg')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling3.jpg')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                       <div class="hovereffect">
+                           <a href="{{route('product.productdetail')}}">
+                               <img class="img-responsive" src="{{asset('img/sapling3.jpg')}}" alt="" style="height: 200px">
+                           </a>
+                           <div class="overlay">
+                               <a href="" class="btn" style="background-color: #1e7e34"><i class="fas fa-cart-plus fa-2x" style="color: #FFC107;"></i></a>
+                               <p class="icon-links">
+                                   <a href="#" style="margin-right: 10px">
+                                       <i class="fab fa-twitter" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-facebook-f" style="color: #FFC107"></i>
+                                   </a>
+                                   <a href="#"  style="margin-right: 10px">
+                                       <i class="fab fa-instagram" style="color: #FFC107"></i>
+                                   </a>
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+
+               </div>
+           </div>
+       </div>
    </div>
+  {{--Star footer--}}
+  <div class="footer" style="">
+      @include('frontEnd.masterpage.footer')
+  </div>{{--End footer--}}
 
 
 

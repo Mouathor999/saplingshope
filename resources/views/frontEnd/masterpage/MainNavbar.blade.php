@@ -30,7 +30,7 @@
                                     <a href="{{route('product.saplingtree')}}" class="nav-link">Sapling tree</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="" class="nav-link">Flowers</a>
+                                    <a href="{{route("flowers")}}" class="nav-link">Flowers</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-link">Jar</a>
@@ -70,8 +70,10 @@
                                 </div>
                             </li>
                             <li class="nav nav-item">
-                                <a href="" class="nav-link">
-                                    <div class="text-right"><i class="fas fa-shopping-cart fa-2x"></i> Cart</div>
+                                <a href="{{route('cart')}}" class="nav-link">
+                                    <div class="text-right">
+                                      <i class="fas fa-shopping-cart fa-2x"></i> Cart
+                                    </div>
                                 </a>
                             </li>
                         </ul>

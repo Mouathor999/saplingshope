@@ -95,7 +95,7 @@
                                     </div>
                                     <hr/>
                                     <div>
-                                        <p class="" style="text-align: center"><a href="" class="btn btn-success btn-xs">Add to cart</a></p>
+                                        <p class="" style="text-align: center"><a href="" class="btn btn-success btn-xs"><i class="fas fa-cart-plus"></i> Add to cart</a></p>
                                     </div>
                                     <div class="promotionDIV">
                                         <h3>promotion detail</h3>
@@ -115,15 +115,25 @@
             </div>
         </div>
         <div class="row" style="margin-top: 1%">
-            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                <div><h3>description</h3></div>
-                <p id="p1">  Tree saplings are usually purchased in a container or with their root balls wrapped in burlap. The optimum time for planting saplings is during the fall while the ground is still warm, which can encourage root growth. Supplemental watering may be required for a year or two after planting, at least until the complete root system has developed.</p>
-            </div>
-        </div>
-        <div class="row" style="margin-top: 1%">
-            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                <div><h3> Rule</h3></div>
-                <p id="p1">  Tree saplings are usually purchased in a container or with their root balls wrapped in burlap. The optimum time for planting saplings is during the fall while the ground is still warm, which can encourage root growth. Supplemental watering may be required for a year or two after planting, at least until the complete root system has developed.</p>
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="bd-example bd-example-tabs">
+                    <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="" aria-expanded="true"><h3>Description</h3></a>
+                        <a class="nav-item nav-link" id="nav-rule-tab" data-toggle="tab" href="#nav-rule" role="tab" aria-controls="" aria-expanded="false"><h3>Rule</h3></a>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="description" role="tabpanel" aria-labelledby="nav-description-tab" aria-expanded="true" >
+                            <p>
+                                sapling one needs to be aware of measurement parameters like DBH which stands for Diameter at Breast Height.  It is used as an evaluation criteria for comparing the dimensions of different trees. It is basically the diameter of tree trunk which is measured at breast level.
+                            </p>
+                        </div>
+                        <div class="tab-pane fade" id="nav-rule" role="tabpanel" aria-labelledby="nav-rule-tab" aria-expanded="false">
+                            <p>
+                                To be observed by all students using room F212 Parkview. 1. Safety glasses, cover goggles, or face shields are required when in any shop area, whether working or not!! 2. Shoes must be worn in any shop area. No one wearing sandals will be allowed to enter any shop area.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
