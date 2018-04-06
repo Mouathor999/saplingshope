@@ -141,140 +141,23 @@
           {{--Start swiper slide   Advertising--}}
           <div class="swiper-container">
               <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
+                 @for($i=1;$i<=12;$i++)
+                      <div class="swiper-slide">
+                          <div class="thumbnail">
+                              <div class="productImage">
+                                  <a href="{{route('product.productdetail')}}">
+                                      <img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt="">
+                                  </a>
+                              </div>
+                              <div class="caption">
+                                  <h4 class="producttitle">Thumbnail label</h4>
+                                  <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
+                                  <div>$12</div>
+                                  <p><a href="" class="btn btn-info btn-xs" role="button">Add to cart</a></p>
+                              </div>
                           </div>
                       </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="thumbnail">
-                          <div class="productImage"><img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt=""></div>
-                          <div class="caption">
-                              <h4 class="producttitle">Thumbnail label</h4>
-                              <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                              <div>$12</div>
-                              <p><a href="{{route('product.productdetail')}}" class="btn btn-info btn-xs" role="button">Button</a></p>
-                          </div>
-                      </div>
-                  </div>
-
-
+                 @endfor
               </div>
           </div>
           {{--End of swiper slide--}}

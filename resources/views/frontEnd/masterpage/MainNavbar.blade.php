@@ -33,7 +33,7 @@
                                     <a href="{{route("flowers")}}" class="nav-link">Flowers</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="" class="nav-link">Jar</a>
+                                    <a href="{{route("jars")}}" class="nav-link">Jar</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-link">Fertilizer</a>

@@ -21,6 +21,9 @@ class productController extends Controller
     public  function flowers(){
         return view("frontEnd\Flowers");
     }
+    public  function jars(){
+        return view("frontEnd\Jars");
+    }
 
 
 }

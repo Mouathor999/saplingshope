@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
 </head>
 <body>
-    @include("frontEnd.masterpage.MainNavbar")
+    @include('backEnd.AdminNavbar')
     <div class="container container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>

@@ -5,82 +5,90 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up</title>
+    <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
 </head>
 <body>
-@include("frontEnd.masterpage.MainNavbar")
+@include('backEnd.AdminNavbar')
 <div class="container container-fluid">
     <div class="row">
         <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <h1>Improt Form</h1>
+                <h1>Insert Employee</h1>
             </div>
             <form class="form-group" action="" method="POST" enctype="">
                 <div style="margin-top: 50px">
-                    <label for="empid">Emp id</label>
-                    <input type="text" name="empid" class="form-control" disabled>
+                    <label for="uname">Username</label>
+                    <input type="text" name="uname" class="form-control">
                 </div>
                 <div>
-                    <label for="pid">Product ID</label>
-                    <input type="text" name="pid" class="form-control" disabled>
+                    <label for="pwd">Password</label>
+                    <input type="password" name="pwd" class="form-control">
+                </div>
+
+                <div class="text-center" style="margin-top: 5px;margin-bottom: 5px">-------------000------------</div>
+
+                <div>
+                    <label for="name">First Name</label>
+                    <input type="text" name="name" class="form-control">
                 </div>
                 <div>
-                    <label for="ptype">Product Type</label>
-                    <input type="text" name="ptype" class="form-control" disabled>
+                    <label for="last">Last Name</label>
+                    <input type="text" name="last" class="form-control">
                 </div>
                 <div>
-                    <label for="pname">Product Name</label>
-                    <input type="number" name="pname" class="form-control" disabled>
-                </div>
-                <div>
-                    <label for="plevel">Product Level</label>
-                    <select name="plevel" class="form-control" disabled>
+                    <label for="gender">Gender</label>
+                    <select name="gender" class="form-control">
                         <option></option>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>A</option>
-                        <option>B</option>
+                        <option>Female</option>
+                        <option>Male</option>
                     </select>
                 </div>
                 <div>
-                    <label for="qty">Quantity</label>
-                    <input type="text" name="qty" class="form-control">
+                    <label for="age">Age</label>
+                    <input type="number" name="age" class="form-control">
                 </div>
                 <div>
-                    <label for="sup">Supplier</label>
-                    <select name="plevel" class="form-control" disabled>
+                    <label for="edu">Education</label>
+                    <select name="edu" class="form-control">
                         <option></option>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>A</option>
-                        <option>B</option>
+                        <option>Female</option>
+                        <option>Male</option>
                     </select>
                 </div>
                 <div>
-                    <label for="ipprice">Import Price</label>
-                    <input type="number" name="ipprice" class="form-control">
+                    <label for="village">Village</label>
+                    <input type="text" name="village" class="form-control">
                 </div>
                 <div>
-                    <label for="sprice">Sale Price</label>
-                    <input type="number" name="sprice" class="form-control">
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                        <img src="" alt="This image are not insert yet" width="500px" height="400px">
-                    </div>
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                        <img src="" alt="This image are not insert yet" width="500px" height="400px">
-                    </div>
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                        <img src="" alt="This image are not insert yet" width="500px" height="400px">
-                    </div>
+                    <label for="district">District</label>
+                    <input type="text" name="district" class="form-control">
                 </div>
                 <div>
+                    <label for="province">Province</label>
+                    <input type="text" name="province" class="form-control">
+                </div>
+                <div>
+                    <label for="phone">Phone</label>
+                    <input type="number" name="phone" class="form-control">
+                </div>
+                <div>
+                    <label for="idcard">ID card</label>
+                    <input type="number" name="idcard" class="form-control">
+                </div>
+                <div>
+                    <label for="dpt">Description</label><br/>
+                    <textarea class="" class="form-control" cols="100" rows="3"></textarea>
+                </div>
+                <div>
+                    <input type="file" name="img" class="form-control">
+                </div>
+                <div>
+                    <input type="submit" value="clear" name="clear" class="btn btn-warning">
                     <input type="submit" value="submit" name="submit" class="btn btn-success">
                     <input type="submit" name="cancel" value="cancel" class="btn btn-danger">
                 </div>

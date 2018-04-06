@@ -10,59 +10,82 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
+
 </head>
 <body>
 @include('frontEnd.masterpage.MainNavbar')
 <div class="mainConten">
     <div class="row" style="margin-top: 2%">
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-            @for($i=1;$i<=10;$i++)
-                <div class="row">
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                        <a href="{{route('product.productdetail')}}"><img src="{{asset('img/download.jpg')}}" class="img-responsive" alt="" style="width: 100%; margin-top:3%;margin-bottom:3%" ></a>
+            <div class="container">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <td><div class="div_in_td"><b>ຮູບພາບ</b></div></td>
+                            <td><div class="div_in_td"><b>ຊື່ສິນຄ້າ</b></div></td>
+                            <td><div class="div_in_td"><b>ຈໍານວນ</b></div></td>
+                            <td><div class="div_in_td"><b>ລາຄາຕໍ່ໜ່ວຍ</b></div></td>
+                            <td><div class="div_in_td"><b>ລາຄາຕໍ່ລາຍການ</b></div></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @for($i=1;$i<=10;$i++)
+                         <tr>
+                             <td>
+                                <div class="div_in_td">
+                                    <a href="{{route('product.productdetail')}}"><img src="{{asset('img/flower2.jpg')}}" class="img-responsive" style="width: 90%" alt=""  ></a>
+                                </div>
+                             </td>
+                             <td>
+                                 <div class="text-left" style="width: 300px">
+                                     <lable>title and description  title and description</lable>
+                                     <a href="#" class="nav-link"><i class="fas fa-trash" style="color: orangered"></i> delete</a>
+                                 </div>
 
-                    </div>
-                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
-                        {{--<img src="{{asset('img/download.jpg')}}" class="img-responsive" alt="">--}}
-                        <p>title and description title and description title and description title and description title and description title and description title and description </p>
-                        <a href="#" class="nav-link"><i class="fas fa-trash" style="color: orangered"></i> delete</a>
-                    </div>
-                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1" style="padding: 1%;">
-                        {{--<img src="{{asset('img/download.jpg')}}" class="img-responsive" alt="">--}}
-                        <p style="margin-left: 3%">quantity</p>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style="padding: 1%; ">
-                        {{--<img src="{{asset('img/download.jpg')}}" class="img-responsive" alt="">--}}
-                        <p style="margin-left: 3%">price</p>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" style="padding: 1%;">
-                        {{--<img src="{{asset('img/download.jpg')}}" class="img-responsive" alt="">--}}
-                        <p style="margin-left: 3%">total price</p>
-                    </div>
+                             </td>
+                             <td>
+                                 <div class="div_in_td">10</div>
+                             </td>
+                             <td>
+                                 <div class="div_in_td">1000</div>
+                             </td>
+                             <td>
+                                 <div class="div_in_td">10000</div>
+                             </td>
+                         </tr>
+                        @endfor
+                        </tbody>
+                    </table>
                 </div>
-
-                <br>
-                @endfor
-                <br>
-                <hr>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="background-color: #7DA0B1">
-                        <div class="" style="text-align: right">
-                            <h4><b>Total price: </b> $20</h4>
-                            <h4><b>Discount: </b> $2</h4>
-                            <h4><b>Tax: </b> 5$</h4>
-                            <h4><b>SubTotal price: </b> $23</h4>
+            </div>
+            <br>
+            <hr>
+            <div class="mainConten" style="margin-right: 10%">
+                <div class="" style="text-align: right">
+                    <h4><b>Total price: </b> $20</h4>
+                    <h4><b>Discount: </b> $2</h4>
+                    <h4><b>Tax: </b> 5$</h4>
+                    <h4><b>SubTotal price: </b> $23</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+            <div class="card" style="height: auto">
+                <div class="card-text">
+                    <h3>Check out</h3><hr/>
+                    <div class="row">
+                        <div class="" style="text-align: center; margin-left: 6%"><h6 >Subtotal ( x item ): $25</h6><hr/></div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <p class="text-center"><a href="{{route('CustomerSignIn')}}" class="btn btn-success" style="width: 100%">ສັ່ງຈອງ</a></p>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <p class="text-center"><a href="{{route('CustomerSignIn')}}" class="btn btn-success" role="button" style="width: 100%"> ສັ່ງຊື້ </a></p>
                         </div>
                     </div>
                 </div>
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-            <div class="card" style="height: 200px">
-                <div class="card-text">
-                    <h3>Check out</h3>
-                </div>
             </div>
-            <div class="row" style="margin-bottom: 3%">
+            <div class="row" style="margin-bottom: 3%;" id="cartAdversting">
                 @for($a=1;$a<=10;$a++)
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-top: 3%">
                             <img src="{{asset('img/flower2.jpg')}}" class="img-responsive" alt="" style="width: 100%;height: auto">
@@ -77,6 +100,16 @@
     </div>
 </div>
 
+
+<script>
+    var screenWith = window.innerWidth;
+    if(screenWith< 514){
+            document.getElementById('cartAdversting').style.display='None' ;
+            document.write(screenWith);
+    }else {
+        document.getElementById('cartAdversting').style.display='' ;
+    }
+</script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
 </head>
 <body>
-@include("frontEnd.masterpage.MainNavbar")
+   @include('backEnd.AdminNavbar')
 <div class="container container-fluid">
     <div class="row">
         <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
@@ -22,40 +22,12 @@
             </div>
             <form class="form-group" action="" method="POST" enctype="">
                 <div style="margin-top: 50px">
-                    <label for="uname">Username</label>
-                    <input type="text" name="uname" class="form-control">
+                    <label for="shopname">Shop Name</label>
+                    <input type="text" name="shopname" class="form-control">
                 </div>
                 <div>
-                    <label for="pwd">Password</label>
-                    <input type="password" name="pwd" class="form-control">
-                </div>
-                <div>
-                    <label for="name">First Name</label>
-                    <input type="text" name="name" class="form-control">
-                </div>
-                <div>
-                    <label for="last">Last Name</label>
-                    <input type="text" name="last" class="form-control">
-                </div>
-                <div>
-                    <label for="gender">Gender</label>
-                    <select name="gender" class="form-control">
-                        <option></option>
-                        <option>Female</option>
-                        <option>Male</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="age">Age</label>
-                    <input type="number" name="age" class="form-control">
-                </div>
-                <div>
-                    <label for="edu">Education</label>
-                    <select name="edu" class="form-control">
-                        <option></option>
-                        <option>Female</option>
-                        <option>Male</option>
-                    </select>
+                    <label for="supname">Supplier Name</label>
+                    <input type="text" name="supname" class="form-control">
                 </div>
                 <div>
                     <label for="village">Village</label>
@@ -70,20 +42,22 @@
                     <input type="text" name="province" class="form-control">
                 </div>
                 <div>
-                    <label for="phone">Phone</label>
-                    <input type="number" name="phone" class="form-control">
+                    <label for="country">Country</label>
+                    <input type="text" name="country" class="form-control">
                 </div>
                 <div>
-                    <label for="idcard">ID card</label>
-                    <input type="number" name="idcard" class="form-control">
+                    <label for="tel">Tel</label>
+                    <input type="number" name="tel" class="form-control">
                 </div>
                 <div>
-                    <label for="dpt">Description</label><br/>
-                    <textarea class="dpt" class="form-control"></textarea>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control">
                 </div>
                 <div>
-                    <input type="file" name="img" class="form-control">
+                    <label for="baccount">Bank Account</label>
+                    <input type="text" name="baccount" class="form-control">
                 </div>
+                <br>
                 <div>
                     <input type="submit" value="clear" name="clear" class="btn btn-warning">
                     <input type="submit" value="submit" name="submit" class="btn btn-success">
