@@ -44,7 +44,7 @@
                                     <tr>
                                         <td>{{$i}}</td>
                                         <td>ປະເພດສິນຄ້າທີ {{$i}}</td>
-                                        <td style="text-align: right"><a href="" class="btn btn-warning"><i class="fas fa-pencil-alt"></i>ແກ້ໄຂ</a></td>
+                                        {{--<td style="text-align: right"><a href="" class="btn btn-warning"><i class="fas fa-pencil-alt"></i>ແກ້ໄຂ</a></td>--}}
                                     </tr>
                                 </table>
                             </div>

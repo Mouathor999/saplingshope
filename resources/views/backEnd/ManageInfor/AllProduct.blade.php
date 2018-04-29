@@ -5,42 +5,43 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>All product</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
-
-
 </head>
-
 <body>
 @include('backEnd.AdminNavbar')
 <div class="mainContent">
-        {{--class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2--}}
+    {{--class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2--}}
     <br>
-    <form class="navbar-form" role="search" action="" method="post">
-        <div class="input-group add-on">
-            <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="button"><i class="fas fa-search"></i></button>
+    <div class="container">
+        <form class="navbar-form" role="search" action="" method="post">
+            <div class="input-group add-on">
+                <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" style="box-shadow: 1px 1px 2px 1px #1e7e34">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="button" style="box-shadow: 1px 1px 2px 1px #1e7e34"><i class="fas fa-search"></i></button>
+                </div>
             </div>
-        </div>
-    </form>
-    <div class="row" style="margin-top: 1%">
+        </form>
+    </div>
+    <div class="row" style="margin-top: 1%; margin-right: 1%">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="table-responsive">
-                <table class="table table-hover" style="width: auto">
+                <table class="table table-hover" style="width:95%">
                     <tr>
-                        <td ><div class="div_in_td"><b>Product ID</b></div></td>
+                        <td ><div class=""><b>Product ID</b></div></td>
                         <td ><div class="div_in_td"><b>Picture</b></div></td>
                         <td ><div class="div_in_td"><b>Product name</b></div></td>
                         <td ><div class="div_in_td"><b>Product type</b></div></td>
                         <td ><div class="div_in_td"><b>price</b></div></td>
                         <td ><div class="div_in_td"><b>Stock</b></div></td>
-                        <td ><div class="div_in_td"><b>Limit</b></div></td>
-                        <td ><div class="div_in_td"><b>edit product</b></div></td>
-                        <td ><div class="div_in_td"><b>delete product</b></div></td>
+                        <td ><div class=""><b>Promotion</b></div></td>
+                        <td ><div class=""><b>Limit</b></div></td>
+                        <td ><div class=""><b>Edit Limit</b></div></td>
+                        <td ><div class=""><b>edit product</b></div></td>
+                        <td ><div class=""><b>delete product</b></div></td>
                     </tr>
                     <tbody>
                     @for($i=1;$i<=10;$i++)
@@ -54,15 +55,19 @@
                             <td style="text-align: center;">
                                 <div style="width: 150px"> ຕົ້ນດອອກໄມ້ທີ່ {{$i}}</div>
                             </td>
-                            <td><div class="div_in_td">ປະເພດສີນຄ້າ </div></td>
-                            <td><div class="div_in_td">${{4+$i}}</div></td>
-                            <td><div class="div_in_td">100</div></td>
-                            <td><div class="div_in_td">10</div></td>
+                            <td><div class="">ປະເພດສີນຄ້າ </div></td>
+                            <td><div class="">${{4+$i}}</div></td>
+                            <td><div class="">100</div></td>
+                            <td><div class="">2%</div></td>
+                            <td><div class="">10</div></td>
                             <td>
-                                <a href="{{route('EditProduct')}}" class="btn btn-outline-warning"><i class="fas fa-pencil-alt" style="color: #1e7e34"></i></a>
+                                <a href="" class="btn btn-outline-warning"><i class="far fa-bell"  style="color: #1e7e34"></i> Lm</a>
+                            </td>
+                            <td>
+                                <a href="{{route('EditProduct')}}" class="btn btn-outline-warning"><i class="fas fa-pencil-alt" style="color: #1e7e34"></i> Ed</a>
                             </td>
                             <td >
-                                <a href="" class="btn btn-outline-danger" ><i class="far fa-times-circle"></i></a>
+                                <a href="" class="btn btn-outline-danger" ><i class="far fa-times-circle"></i> Dl</a>
                             </td>
                         </tr>
                     @endfor
@@ -79,3 +84,5 @@
 
 </body>
 </html>
+
+

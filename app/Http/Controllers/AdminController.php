@@ -6,9 +6,29 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function allproduct(){
-        return view("backEnd/AllProduct");
+    public function Admin(){
+        return view("backEnd/AdminPage");
     }
+
+//    Manage Information
+    public function ManageProduct(){
+        return view("backEnd/ManageInfor/AllProduct");
+    }
+    public function ManageProductType(){
+        return view('backEnd/ManageInfor/ManageProductType');
+    }
+    public function ManagePromotion(){
+        return view('backEnd/ManageInfor/ManagePromotion');
+    }
+    public function ManageEmployee(){
+        return view('backEnd/ManageInfor/ManageEmployee');
+    }
+    public function ManageSupplier(){
+        return view('backEnd/ManageInfor/ManageSupplier');
+    }
+
+
+
     public function InsertProduct(){
         return view("backEnd/InsertProduct");
     }

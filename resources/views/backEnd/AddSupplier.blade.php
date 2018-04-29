@@ -57,6 +57,10 @@
                     <label for="baccount">Bank Account</label>
                     <input type="text" name="baccount" class="form-control">
                 </div>
+                <div>
+                    <label for="img">Bank Account</label>
+                    <input type="file" name="img" class="form-control">
+                </div>
                 <br>
                 <div>
                     <input type="submit" value="clear" name="clear" class="btn btn-warning">

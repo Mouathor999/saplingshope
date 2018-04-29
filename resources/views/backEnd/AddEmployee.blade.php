@@ -29,6 +29,10 @@
                     <label for="pwd">Password</label>
                     <input type="password" name="pwd" class="form-control">
                 </div>
+                <div>
+                    <label for="Comfirm_pwd">Comfirm Password</label>
+                    <input type="password" name="Comfirm_pwd" class="form-control">
+                </div>
 
                 <div class="text-center" style="margin-top: 5px;margin-bottom: 5px">-------------000------------</div>
 
@@ -77,7 +81,7 @@
                     <input type="number" name="phone" class="form-control">
                 </div>
                 <div>
-                    <label for="idcard">ID card</label>
+                    <label for="idcard">Social card</label>
                     <input type="number" name="idcard" class="form-control">
                 </div>
                 <div>

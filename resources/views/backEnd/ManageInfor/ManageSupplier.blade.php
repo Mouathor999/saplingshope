@@ -31,19 +31,19 @@
             <div class="table-responsive">
                 <table class="table table-hover" style="width:95%">
                     <tr>
-                        <td ><div class=""><b>emp_ID</b></div></td>
+                        <td ><div class=""><b>spr_ID</b></div></td>
                         <td ><div class="div_in_td"><b>Picture</b></div></td>
+                        <td ><div class="div_in_td"><b>Shopname</b></div></td>
                         <td ><div class="div_in_td"><b>name</b></div></td>
                         <td ><div class="div_in_td"><b>lastname</b></div></td>
-                        <td ><div class="div_in_td"><b>Eduction</b></div></td>
-                        <td ><div class=""><b>Gender</b></div></td>
-                        <td ><div class=""><b>Age</b></div></td>
                         <td ><div class=""><b>Village</b></div></td>
                         <td ><div class=""><b>District</b></div></td>
                         <td ><div class=""><b>Province</b></div></td>
                         <td ><div class=""><b>Phone</b></div></td>
                         <td ><div class=""><b>Email</b></div></td>
-                        <td ><div class=""><b>Social card</b></div></td>
+                        <td ><div class=""><b>Bank Account</b></div></td>
+                        <td ><div class=""><b>edit product</b></div></td>
+                        <td ><div class=""><b>delete product</b></div></td>
                     </tr>
                     <tbody>
                     @for($i=1;$i<=10;$i++)
@@ -52,26 +52,23 @@
                                 emp0{{$i}}
                             </td>
                             <td style="text-align: center;width: 150px">
-                                <a href=""><img src="{{asset('img/EMP.jpg')}}" class="img-responsive" style="width: 100px" alt=""  ></a>
+                                <a href=""><img src="{{asset('img/maivvaj.jpg')}}" class="img-responsive" style="width: 100px" alt=""  ></a>
                             </td>
-                            <td style="text-align: center;"><div>ຊື່ພະນັກງານ {{$i}}</div></td>
-                            <td style="text-align: center;"><div>ນາມສະກຸນ {{$i}}</div></td>
-                            <td style="text-align: center;"><div>ປະລີນຍາຕີ</div></td>
-
-                            <td><div class="">
-                                    @if($i%2==0)
-                                        {{'ຍິງ '.$i}}
-                                    @else
-                                        {{'ຊາຍ'}}
-                                    @endif
-                                </div></td>
-                            <td><div class="">{{(20+$i)}}</div></td>
+                            <td style="text-align: center;"><div>ຊື່ຮ້ານ</div></td>
+                            <td style="text-align: center;"><div>ຊື່ຜູ້ສະໜອງ</div></td>
+                            <td style="text-align: center;"><div>ນາມສະກຸນ</div></td>
                             <td><div class="">ບ້ານ</div></td>
                             <td><div class="">ເມືອງ</div></td>
                             <td><div class="">ເເຂວງ</div></td>
                             <td><div class="div_in_td">020 55556565</div></td>
                             <td><div class="div_in_td">Email@email.com</div></td>
-                            <td><div class="div_in_td">123231233423</div></td>
+                            <td><div class="div_in_td">16023231233423</div></td>
+                            <td>
+                                <a href="{{route('EditProduct')}}" class="btn btn-outline-warning"><i class="fas fa-pencil-alt" style="color: #1e7e34"></i> Ed</a>
+                            </td>
+                            <td >
+                                <a href="" class="btn btn-outline-danger" ><i class="far fa-times-circle"></i> Dl</a>
+                            </td>
                         </tr>
                     @endfor
                     </tbody>

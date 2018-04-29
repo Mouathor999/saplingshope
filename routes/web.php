@@ -69,9 +69,10 @@ Route::get('/Bill', [
 
 Route::group(['prefix'=>'admin'], function (){
     Route::get('/', [
-        'uses'=>'AdminController@Allproduct',
-        'as'=>'Allproduct'
+        'uses'=>'AdminController@Admin',
+        'as'=>'admin'
     ]);
+
     Route::get('/InsertProduct', [
         'uses'=>'AdminController@InsertProduct',
         'as'=>'InsertProduct'
@@ -133,6 +134,30 @@ Route::group(['prefix'=>'admin'], function (){
         'as'=>'SaledReport'
     ]);
 
+//    Manage Information Route
+    Route::get('/AllProduct', [
+        'uses'=>'AdminController@ManageProduct',
+        'as'=>'manageProduct'
+    ]);
+    Route::get('/AllProductType', [
+        'uses'=>'AdminController@ManageProductType',
+        'as'=>'manageProductType'
+    ]);
+    Route::get('/AllEmployee', [
+        'uses'=>'AdminController@ManageEmployee',
+        'as'=>'manageEmployee'
+    ]);
+    Route::get('/AllSupplier', [
+        'uses'=>'AdminController@ManageSupplier',
+        'as'=>'manageSupplier'
+    ]);
+    Route::get('/AllPromotion', [
+        'uses'=>'AdminController@ManagePromotion',
+        'as'=>'managePromotion'
+    ]);
+
+
+
 //    Edit product Route
     Route::get('/UpdateProduct', [
         'uses'=>'EditController@UpdateProduct',
@@ -155,7 +180,7 @@ Route::group(['prefix'=>'admin'], function (){
 //    Employee Inforation
     Route::get('/EmployeeInfor', [
         'uses'=>'ReportController@EmployeeInfor',
-        'as'=>'EmployeeInfor'
+        'as'=>'employeeInfor'
     ]);
 
 });
