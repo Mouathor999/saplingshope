@@ -73,14 +73,30 @@ Route::group(['prefix'=>'admin'], function (){
         'as'=>'admin'
     ]);
 
+
     Route::get('/InsertProduct', [
         'uses'=>'AdminController@InsertProduct',
         'as'=>'InsertProduct'
     ]);
+    Route::post('/InsertProduct', [
+        'uses'=>'AdminController@PostInsertProduct',
+        'as'=>'InsertProduct'
+    ]);
+
+
     Route::get('/InsertProductType', [
         'uses'=>'AdminController@InsertProductType',
         'as'=>'InsertProductType'
     ]);
+    Route::post('/InsertProductType', [
+        'uses'=>'AdminController@PostInsertgProductType',
+        'as'=>'InsertProductType'
+    ]);
+
+
+
+
+
     Route::get('/AddEmployee',[
         'uses'=>'AdminController@AddEmployee',
         'as'=>'AddEmployee'

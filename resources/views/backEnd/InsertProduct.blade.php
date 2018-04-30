@@ -21,7 +21,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                     <h2><b>Insert Product</b></h2>
                 </div>
-                <form class="form-group" action="" method="POST" enctype="">
+                <form class="form-group" action="{{route('InsertProduct')}}" method="POST" enctype="multipart/form-data">
                     <div>
                         <label for="ptype">Product Type</label>
                         <select name="ptypeid" id="ptypeid" class="form-control">
@@ -79,6 +79,7 @@
                     <div>
                         <input type="submit" value="submit" name="submit" class="btn btn-success">
                     </div>
+                    {{csrf_field()}}
                 </form>
             </div>
             <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>

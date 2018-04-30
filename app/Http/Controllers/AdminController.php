@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\ProductType;
 use Illuminate\Http\Request;
+
+
 
 class AdminController extends Controller
 {
+
+
     public function Admin(){
         return view("backEnd/AdminPage");
     }
@@ -27,14 +32,38 @@ class AdminController extends Controller
         return view('backEnd/ManageInfor/ManageSupplier');
     }
 
-
+//Product
 
     public function InsertProduct(){
         return view("backEnd/InsertProduct");
     }
+
+    public function PostInsertProduct(){
+        return "Ok";
+    }
+
+
+// Producttype
+
     public function InsertProductType(){
         return view("backEnd/InsertProductType");
     }
+    public function PostInsertgProductType(Request $request){
+        $producttyp= new ProductType([
+            'ptype_id'=>$request->input('pid'),
+            'ptype_name'=>$request->input('ptname')
+
+        ]);
+        $producttyp->timestamps = false; // this for disable updated_at and created_at
+        $producttyp->save();
+        $text ='Insert success';
+
+
+    }
+
+
+
+
     public function AddEmployee(){
         return view("backEnd/AddEmployee");
     }

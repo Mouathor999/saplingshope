@@ -21,7 +21,11 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                 <h2>Insert Product Type</h2>
             </div>
-            <form class="form-group" action="" method="POST" enctype="">
+            <div>
+
+            </div>
+            <form class="form-group" action="{{route('InsertProductType')}}" method="POST" enctype="multipart/form-data">
+                {{csrf_field()}}
                 <div>
                     <label for="pid">Product type ID</label>
                     <input type="text" name="pid" class="form-control">
@@ -34,6 +38,7 @@
                 <div>
                     <input type="submit" value="submit" name="submit" class="btn btn-success">
                 </div>
+
             </form>
             <div class="card-body">
                 <ul class="list-group">
