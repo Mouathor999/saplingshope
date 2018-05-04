@@ -14,9 +14,8 @@ class Product extends Model
         'level_id',
         'sale_price',
         'stock',
-        'image',
         'descript',
-        ''
+        'limit'
         ];
 
 }

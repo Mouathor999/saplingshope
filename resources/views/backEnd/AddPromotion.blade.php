@@ -21,19 +21,20 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                 <h2>Add Promotion</h2>
             </div>
-            <form class="form-group" action="" method="POST" enctype="">
+            <form class="form-group" action="{{route('AddPromotion')}}" method="POST" enctype="multipart/form-data">
                 <div>
-                    <label for="pid">Promotion ID</label>
-                    <input type="text" name="pid" class="form-control">
+                    <label for="promotion_id">Promotion ID</label>
+                    <input type="text" name="promotion_id" class="form-control">
                 </div>
                 <div>
                     <label for="pname">Promotion</label>
-                    <input type="text" name="ptname" class="form-control">
+                    <input type="text" name="promotion" class="form-control">
                 </div>
                 <br>
                 <div>
                     <input type="submit" value="submit" name="submit" class="btn btn-success">
                 </div>
+                {{csrf_field()}}
             </form>
             <div class="card" style="height: auto">
                 <div class="card-title">
@@ -42,19 +43,19 @@
                 <div class="card-body">
                     <div  style="overflow: scroll;height: 500px">
                         <ul class="list-group">
-                            @for($i=1;$i<=10;$i++)
+                            @foreach($promotion as $ppromotion)
                                 <li class="list-group-item">
                                     <div class="table-responsive">
                                         <table class="table table-hover" style="">
                                             <tr>
-                                                <td>{{$i}}</td>
-                                                <td>{{$i+2}}%</td>
+                                                <td>{{$ppromotion->promotion_id}}</td>
+                                                <td><option value="{{$ppromotion->promotion_id}}">{{$ppromotion->promotion}} {{'%'}}</option></td>
                                                 {{--<td style="text-align: right"><a href="" class="btn btn-warning"><i class="fas fa-pencil-alt"></i>ແກ້ໄຂ</a></td>--}}
                                             </tr>
                                         </table>
                                     </div>
                                 </li>
-                            @endfor
+                            @endforeach
 
                         </ul>
                     </div>

@@ -121,6 +121,10 @@ Route::group(['prefix'=>'admin'], function (){
         'uses'=>'AdminController@AddPromotion',
         'as'=>'AddPromotion'
     ]);
+    Route::post('/AddPromotion', [
+        'uses'=>'AdminController@PostAddPromotion',
+        'as'=>'AddPromotion'
+    ]);
 
 
 //    Customer order Route

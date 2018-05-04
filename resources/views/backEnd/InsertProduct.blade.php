@@ -23,57 +23,88 @@
                 </div>
                 <form class="form-group" action="{{route('InsertProduct')}}" method="POST" enctype="multipart/form-data">
                     <div>
-                        <label for="ptype">Product Type</label>
-                        <select name="ptypeid" id="ptypeid" class="form-control">
-                            <option value="">ເລືອກປະເພດ</option>
-                            <option value="1">ປະເພດທີ 1</option>
-                            <option value="2">ປະເພດທີ 2</option>
-                            <option value="3">ປະເພດທີ 3</option>
-                            <option value="4">ປະເພດທີ 4</option>
-                            <option value="5">ປະເພດທີ 5</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="pid">Product ID</label>
+                        <label for="pid">ລະຫັດສິນຄ້າ</label>
                         <input type="text" name="pid" class="form-control">
-                    </div>
-                    <div>
-                        <label for="pname">Product Name</label>
-                        <input type="text" name="pname" class="form-control">
-                    </div>
-
-                    <div>
-                        <label for="plevel">Level</label>
-                        <input type="text" name="plevel" class="form-control">
-                    </div>
-                    <div>
-                        <label for="pprice">Sales Price</label>
-                        <input type="number" name="pprice" class="form-control">
-                    </div>
-                    <div>
-                        <label for="pamount">Amount</label>
-                        <input type="number" name="pamount" class="form-control">
-                    </div>
-                    <div>
-                        <label for="ppromote">Promotion</label>
-                        <select name="ppromote" id="ppromote" class="form-control">
-                            <option value="">ເລືອກໂປຣໂມເຊີນ</option>
-                            <option value="1">1%</option>
-                            <option value="2">2%</option>
-                            <option value="3">3%</option>
-                            <option value="4">4%</option>
-                            <option value="5">5%</option>
-                        </select>
-
-                    </div>
-                    <div>
-                        <label for="pid">Description</label>
-                        <textarea type="text" name="pid" class="form-control" rows="3" cols="20"></textarea>
                     </div>
                     <br>
                     <div>
-                        <label for="pid">Picture</label>
-                        <input type="file" name="pid" class="form-control" >
+                        <label for="pname">ຊື່ສິນຄ້າ</label>
+                        <input type="text" name="pname" class="form-control">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="ptypeid">ປະເພດສິນຄ້າ</label>
+                        <select name="ptypeid" id="ptypeid" class="form-control">
+                            <option value="">ເລືອກປະເພດ...</option>
+                            @foreach($producttype as $ptype)
+                                <option value="{{$ptype->ptype_id}}">{{$ptype->ptype_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="plevel">ລະດັບສິນຄ້າ</label>
+                        <select name="plevel" id="plevel" class="form-control">
+                            <option value="">ເລືອກລະດັບສີນຄ້າ...</option>
+                            @foreach($level as $plevel)
+                                <option value="{{$plevel->level_id}}">{{$plevel->level}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="pprice">ລາຄາຂາຍ</label>
+                        <input type="number" name="pprice" class="form-control">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="pamount">ຈໍານວນ</label>
+                        <input type="number" name="pamount" class="form-control">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="ppromotion">ໂປຣໂມເຊີນ</label>
+                        <select name="ppromotion" id="ppromotion" class="form-control">
+                            <option value="">ເລືອກໂປຣໂມເຊີນ...</option>
+                            @foreach($promotion as $ppromotion)
+                                <option value="{{$ppromotion->promotion_id}}">{{$ppromotion->promotion}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="promotion_startDate">ວັນເລີ່ມໂປຣໂມເຊີນ</label>
+                        <input type="date" name="promotion_startDate" class="form-control">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="promotion_stopDate">ວັນໝົດໂປຣໂມເຊີນ</label>
+                        <input type="date" name="promotion_stopDate" class="form-control">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="limit">Limit</label>
+                        <input type="number" name="limit" class="form-control">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="pid">ອະທີບາຍເພີ່ມເຕີມ</label>
+                        <textarea type="text" name="pdescription" class="form-control" rows="3" cols="20"></textarea>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="pid">ຮູບທີ່ 1</label>
+                        <input type="file" name="pImage1" class="form-control" >
+                    </div>
+                    <br>
+                    <div>
+                        <label for="pid">ຮູບທີ່ 2</label>
+                        <input type="file" name="pImage2" class="form-control" >
+                    </div>
+                    <br>
+                    <div>
+                        <label for="pid">ຮູບທີ່ 3</label>
+                        <input type="file" name="pImage3" class="form-control" >
                     </div>
                     <br>
                     <div>
