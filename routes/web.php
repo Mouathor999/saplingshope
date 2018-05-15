@@ -74,14 +74,25 @@ Route::group(['prefix'=>'admin'], function (){
     ]);
 
 
+//    Product
+
     Route::get('/InsertProduct', [
         'uses'=>'AdminController@InsertProduct',
         'as'=>'InsertProduct'
     ]);
+
+//    param route
+    /*Route::get('/InsertProduct/{success}', [
+        'uses'=>'AdminController@InsertProduct',
+        'as'=>'InsertProduct'
+    ]);*/
+
     Route::post('/InsertProduct', [
         'uses'=>'AdminController@PostInsertProduct',
         'as'=>'InsertProduct'
     ]);
+
+
 
 
     Route::get('/InsertProductType', [
@@ -95,16 +106,36 @@ Route::group(['prefix'=>'admin'], function (){
 
 
 
-
+// Employee route
 
     Route::get('/AddEmployee',[
         'uses'=>'AdminController@AddEmployee',
         'as'=>'AddEmployee'
     ]);
+//    Route param
+    Route::get('/AddEmployee/{success}',[
+        'uses'=>'AdminController@AddEmployee',
+        'as'=>'AddEmployeeSuccess'
+    ]);
+    Route::post('/Employee',[
+        'uses'=>'AdminController@PostEmployee',
+        'as'=>'PostEmployee'
+    ]);
+
+
+//   Supplier route
+
     Route::get('/AddSupplier', [
         'uses'=>'AdminController@AddSupplier',
         'as'=>'AddSupplier'
     ]);
+    Route::post('/AddSupplier', [
+        'uses'=>'AdminController@PostSupplier',
+        'as'=>'PostSupplier'
+    ]);
+
+
+
     Route::get('/UserLogin', [
         'uses'=>'AdminController@UserLogin',
         'as'=>'UserLogin'

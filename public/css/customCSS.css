@@ -547,7 +547,11 @@ ul.nav li:hover > ul.dropdown-menu{
    background-color: white;
     box-shadow: 5px 5px 15px 1px #c8cbcf;
     transition: all 0.5s ease 0.1s;
+    /*transition: all 0.5s ease-in-out;*/
 }
 .Admin_them_title{
     margin-left: 5%;
+}
+.posttext{
+
 }

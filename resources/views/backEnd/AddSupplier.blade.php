@@ -20,30 +20,38 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                 <h1>Insert Supplier</h1>
             </div>
-            <form class="form-group" action="" method="POST" enctype="">
+            <form class="form-group" action="{{route('PostSupplier')}}" method="POST" enctype="">
                 <div style="margin-top: 50px">
-                    <label for="shopname">Shop Name</label>
-                    <input type="text" name="shopname" class="form-control">
+                    <label for="shopID">Shop ID</label>
+                    <input type="text" name="shopID" class="form-control" required>
                 </div>
                 <div>
-                    <label for="supname">Supplier Name</label>
-                    <input type="text" name="supname" class="form-control">
+                    <label for="shopname">Shop Name</label>
+                    <input type="text" name="shopname" class="form-control" required>
+                </div>
+                <div>
+                    <label for="supname">Name</label>
+                    <input type="text" name="supname" class="form-control" required>
+                </div>
+                <div>
+                    <label for="lastname">Last name</label>
+                    <input type="text" name="lastname" class="form-control" required>
                 </div>
                 <div>
                     <label for="village">Village</label>
-                    <input type="text" name="village" class="form-control">
+                    <input type="text" name="village" class="form-control" required>
                 </div>
                 <div>
                     <label for="district">District</label>
-                    <input type="text" name="district" class="form-control">
+                    <input type="text" name="district" class="form-control" required>
                 </div>
                 <div>
                     <label for="province">Province</label>
-                    <input type="text" name="province" class="form-control">
+                    <input type="text" name="province" class="form-control" required>
                 </div>
                 <div>
                     <label for="country">Country</label>
-                    <input type="text" name="country" class="form-control">
+                    <input type="text" name="country" class="form-control" required>
                 </div>
                 <div>
                     <label for="tel">Tel</label>
@@ -51,15 +59,11 @@
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" name="email" class="form-control">
+                    <input type="email" name="email" class="form-control">
                 </div>
                 <div>
                     <label for="baccount">Bank Account</label>
-                    <input type="text" name="baccount" class="form-control">
-                </div>
-                <div>
-                    <label for="img">Bank Account</label>
-                    <input type="file" name="img" class="form-control">
+                    <input type="number" name="baccount" class="form-control">
                 </div>
                 <br>
                 <div>
@@ -67,6 +71,7 @@
                     <input type="submit" value="submit" name="submit" class="btn btn-success">
                     <input type="submit" name="cancel" value="cancel" class="btn btn-danger">
                 </div>
+                {{csrf_field()}}
             </form>
         </div>
         <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>

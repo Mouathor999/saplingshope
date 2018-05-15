@@ -28,7 +28,7 @@
                 {{csrf_field()}}
                 <div>
                     <label for="pid">Product type ID</label>
-                    <input type="text" name="pid" class="form-control">
+                    <input type="text" name="ptid" class="form-control">
                 </div>
                 <div>
                     <label for="pname">Type Name</label>

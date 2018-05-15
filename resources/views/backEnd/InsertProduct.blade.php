@@ -10,10 +10,13 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
+
 </head>
 <body>
 @include('backEnd.AdminNavbar')
+<br>
 
+<br>
     <div class="container container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
@@ -21,10 +24,32 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                     <h2><b>Insert Product</b></h2>
                 </div>
+                <div>
+                    @if(count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul class="nav navbar-nav">
+                                @foreach($errors->all() as $err)
+                                <li class="nav-item">- {{$err}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                <div>
+                    @if($text != null)
+                        <div class="posttext" style="color: #d39e00;">
+                           <h4>{{"Inserted 1 product list"}}</h4>
+                        </div>
+                        @else
+                    @endif
+                </div>
+                <div>
+                    {{--{{$getid}}--}}
+                </div>
                 <form class="form-group" action="{{route('InsertProduct')}}" method="POST" enctype="multipart/form-data">
                     <div>
                         <label for="pid">ລະຫັດສິນຄ້າ</label>
-                        <input type="text" name="pid" class="form-control">
+                        <input type="number" name="pid" class="form-control">
                     </div>
                     <br>
                     <div>
