@@ -62,7 +62,7 @@
                         <select name="ptypeid" id="ptypeid" class="form-control">
                             <option value="">ເລືອກປະເພດ...</option>
                             @foreach($producttype as $ptype)
-                                <option value="{{$ptype->ptype_id}}">{{$ptype->ptype_name}}</option>
+                                <option value="{{$ptype->id}}">{{$ptype->ptype_name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -72,7 +72,7 @@
                         <select name="plevel" id="plevel" class="form-control">
                             <option value="">ເລືອກລະດັບສີນຄ້າ...</option>
                             @foreach($level as $plevel)
-                                <option value="{{$plevel->level_id}}">{{$plevel->level}}</option>
+                                <option value="{{$plevel->id}}">{{$plevel->level}}</option>
                             @endforeach
                         </select>
                     </div>

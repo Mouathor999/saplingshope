@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Supplier;
+use Illuminate\Session\Store;
 use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\ProductPicture;
@@ -18,6 +19,8 @@ use App\Http\Requests\ProductTypeRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\Image;
+use Illuminate\Support\Facades\Storage;
 
 
 class AdminController extends Controller
@@ -26,23 +29,6 @@ class AdminController extends Controller
 
     public function Admin(){
         return view("backEnd/AdminPage");
-    }
-
-//    Manage Information
-    public function ManageProduct(){
-        return view("backEnd/ManageInfor/AllProduct");
-    }
-    public function ManageProductType(){
-        return view('backEnd/ManageInfor/ManageProductType');
-    }
-    public function ManagePromotion(){
-        return view('backEnd/ManageInfor/ManagePromotion');
-    }
-    public function ManageEmployee(){
-        return view('backEnd/ManageInfor/ManageEmployee');
-    }
-    public function ManageSupplier(){
-        return view('backEnd/ManageInfor/ManageSupplier');
     }
 
 //Product
@@ -59,22 +45,11 @@ class AdminController extends Controller
     }
 
     public function PostInsertProduct( Request $request){
-//            Check that product table has data or not
-/*        $results = DB::select("select MAX(pro_id) as p_id from product");
-
-            if(count($results) >= 1){
-                $findID = Product::find(1);
-
-            }
-            else{
-                return "Have not data in database";
-            }*/
-
             $product = new Product([
-                'pro_id' => $request -> input('pid'),
+                'id' => $request -> input('pid'),
                 'pro_name' => $request -> input('pname'),
-                'ptype_id' => $request -> input('ptypeid'),
-                'level_id' => $request -> input('plevel'),
+                'product_type_id' => $request -> input('ptypeid'),
+                'product_level_id' => $request -> input('plevel'),
                 'sale_price' => $request -> input('pprice'),
                 'stock' => $request -> input('pamount'),
                 'descript' => $request -> input('pdescription'),
@@ -86,7 +61,7 @@ class AdminController extends Controller
             if(!empty($request ->input('ppromotion'))){
                 $promotiondetail = new PromotionDetail([
                     'promotion_id' =>$request ->input('ppromotion'),
-                    'pro_id' =>$request ->input('pid'),
+                    'product_id' =>$request ->input('pid'),
                     'start_date' =>$request ->input('promotion_startDate'),
                     'end_date' =>$request ->input('promotion_stopDate'),
                 ]);
@@ -94,21 +69,11 @@ class AdminController extends Controller
                 $promotiondetail ->save();
             }
             $productImg1 = new ProductPicture();
-            $productImg1 -> pro_id = Input::get("pid");
+            $productImg1 -> product_id = Input::get("pid");
             if (Input::hasFile('pImage1')){
-
-
-                /* $file1 = Input::file("pImage1");
-                  $productImg1->image = $file1->getClientOriginalName();
-                  $file1 -> move(public_path('/img'),$file1->getClientOriginalName());
-                $productImg1->timestamps = false; // this for disable updated_at and created_at
-                $productImg1 ->save();*/
-
-
-
-//         this is chang image name
+//                  this is chang image name
                 $newfileName = str_random(15).'.'.$request->file('pImage1')->getClientOriginalExtension();
-//         insert image new name into database
+//                  insert image new name into database
                 $productImg1->image = $newfileName ;
                 $productImg1->timestamps = false; // this for disable updated_at and created_at
                 $productImg1 ->save();
@@ -118,18 +83,11 @@ class AdminController extends Controller
 
 
             $productImg2 = new ProductPicture();
-            $productImg2 -> pro_id = Input::get('pid');
+            $productImg2 -> product_id = Input::get('pid');
             if (Input::hasFile('pImage2')){
-               /* $file2 = Input::file('pImage2');
-                $productImg2->image = $file2->getClientOriginalName();
-                $file2 -> move(public_path('/img'),$file2->getClientOriginalName());
-                $productImg2->timestamps = false; // this for disable updated_at and created_at
-                $productImg2 ->save();*/
-
-
-//         this is chang image name
+//                this is chang image name
                 $newfileName = str_random(15).'.'.$request->file('pImage2')->getClientOriginalExtension();
-//         insert image new name into database
+//                insert image new name into database
                 $productImg2->image = $newfileName ;
                 $productImg2->timestamps = false; // this for disable updated_at and created_at
                 $productImg2 ->save();
@@ -138,18 +96,12 @@ class AdminController extends Controller
 
 
             $productImg3 = new ProductPicture();
-            $productImg3 -> pro_id = Input::get('pid');
+            $productImg3 -> product_id = Input::get('pid');
             if (Input::hasFile('pImage3')){
-               /* $file3 = Input::file('pImage3');
-                $productImg3->image = $file3->getClientOriginalName();
-                $file3 -> move(public_path('/img'),$file3->getClientOriginalName());
-                $productImg3->timestamps = false; // this for disable updated_at and created_at
-                $productImg3 ->save();*/
 
-
-//         this is chang image name
+//                 this is chang image name
                 $newfileName = str_random(15).'.'.$request->file('pImage3')->getClientOriginalExtension();
-//         insert image new name into database
+//                 insert image new name into database
                 $productImg3->image = $newfileName ;
                 $productImg3->timestamps = false; // this for disable updated_at and created_at
                 $productImg3 ->save();
@@ -165,12 +117,13 @@ class AdminController extends Controller
 // Producttype
 
     public function InsertProductType(){
-        $producttype = ProductType::all();
+        $producttype = ProductType::all()->sortByDesc('id');
+//        return $producttype->ptype_name;
         return view("backEnd/InsertProductType",['producttype'=>$producttype]);
     }
     public function PostInsertgProductType(ProductTypeRequest $request){
         $producttyp= new ProductType([
-            'ptype_id'=>$request->input('ptid'),
+            'id'=>$request->input('ptid'),
             'ptype_name'=>$request->input('ptname')
         ]);
         $producttyp->timestamps = false; // this for disable updated_at and created_at
@@ -181,33 +134,42 @@ class AdminController extends Controller
     public function AddEmployee($success = null){
         $emp_edu= EmployeeEducation::all();
         $text = $success;
+//        return $emp_edu;
         return view("backEnd/AddEmployee",['emp_edus'=>$emp_edu, 'text'=>$text ]);
     }
     public function PostEmployee(EmployeeRequests $requests){
         if($requests->input('pwd')==$requests->input('Comfirm_pwd')){
             if(Input::hasFile('img')){
-                $file = Input::file('img');
+
+//                $file = Input::file('img');
+                $file = str_random(15).'.'.$requests->file('img')->getClientOriginalExtension();
+               /* $filenameWithExtension = $requests->file('img')->getClientOriginalName();
+                $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
+                $extension = $requests -> file('img')->getClientOriginalExtension();
+                $fileStore = $filename."_".time().'.'.$extension;
+                Store::disk('s3')->put($fileStore,fopen($requests->file('img'),'r+'),'public');*/
                 $emp = new Employee([
-                    'emp_id' =>$requests->input('uid'),
+                    'id' =>$requests->input('uid'),
                     'emp_username' =>$requests->input('uname'),
-                    'password' =>Crypt::encrypt($requests->input('Comfirm_pwd')),
+                    'password' =>Crypt::encrypt($requests->input('Comfirm_pwd')) ,
                     'emp_name' =>$requests->input('name'),
                     'emp_lastname' =>$requests->input('lastname'),
                     'gender' =>$requests->input('gender'),
                     'age' =>$requests->input('age'),
-                    'edu_id' =>$requests->input('E_edu'),
+                    'emp_education_id' =>$requests->input('E_edu'),
                     'village' =>$requests->input('village'),
                     'district' =>$requests->input('district'),
                     'province' =>$requests->input('province'),
                     'tel' =>$requests->input('phone'),
                     'email' =>$requests->input('identification_card'),
                     'identification_card' =>$requests->input('identification_card'),
-                    'image' => $file->getClientOriginalName(),            // 'image' => Input::file('img')->getClientOriginalName(),
+                    'image' => $file,            // 'image' => Input::file('img')->getClientOriginalName(),
                     'description' =>$requests->input('description'),
                 ]);
                 $emp->timestamps = false; // this for disable updated_at and created_at
                 if($emp ->save()){
-                    $file -> move(public_path("/img"),$file->getClientOriginalName());
+                    $requests->file('img') -> move(public_path('/img'),$file);
+//                    Image::make($file->getRealPath())->resize(100,'150')->save(public_path().'IMGResize/'.$file);
                     return redirect()->route('AddEmployeeSuccess',['success'=>"Add Employee success"]);
                 }else{
                   return back()->withErrors("Error Information saved fail") ;
@@ -229,7 +191,7 @@ class AdminController extends Controller
 
     public function PostSupplier(SupplierRequests $requests){
         $supplier = new Supplier();
-        $supplier->sup_id = $requests->input('shopID');
+        $supplier->id = $requests->input('shopID');
         $supplier->shop_name = $requests->input('shopname');
         $supplier->sup_name = $requests->input('supname');
         $supplier->lastname = $requests->input('lastname');
@@ -243,12 +205,6 @@ class AdminController extends Controller
         $supplier->timestamps= false;
         $supplier->save();
     }
-
-
-
-
-
-
 
 
 
@@ -271,7 +227,7 @@ class AdminController extends Controller
     }
     public function PostAddPromotion(Request $request){
         $promotion =new Promotion([
-            'promotion_id' => $request->input('promotion_id'),
+            'id' => $request->input('promotion_id'),
             'promotion' => $request->input('promotion'),
         ]);
         $promotion->timestamps = false; // this for disable updated_at and created_at

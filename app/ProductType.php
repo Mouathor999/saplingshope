@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class ProductType extends Model
 {
     protected $table = 'producttype';
-    protected $fillable = ['ptype_id','ptype_name'];
+    protected $casts =['id'=>'string'];
+    protected $fillable = ['id','ptype_name'];
+    public function Product(){
+        return $this->hasMany(Product::class);
+    }
+
+    public function testproduct(){
+        return $this->hasOne(Product::class);
+    }
 }

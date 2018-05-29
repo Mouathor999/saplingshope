@@ -58,47 +58,25 @@
                     </div>
                 @endif
             </div>
-            <div>
-                @if($text != null)
-                    {{$text}}
-                @endif
-            </div>
-
             <div id="tesJavascript">
 
             </div>
+            <div>
+                <h4><b>{{"ID : "}}</b><label style="color: red">{{$EMPinfor->id}}</label></h4>
+            </div>
 
-            <form class="form-group" action="{{route('PostEmployee')}}" method="POST" enctype="multipart/form-data">
-                <div style="margin-top: 50px">
-                    <label for="uid">User ID</label>
-                    <input type="text" name="uid" id="uid" class="form-control" required>
-                </div>
-                <div>
-                    <label for="uname">Username</label>
-                    <input type="text" name="uname" class="form-control" required>
-                </div>
-                <div>
-                    <label for="pwd">Password</label>
-                    <input type="password" name="pwd" oninput="checkIf_pwd_Lessthen_8()" id="pwd" class="form-control" required>
-                </div>
-                <div>
-                    <label for="Comfirm_pwd">Comfirm Password</label>
-                    <input type="password" name="Comfirm_pwd"  id="Comfirm_pwd" oninput="CheckPassword()" class="form-control" required>
-                </div>
-                <div class="text-center" style="margin-top: 5px;margin-bottom: 5px">-------------000------------</div>
-
+            <form class="form-group" action="" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="name">First Name</label>
-                    <input type="text" name="name" class="form-control" required>
+                    <input type="text" name="name" class="form-control" value="{{$EMPinfor->emp_name}}" required>
                 </div>
                 <div>
                     <label for="last">Last Name</label>
-                    <input type="text" name="lastname" class="form-control">
+                    <input type="text" name="lastname" value="{{$EMPinfor->emp_lastname}}" class="form-control">
                 </div>
                 <div>
                     <label for="gender">Gender</label>
                     <select name="gender" class="form-control">
-                        <option>ເລືອກເພດ</option>
                         <option value="male">ຊາຍ</option>
                         <option value="female">ຍິງ</option>
                         <option value="orther">ອື່ນໆ</option>
@@ -106,44 +84,49 @@
                 </div>
                 <div>
                     <label for="age">Age</label>
-                    <input type="number" name="age" class="form-control">
+                    <input type="number" name="age" class="form-control" value="{{$EMPinfor->age}}">
                 </div>
                 <div>
                     <label for="edu">Education</label>
                     <select name="E_edu" class="form-control">
                         <option>ເລືອກລະດັບການສືກສາ</option>
-                        @foreach($emp_edus as $emp_edu)
-                            <option value="{{$emp_edu->id}}">{{$emp_edu->education}}</option>
-                        @endforeach
+                       {{-- @foreach($emp_edus as $emp_edu)
+                            <option value="{{$emp_edu->edu_id}}">{{$emp_edu->education}}</option>
+                        @endforeach--}}
                     </select>
                 </div>
                 <div>
                     <label for="village">Village</label>
-                    <input type="text" name="village" class="form-control">
+                    <input type="text" name="village" value="{{$EMPinfor->village}}" class="form-control">
                 </div>
                 <div>
                     <label for="district">District</label>
-                    <input type="text" name="district" class="form-control">
+                    <input type="text" name="district" value="{{$EMPinfor->district}}" class="form-control">
                 </div>
                 <div>
                     <label for="province">Province</label>
-                    <input type="text" name="province" class="form-control">
+                    <input type="text" name="province" value="{{$EMPinfor->province}}" class="form-control">
                 </div>
                 <div>
                     <label for="phone">Phone</label>
-                    <input type="number" name="phone" class="form-control">
+                    <input type="number" name="phone" value="{{$EMPinfor->tel}}" class="form-control">
+                </div>
+                <div>
+                    <label for="phone">Email</label>
+                    <input type="email" name="email" value="{{$EMPinfor->email}}" class="form-control">
                 </div>
                 <div>
                     <label for="identification_card">identification card</label>
-                    <input type="number" name="identification_card" class="form-control">
+                    <input type="number" name="identification_card" value="{{$EMPinfor->identification_card}}" class="form-control">
                 </div>
                 <div>
                     <label for="description">Description</label><br/>
-                    <textarea class="" class="form-control" name="description" cols="100" rows="3"></textarea>
+                    <textarea class="" class="form-control" name="description" value="{{$EMPinfor->description}}" cols="100" rows="3"></textarea>
                 </div>
                 <div>
                     <label for="img">User picture</label><br/>
-                    <input type="file" name="img" class="form-control">
+                    <img src="{{asset('img/'.$EMPinfor->image)}}" class="img-responsive" style="width: 100px" alt=""  >
+                    <input type="file" class="form-control" accept="image/*">
                 </div>
                 <div>
                     <br>
@@ -152,6 +135,7 @@
                     <input type="submit" name="cancel" value="cancel" class="btn btn-danger">
                 </div>
                 {{csrf_field()}}
+
             </form>
         </div>
         <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>

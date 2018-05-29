@@ -33,9 +33,9 @@
                     <tr>
                         <td ><div class=""><b>emp_ID</b></div></td>
                         <td ><div class="div_in_td"><b>Picture</b></div></td>
-                        <td ><div class="div_in_td"><b>name</b></div></td>
+                        <td ><div class=""><b>name</b></div></td>
                         <td ><div class="div_in_td"><b>lastname</b></div></td>
-                        <td ><div class="div_in_td"><b>Eduction</b></div></td>
+                        <td ><div class=""><b>Eduction</b></div></td>
                         <td ><div class=""><b>Gender</b></div></td>
                         <td ><div class=""><b>Age</b></div></td>
                         <td ><div class=""><b>Village</b></div></td>
@@ -48,40 +48,35 @@
                         <td ><div class=""><b>delete product</b></div></td>
                     </tr>
                     <tbody>
-                    @for($i=1;$i<=10;$i++)
+
+                    @foreach($employees as $employee )
                         <tr>
                             <td style="text-align: center;width: 150px">
-                                emp0{{$i}}
+                                {{$employee -> id}}
                             </td>
                             <td style="text-align: center;width: 150px">
-                                <a href=""><img src="{{asset('img/EMP.jpg')}}" class="img-responsive" style="width: 100px" alt=""  ></a>
+                                <a href=""><img src="{{asset('img/'.$employee->image)}}" class="img-responsive" style="width: 100px" alt=""  ></a>
                             </td>
-                            <td style="text-align: center;"><div>ຊື່ພະນັກງານ {{$i}}</div></td>
-                            <td style="text-align: center;"><div>ນາມສະກຸນ {{$i}}</div></td>
-                            <td style="text-align: center;"><div>ປະລີນຍາຕີ</div></td>
+                            <td style="text-align: center;"><div>{{$employee ->emp_name }}</div></td>
+                            <td style="text-align: center;"><div>{{$employee ->emp_lastname}}</div></td>
+                            <td style="text-align: center;"><div>{{$employee ->edu_id }}</div></td>
 
-                            <td><div class="">
-                                    @if($i%2==0)
-                                        {{'ຍິງ '.$i}}
-                                        @else
-                                        {{'ຊາຍ'}}
-                                        @endif
-                                </div></td>
-                            <td><div class="">{{(20+$i)}}</div></td>
-                            <td><div class="">ບ້ານ</div></td>
-                            <td><div class="">ເມືອງ</div></td>
-                            <td><div class="">ເເຂວງ</div></td>
-                            <td><div class="div_in_td">020 55556565</div></td>
-                            <td><div class="div_in_td">Email@email.com</div></td>
-                            <td><div class="div_in_td">123231233423</div></td>
+                            <td><div class="">{{$employee ->gender}}</div></td>
+                            <td><div class="">{{$employee ->age}}</div></td>
+                            <td><div class="">{{$employee ->village}}</div></td>
+                            <td><div class="">{{$employee ->district}}</div></td>
+                            <td><div class="">{{$employee ->province}}</div></td>
+                            <td><div class="">{{$employee ->tel}}</div></td>
+                            <td><div class="">{{$employee ->email}}</div></td>
+                            <td><div class="">{{$employee ->identification_card}}</div></td>
                             <td>
-                                <a href="{{route('EditProduct')}}" class="btn btn-outline-warning"><i class="fas fa-pencil-alt" style="color: #1e7e34"></i> Ed</a>
+                                <a href="{{route('Editemployee',$employee->id)}}" class="btn btn-outline-warning"><i class="fas fa-pencil-alt" style="color: #1e7e34"></i> Ed</a>
                             </td>
                             <td >
                                 <a href="" class="btn btn-outline-danger" ><i class="far fa-times-circle"></i> Dl</a>
                             </td>
                         </tr>
-                    @endfor
+                    @endforeach
                     </tbody>
                 </table>
             </div>

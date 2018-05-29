@@ -8,14 +8,14 @@ class Employee extends Model
 {
     protected $table = 'employee';
     protected $fillable = [
-        'emp_id',
+        'id',
         'emp_username',
         'password',
         'emp_name',
         'emp_lastname',
         'gender',
         'age',
-        'edu_id',
+        'emp_education_id',
         'village',
         'district',
         'province',
@@ -25,8 +25,10 @@ class Employee extends Model
         'image',
         'description'
     ];
-    public function Relation_To_BookingTB(){
+    public function booking(){
         return $this->hasMany(Booking::class,'emp_id');
     }
-
+    public function education(){
+        return $this->hasMany(EmployeeEducation::class,'emp_education_id');
+    }
 }

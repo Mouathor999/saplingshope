@@ -23,20 +23,20 @@
     </div>
     <div class="">
         <ul class="list-group">
-            @for($i=1;$i<=10;$i++)
+            @foreach($promotions as $promotion)
                 <li class="list-group-item">
                     <div class="table-responsive">
                         <table class="table table-hover" style="">
                             <tr>
-                                <td>{{$i}}</td>
-                                <td>{{$i+2}}% </td>
+                                <td>{{$promotion->promotion_id}}</td>
+                                <td>{{$promotion->promotion}}% </td>
                                 <td style="text-align: right"><a href="" class="btn btn-warning"> <i class="fas fa-pencil-alt"></i> </a></td>
                                 <td style="text-align: left"><a href="" class="btn btn-danger"> X </a></td>
                             </tr>
                         </table>
                     </div>
                 </li>
-            @endfor
+            @endforeach
 
         </ul>
     </div>

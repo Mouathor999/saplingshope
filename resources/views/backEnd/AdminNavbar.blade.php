@@ -83,7 +83,7 @@
                     </li>
                     <li class="nav-item dropdown main-li" >
                         <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            ລາຍການສັ່ງ
+                            ລາຍການສັ່ງຂອງລູກຄ້າ
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="">
                             <li class="nav-item"><a href="" class="nav-link" >ລາຍການສັ່ງຊື້</a> </li>
@@ -95,7 +95,7 @@
                             ສັ່ງຊື້ສິນຄ້ານເຂົ້າຮ້ານ
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="">
-                            <li class="nav-item"><a href="" class="nav-link" >ສິນຄ້າເຫຼືອໜ້ອຍ</a> </li>
+                            <li class="nav-item"><a href="{{route('lessproduct')}}" class="nav-link" >ສິນຄ້າເຫຼືອໜ້ອຍ</a> </li>
                             <li class="nav-item"><a href="" class="nav-link" >ນໍາເຂົ້າສິນຄ້າ</a> </li>
                         </ul>
                     </li>

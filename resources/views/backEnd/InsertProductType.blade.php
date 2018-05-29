@@ -42,12 +42,13 @@
             </form>
             <div class="card-body">
                 <ul class="list-group">
+
                     @foreach($producttype as $ptype)
                         <li class="list-group-item">
                             <div class="table-responsive">
                                 <table class="table table-hover" style="">
                                     <tr>
-                                        <td><div class="div_in_td">{{$ptype->ptype_id}}</div></td>
+                                        <td><div class="div_in_td">{{$ptype->id}}</div></td>
                                         <td><div class="div_in_td">{{$ptype->ptype_name}}</div></td>
                                         {{--<td style="text-align: right"><a href="" class="btn btn-warning"><i class="fas fa-pencil-alt"></i>ແກ້ໄຂ</a></td>--}}
                                     </tr>

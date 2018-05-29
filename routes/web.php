@@ -187,36 +187,48 @@ Route::group(['prefix'=>'admin'], function (){
 
 //    Manage Information Route
     Route::get('/AllProduct', [
-        'uses'=>'AdminController@ManageProduct',
+        'uses'=>'ManageController@getAllProduct',
         'as'=>'manageProduct'
     ]);
     Route::get('/AllProductType', [
-        'uses'=>'AdminController@ManageProductType',
+        'uses'=>'ManageController@getAllProductType',
         'as'=>'manageProductType'
     ]);
     Route::get('/AllEmployee', [
-        'uses'=>'AdminController@ManageEmployee',
+        'uses'=>'ManageController@getAllEmployee',
         'as'=>'manageEmployee'
     ]);
     Route::get('/AllSupplier', [
-        'uses'=>'AdminController@ManageSupplier',
+        'uses'=>'ManageController@getAllSupplier',
         'as'=>'manageSupplier'
     ]);
     Route::get('/AllPromotion', [
-        'uses'=>'AdminController@ManagePromotion',
+        'uses'=>'ManageController@getAllPromotion',
         'as'=>'managePromotion'
     ]);
 
 
 
 //    Edit product Route
-    Route::get('/UpdateProduct', [
-        'uses'=>'EditController@UpdateProduct',
+    Route::get('/EditProduct/{id}', [
+        'uses'=>'EditController@EditProduct',
         'as'=>'EditProduct'
+    ]);
+  /*  Route::get('/EditEmp/{id}', [
+        'uses'=>'EditController@EditEmployee',
+        'as'=>'Editemployee'
+    ]);*/
+    Route::get('/EditEmp/{id}', [
+        'uses'=>'EditController@EditEmployee',
+        'as'=>'Editemployee'
     ]);
 
 
 
+    Route::post('updateproduct/{id}',[
+        'uses'=>'UpdateController@UpdateProduct',
+        'as'=>'pUpdate'
+    ]);
 
 
 
@@ -236,7 +248,12 @@ Route::group(['prefix'=>'admin'], function (){
 
 });
 
+// Check less product in stock
 
+     Route::get('LessProduct',[
+        'uses' => 'ImportController@getLessProduct',
+         'as'=>'lessproduct',
+     ]);
 
 
 
@@ -244,4 +261,7 @@ Route::group(['prefix'=>'admin'], function (){
 Route::get('/test', function (){
     return view("frontEnd.test");
 });
+
+Route::resource( '/testDatabase','TestDatabaseController');
+
 

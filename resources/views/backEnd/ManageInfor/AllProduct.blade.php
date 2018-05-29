@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>All product</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
@@ -26,6 +27,7 @@
             </div>
         </form>
     </div>
+
     <div class="row" style="margin-top: 1%; margin-right: 1%">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="table-responsive">
@@ -35,42 +37,49 @@
                         <td ><div class="div_in_td"><b>Picture</b></div></td>
                         <td ><div class="div_in_td"><b>Product name</b></div></td>
                         <td ><div class="div_in_td"><b>Product type</b></div></td>
+                        <td ><div ><b>Product level</b></div></td>
                         <td ><div class="div_in_td"><b>price</b></div></td>
-                        <td ><div class="div_in_td"><b>Stock</b></div></td>
+                        <td ><div><b>Stock</b></div></td>
                         <td ><div class=""><b>Promotion</b></div></td>
                         <td ><div class=""><b>Limit</b></div></td>
+                        <td ><div class=""><b>Descript</b></div></td>
                         <td ><div class=""><b>Edit Limit</b></div></td>
                         <td ><div class=""><b>edit product</b></div></td>
                         <td ><div class=""><b>delete product</b></div></td>
                     </tr>
                     <tbody>
-                    @for($i=1;$i<=10;$i++)
+                    @foreach($products as $product)
                         <tr>
                             <td style="text-align: center;width: 150px">
-                                p00{{$i}}
+                                {{ $product->id}}
                             </td>
                             <td style="text-align: center;width: 150px">
-                                <a href="{{route('product.productdetail')}}"><img src="{{asset('img/flower2.jpg')}}" class="img-responsive" style="width: 100px" alt=""  ></a>
-                            </td>
+                                <a href="{{route('product.productdetail')}}">
+                                    <img src="{{asset('img/'.$product->productimage[0]->image)}}" class="img-responsive" style="width: 100px" alt=""  >
+                                </a>
+                              </td>
                             <td style="text-align: center;">
-                                <div style="width: 150px"> ຕົ້ນດອອກໄມ້ທີ່ {{$i}}</div>
+                                <div style="width: 150px">{{$product->pro_name}}</div>
                             </td>
-                            <td><div class="">ປະເພດສີນຄ້າ </div></td>
-                            <td><div class="">${{4+$i}}</div></td>
-                            <td><div class="">100</div></td>
-                            <td><div class="">2%</div></td>
-                            <td><div class="">10</div></td>
+                            <td><div class="">{{$product->producttype->ptype_name }}</div></td>
+                            <td><div class="">{{$product->productlevel->level }}</div></td>
+                            <td><div class="">{{$product->sale_price }}</div></td>
+                            <td><div class="">{{$product->stock }}</div></td>
+                            <td><div class="">{{1}}</div></td>
+                            <td><div class="">{{$product->limit }}</div></td>
+                            <td><div class="">{{$product->descript }}</div></td>
                             <td>
                                 <a href="" class="btn btn-outline-warning"><i class="far fa-bell"  style="color: #1e7e34"></i> Lm</a>
                             </td>
                             <td>
-                                <a href="{{route('EditProduct')}}" class="btn btn-outline-warning"><i class="fas fa-pencil-alt" style="color: #1e7e34"></i> Ed</a>
+                                <a href="{{route('EditProduct',$product->id)}}" class="btn btn-outline-warning"><i class="fas fa-pencil-alt" style="color: #1e7e34"></i> Ed</a>
                             </td>
                             <td >
                                 <a href="" class="btn btn-outline-danger" ><i class="far fa-times-circle"></i> Dl</a>
                             </td>
                         </tr>
-                    @endfor
+                    @endforeach
+
                     </tbody>
                 </table>
             </div>
@@ -78,7 +87,6 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 

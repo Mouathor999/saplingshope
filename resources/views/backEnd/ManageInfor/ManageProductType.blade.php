@@ -23,14 +23,14 @@
     </div>
    <div class="">
            <ul class="list-group">
-               @for($i=1;$i<=10;$i++)
+               @foreach($producttype as $ptype)
                    <li class="list-group-item">
                        <div class="table-responsive">
                            <table class="table table-hover" style="">
                                <tr>
-                                   <td>{{$i}}</td>
+                                   <td>{{$ptype->id}}</td>
                                    <td><div class="div_in_td">
-                                           ປະເພດສິນຄ້າທີ {{$i}}
+                                        {{$ptype->ptype_name }}
                                        </div>
                                    </td>
                                    <td style="text-align: right"><a href="" class="btn btn-warning"> <i class="fas fa-pencil-alt"></i> </a></td>
@@ -39,7 +39,7 @@
                            </table>
                        </div>
                    </li>
-               @endfor
+               @endforeach
 
            </ul>
    </div>
