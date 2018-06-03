@@ -47,6 +47,32 @@
                         <td ><div class=""><b>edit product</b></div></td>
                         <td ><div class=""><b>delete product</b></div></td>
                     </tr>
+
+                    {{-- @foreach($products as $product)
+                        <li>
+                              @if($product->promotion->count() > 0)
+                                  @foreach($product->promotion as $ppromotion)
+                                      @if($ppromotion->pivot->end_date >= date('Y-m-d'))
+                                          {{$ppromotion->pivot->promotion_id}}
+                                      @endif
+
+                                  @endforeach
+                              @endif
+                          </li>
+                      --}}{{--Check if product image is empty--}}{{--
+                    @if($product->productimage->count() > 0)
+                            {{$product->productimage}}
+                        @else
+                            <br>
+                        kkkkkkkkkkkkkkkkkkkkkkk
+                            <br>
+                            {{$product->productimage}}
+                    @endif
+                        <br>
+                    @endforeach
+                    --}}
+
+
                     <tbody>
                     @foreach($products as $product)
                         <tr>
@@ -55,8 +81,11 @@
                             </td>
                             <td style="text-align: center;width: 150px">
                                 <a href="{{route('product.productdetail')}}">
-                                    <img src="{{asset('img/'.$product->productimage[0]->image)}}" class="img-responsive" style="width: 100px" alt=""  >
-                                </a>
+                                    @if($product->productimage->count() > 0)
+                                        <img src="{{asset('img/'.$product->productimage[0]->image)}}" class="img-responsive" style="width: 100px" alt=""  >
+                                    @else
+                                    @endif
+                                    </a>
                               </td>
                             <td style="text-align: center;">
                                 <div style="width: 150px">{{$product->pro_name}}</div>
@@ -65,17 +94,29 @@
                             <td><div class="">{{$product->productlevel->level }}</div></td>
                             <td><div class="">{{$product->sale_price }}</div></td>
                             <td><div class="">{{$product->stock }}</div></td>
-                            <td><div class="">{{1}}</div></td>
+                            <td>
+                                <div class="">
+                                    @if($product->promotion->count() > 0)
+                                        @foreach($product->promotion as $ppromotion)
+                                            @if($ppromotion->pivot->end_date >= date('Y-m-d'))
+                                                {{$ppromotion->pivot->promotion_id . " %" }}
+                                            @endif
+                                        @endforeach
+                                    @else
+
+                                    @endif
+                                </div>
+                            </td>
                             <td><div class="">{{$product->limit }}</div></td>
                             <td><div class="">{{$product->descript }}</div></td>
                             <td>
-                                <a href="" class="btn btn-outline-warning"><i class="far fa-bell"  style="color: #1e7e34"></i> Lm</a>
+                                <a href="{{route('EditPLimit',$product->id)}}" class="btn btn-outline-warning"><i class="far fa-bell"  style="color: #1e7e34"></i> Lm</a>
                             </td>
                             <td>
                                 <a href="{{route('EditProduct',$product->id)}}" class="btn btn-outline-warning"><i class="fas fa-pencil-alt" style="color: #1e7e34"></i> Ed</a>
                             </td>
                             <td >
-                                <a href="" class="btn btn-outline-danger" ><i class="far fa-times-circle"></i> Dl</a>
+                                <a href="{{route('DelProduct',$product->id)}}" class="btn btn-outline-danger" ><i class="far fa-times-circle"></i> Dl</a>
                             </td>
                         </tr>
                     @endforeach

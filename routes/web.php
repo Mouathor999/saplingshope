@@ -199,9 +199,10 @@ Route::group(['prefix'=>'admin'], function (){
         'as'=>'manageEmployee'
     ]);
     Route::get('/AllSupplier', [
-        'uses'=>'ManageController@getAllSupplier',
+        'uses'=>'ManageController@AllSupplier',
         'as'=>'manageSupplier'
     ]);
+
     Route::get('/AllPromotion', [
         'uses'=>'ManageController@getAllPromotion',
         'as'=>'managePromotion'
@@ -214,21 +215,69 @@ Route::group(['prefix'=>'admin'], function (){
         'uses'=>'EditController@EditProduct',
         'as'=>'EditProduct'
     ]);
-  /*  Route::get('/EditEmp/{id}', [
-        'uses'=>'EditController@EditEmployee',
-        'as'=>'Editemployee'
-    ]);*/
-    Route::get('/EditEmp/{id}', [
+    Route::get('/EditProductLimit/{id}', [
+        'uses'=>'EditController@EditProductLimit',
+        'as'=>'EditPLimit'
+    ]);
+   Route::get('/EditProducttype/{id}', [
+        'uses'=>'EditController@EditProducttype',
+        'as'=>'EditPtype'
+    ]);
+   Route::get('/EditPromotion/{id}', [
+        'uses'=>'EditController@EditPromotion',
+        'as'=>'EditPromotion'
+    ]);
+    Route::get('/EditEmployee/{id}', [
         'uses'=>'EditController@EditEmployee',
         'as'=>'Editemployee'
     ]);
 
 
+//  Update Route
 
     Route::post('updateproduct/{id}',[
         'uses'=>'UpdateController@UpdateProduct',
         'as'=>'pUpdate'
     ]);
+    Route::post('updateproductLimit/{id}',[
+        'uses'=>'UpdateController@UpdateProductLimit',
+        'as'=>'pLimitUpdate'
+    ]);
+    Route::post('updateProducttype/{id}',[
+        'uses'=>'UpdateController@UpdateProductType',
+        'as'=>'TypeUpdate'
+    ]);
+    Route::post('updatePromotion/{id}',[
+        'uses'=>'UpdateController@UpdatePromotion',
+        'as'=>'PromotionUpdate'
+    ]);
+
+    Route::post('updateEmployee/{id}',[
+        'uses'=>'UpdateController@UpdateEmployee',
+        'as'=>'EUpdate'
+    ]);
+
+
+//    Delete Route
+    Route::get('DelProduct/{id}',[
+        'uses'=>'DeleteController@DelProduct',
+        'as'=>'DelProduct'
+    ]);
+
+    Route::get('DelProducttype/{id}',[
+        'uses'=>'DeleteController@DelProducttype',
+        'as'=>'DelPtype'
+    ]);
+    Route::get('DelPromotion/{id}',[
+        'uses'=>'DeleteController@DelPromotion',
+        'as'=>'DelPromotion'
+    ]);
+    Route::get('DelEmployee/{id}',[
+        'uses'=>'DeleteController@DelEmployee',
+        'as'=>'DelEmp'
+    ]);
+
+
 
 
 
@@ -254,6 +303,21 @@ Route::group(['prefix'=>'admin'], function (){
         'uses' => 'ImportController@getLessProduct',
          'as'=>'lessproduct',
      ]);
+
+
+
+
+
+
+//     Load Import product amount form
+
+        Route::get('Amount/{id}',[
+            'uses' => 'ImportController@AddProductImportAmount',
+            'as'=>'pAmount',
+        ]);
+
+
+
 
 
 

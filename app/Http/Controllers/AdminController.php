@@ -161,7 +161,7 @@ class AdminController extends Controller
                     'district' =>$requests->input('district'),
                     'province' =>$requests->input('province'),
                     'tel' =>$requests->input('phone'),
-                    'email' =>$requests->input('identification_card'),
+                    'email' =>$requests->input('email'),
                     'identification_card' =>$requests->input('identification_card'),
                     'image' => $file,            // 'image' => Input::file('img')->getClientOriginalName(),
                     'description' =>$requests->input('description'),

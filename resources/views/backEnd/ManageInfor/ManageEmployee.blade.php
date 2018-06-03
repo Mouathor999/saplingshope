@@ -48,7 +48,6 @@
                         <td ><div class=""><b>delete product</b></div></td>
                     </tr>
                     <tbody>
-
                     @foreach($employees as $employee )
                         <tr>
                             <td style="text-align: center;width: 150px">
@@ -59,7 +58,7 @@
                             </td>
                             <td style="text-align: center;"><div>{{$employee ->emp_name }}</div></td>
                             <td style="text-align: center;"><div>{{$employee ->emp_lastname}}</div></td>
-                            <td style="text-align: center;"><div>{{$employee ->edu_id }}</div></td>
+                            <td style="text-align: center;"><div>{{$employee->education[0]->education}}</div></td>
 
                             <td><div class="">{{$employee ->gender}}</div></td>
                             <td><div class="">{{$employee ->age}}</div></td>
@@ -73,7 +72,7 @@
                                 <a href="{{route('Editemployee',$employee->id)}}" class="btn btn-outline-warning"><i class="fas fa-pencil-alt" style="color: #1e7e34"></i> Ed</a>
                             </td>
                             <td >
-                                <a href="" class="btn btn-outline-danger" ><i class="far fa-times-circle"></i> Dl</a>
+                                <a href="{{route('DelEmp',$employee->id)}}" class="btn btn-outline-danger" ><i class="far fa-times-circle"></i> Dl</a>
                             </td>
                         </tr>
                     @endforeach

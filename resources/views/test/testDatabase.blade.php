@@ -35,7 +35,23 @@
         <div>
             <ul>
                 @foreach($product_images as $imageList)
-                <li><img src="{{ asset('img/'.$imageList->productimage[0]->image)}}" alt=""></li>
+                <li>
+
+                    {{--<img src="{{ asset('img/'.$imageList->productimage[0]->image)}}" alt="">--}}
+                    @foreach($imageList->productimage as $pictures)
+                        {{$imageList->pro_name}}
+                        <img src="{{asset('img/'.$pictures->image)}}" alt="" style="width: 100px; height: 100px">
+
+                    @endforeach
+                    <br><br>
+                    @if(!Empty($imageList->productimage[1] ))
+                        <img src="{{asset('img/'.$imageList->productimage[1]->image)}}" alt="" style="width: 100px; height: 100px">
+                        @else
+                        {{"Image is null"}}
+                    @endif
+
+
+                </li>
                     <br>
                 @endforeach
             </ul>

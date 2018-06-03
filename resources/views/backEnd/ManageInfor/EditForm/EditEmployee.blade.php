@@ -5,14 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Emp Add</title>
+    <title>Edit Employee</title>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
     <script !src="" type="text/javascript">
-      function onloadfun() {
+     /* function onloadfun() {
          document.getElementById("submit").disabled=true;
       }
       function checkIf_pwd_Lessthen_8() {
@@ -34,11 +34,12 @@
           }else{
               document.getElementById("tesJavascript").innerHTML ="Password not match";
           }
-      }
+      }*/
 
     </script>
 </head>
-<body onload="onloadfun()">
+{{--<body onload="onloadfun()">--}}
+<body>
 @include('backEnd.AdminNavbar')
 <div class="container container-fluid">
     <div class="row">
@@ -65,7 +66,7 @@
                 <h4><b>{{"ID : "}}</b><label style="color: red">{{$EMPinfor->id}}</label></h4>
             </div>
 
-            <form class="form-group" action="" method="POST" enctype="multipart/form-data">
+            <form class="form-group" action="{{route('EUpdate',$EMPinfor->id)}}" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="name">First Name</label>
                     <input type="text" name="name" class="form-control" value="{{$EMPinfor->emp_name}}" required>
@@ -87,12 +88,14 @@
                     <input type="number" name="age" class="form-control" value="{{$EMPinfor->age}}">
                 </div>
                 <div>
+
+                        <br>
                     <label for="edu">Education</label>
                     <select name="E_edu" class="form-control">
                         <option>ເລືອກລະດັບການສືກສາ</option>
-                       {{-- @foreach($emp_edus as $emp_edu)
-                            <option value="{{$emp_edu->edu_id}}">{{$emp_edu->education}}</option>
-                        @endforeach--}}
+                        @foreach($EMPeducations as $empEdu)
+                            <option value="{{$empEdu->id}}" @if($empEdu->id == $EMPinfor->emp_education_id) {{'selected'}} @endif>{{$empEdu->education}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div>
@@ -126,7 +129,7 @@
                 <div>
                     <label for="img">User picture</label><br/>
                     <img src="{{asset('img/'.$EMPinfor->image)}}" class="img-responsive" style="width: 100px" alt=""  >
-                    <input type="file" class="form-control" accept="image/*">
+                    <input type="file" class="form-control" name="EMPimg" accept="image/*">
                 </div>
                 <div>
                     <br>

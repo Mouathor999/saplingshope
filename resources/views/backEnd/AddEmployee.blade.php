@@ -134,6 +134,10 @@
                     <input type="number" name="phone" class="form-control">
                 </div>
                 <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control">
+                </div>
+                <div>
                     <label for="identification_card">identification card</label>
                     <input type="number" name="identification_card" class="form-control">
                 </div>

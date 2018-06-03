@@ -23,23 +23,28 @@
     </div>
    <div class="">
            <ul class="list-group">
-               @foreach($producttype as $ptype)
+
                    <li class="list-group-item">
                        <div class="table-responsive">
                            <table class="table table-hover" style="">
                                <tr>
-                                   <td>{{$ptype->id}}</td>
-                                   <td><div class="div_in_td">
-                                        {{$ptype->ptype_name }}
-                                       </div>
-                                   </td>
-                                   <td style="text-align: right"><a href="" class="btn btn-warning"> <i class="fas fa-pencil-alt"></i> </a></td>
-                                   <td style="text-align: left"><a href="" class="btn btn-danger"> X </a></td>
+                                   <td><b>ລະຫັດປະເພດສິນຄ້່າ</b>ລ</td>
+                                   <td style="text-align: left"><b>ຊື່ປະເພດສິນຄ້າ</b></td>
+                                   <td style="text-align: right"><b>Edit</b></td>
+                                   <td style="text-align: left"><b>Del</b></td>
                                </tr>
+                               @foreach($producttype as $ptype)
+                                   <tr>
+                                       <td> {{$ptype->id}} </td>
+                                       <td style="text-align: left"> {{$ptype->ptype_name }} </td>
+                                       <td style="text-align: right"><a href="{{route('EditPtype',$ptype->id)}}" class="btn btn-warning"> <i class="fas fa-pencil-alt"></i> </a></td>
+                                       <td style="text-align: left"><a href="{{route('DelPtype',$ptype->id)}}" class="btn btn-danger"> X </a></td>
+                                   </tr>
+                               @endforeach
                            </table>
                        </div>
                    </li>
-               @endforeach
+
 
            </ul>
    </div>

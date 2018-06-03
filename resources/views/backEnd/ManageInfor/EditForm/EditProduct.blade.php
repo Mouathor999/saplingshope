@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Insert</title>
+    <title>Edit product</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
@@ -17,17 +17,28 @@
 <br>
 
 <br>
-<div>
-    <ul>
-        @foreach($p_promotions as $p_promotion)
-            <li>  {{$p_promotion}} </li>
-            <br>
-        @endforeach
+{{--Chect promotion with product --}}
+    <div>
+        <ul>
+           {{-- @foreach($p_promotions as $p_promotion)
+                    <li>  @if($p_promotion->promotion->count() > 0)
+                              @if($p_promotion->promotion[0]->pivot->end_date >= date('Y-m-d'))
+                                  --}}{{--{{date('d-m-Y')}}--}}{{--
+                                  {{$p_promotion->promotion[0]->pivot->end_date }}
+                               @endif
 
-    </ul>
+                        @endif
+                    </li>
+                <br>
+            @endforeach--}}
+        </ul>
+    </div>
 
+    <div>
+        <ul>
 
-</div>
+        </ul>
+    </div>
 
 
 <div class="container container-fluid">
@@ -50,14 +61,17 @@
                     </div>
                 @endif
             </div>
+
             <div>
 
             </div>
-
-            {{--<form class="form-group" action="{{route('pUpdate',$product->id)}}" method="POST" enctype="multipart/form-data">
+            @foreach($products as $product)
+                {{$product}}
+           <form class="form-group" action="{{route('pUpdate',$product->id)}}" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="pid">ລະຫັດສິນຄ້າ</label>
                     <input type="number" name="pid" value="{{$product->id}}" class="form-control" disabled="">
+
                 </div>
                 <br>
                 <div>
@@ -66,25 +80,22 @@
                 </div>
                 <br>
                 <div>
-                    {{$product->product_type_id}}
+
                     <label for="ptypeid">ປະເພດສິນຄ້າ</label>
                     <select name="ptypeid" id="ptypeid" class="form-control">
                         <option>ເລືອກປະເພດສິນຄ້າ</option>
                         @foreach($producttype as $ptype)
-                            <option value="{{$ptype->id}}" @if( $ptype->id == $product->product_type_id)
-                                                               {{'selected'}}
-                                    @endif>{{$ptype->ptype_name}}</option>
+                            <option value="{{$ptype->id}}" @if($ptype->id == $product->product_type_id) {{'selected'}} @endif>{{$ptype->ptype_name}}</option>
                         @endforeach
-
                     </select>
                 </div>
                 <br>
                 <div>
                     <label for="plevel">ລະດັບສິນຄ້າ</label>
-                    <select name="plevel" value="{{$product->product_level_id}}" id="plevel" class="form-control">
+                    <select name="plevel"  id="plevel" class="form-control">
                         <option value="">ເລືອກລະດັບສີນຄ້າ...</option>
-                        @foreach($levels as $level)
-                            <option value="{{$level->id}}">{{$level->level}}</option>
+                        @foreach($levels as $plevel)
+                            <option value="{{$plevel->id}}" @if($plevel->id == $product->product_level_id) {{'selected'}} @endif>{{$plevel->level}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -101,23 +112,70 @@
                 <br>
                 <div>
                     <label for="ppromotion">ໂປຣໂມເຊີນ</label>
-                    <select name="ppromotion" id="ppromotion"  class="form-control">
-                        <option value="">ເລືອກໂປຣໂມເຊີນ...</option>
-                        @foreach($promotions as $promotion)
-                        <option value="{{$promotion->id}}">{{$promotion->promotion}}</option>
-                        @endforeach
-                    </select>
+                    @if($product->promotion->count() > 0)
+                            @foreach($product->promotion as $ppromotion)
+                                @if($ppromotion->pivot->end_date >= date('Y-m-d'))
+                                    <select name="ppromotion" id="ppromotion"  class="form-control">
+                                        <option value="">ເລືອກໂປຣໂມເຊີນ...</option>
+                                        @foreach($promotions as $promotion)
+                                            <option value="{{$promotion->id}}" @if($promotion->id == $product->promotion[0]->pivot->promotion_id) {{'selected'}}  @endif>{{$promotion->promotion}}</option>
+                                        @endforeach
+                                    </select>
+                                    <br>
+                                    <div>
+                                        <label for="promotion_startDate">ວັນເລີ່ມໂປຣໂມເຊີນ</label>
+                                        <input type="date" name="promotion_startDate" value="{{$product->promotion[0]->pivot->start_date}}" class="form-control">
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <label for="promotion_stopDate">ວັນໝົດໂປຣໂມເຊີນ</label>
+                                        <input type="date" name="promotion_stopDate" value="{{$product->promotion[0]->pivot->end_date}}"  class="form-control">
+                                        <br>
+                                    </div>
+                                @endif
+                            @endforeach
+
+
+                            @if($product->promotion[0]->pivot->end_date < date('Y-m-d'))
+                                    <select name="ppromotion" id="ppromotion"  class="form-control">
+                                            <option value="">ເລືອກໂປຣໂມເຊີນ...</option>
+                                        @foreach($promotions as $promotion)
+                                            <option value="{{$promotion->id}}">{{$promotion->promotion}}</option>
+                                        @endforeach
+                                    </select>
+                                    <br>
+                                    <div>
+                                        <label for="promotion_startDate">ວັນເລີ່ມໂປຣໂມເຊີນ</label>
+                                        <input type="date" name="promotion_startDate"  class="form-control">
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <label for="promotion_stopDate">ວັນໝົດໂປຣໂມເຊີນ</label>
+                                        <input type="date" name="promotion_stopDate"  class="form-control">
+                                        <br>
+                                    </div>
+                            @endif
+                    @else
+                        <select name="ppromotion" id="ppromotion"  class="form-control">
+                            <option value="">ເລືອກໂປຣໂມເຊີນ...</option>
+                            @foreach($promotions as $promotion)
+                                <option value="{{$promotion->id}}">{{$promotion->promotion}}</option>
+                            @endforeach
+                        </select>
+                        <br>
+                        <div>
+                            <label for="promotion_startDate">ວັນເລີ່ມໂປຣໂມເຊີນ</label>
+                            <input type="date" name="promotion_startDate" class="form-control">
+                        </div>
+                        <br>
+                        <div>
+                            <label for="promotion_stopDate">ວັນໝົດໂປຣໂມເຊີນ</label>
+                            <input type="date" name="promotion_stopDate"  class="form-control">
+                        </div>
+                        <br>
+                    @endif
+
                 </div>
-                <br>
-                <div>
-                    <label for="promotion_startDate">ວັນເລີ່ມໂປຣໂມເຊີນ</label>
-                        <input type="date" name="promotion_startDate" value="" class="form-control">
-                </div>
-                <br>
-                <div>
-                    <label for="promotion_stopDate">ວັນໝົດໂປຣໂມເຊີນ</label>
-                    <input type="date" name="promotion_stopDate" value=""  class="form-control">
-                <br>
                 <div>
                     <label for="limit">Limit</label>
                     <input type="number" name="limit" value="{{$product->limit}}" class="form-control">
@@ -128,26 +186,53 @@
                     <textarea type="text" name="pdescription"  class="form-control" rows="3" cols="20">{{$product->descript}}</textarea>
                 </div>
                 <br>
-                <div>
-                    <label for="pid">ຮູບທີ່ 1</label>
-                    <input type="file" name="pImage1" class="form-control" >
-                </div>
-                <br>
-                <div>
-                    <label for="pid">ຮູບທີ່ 2</label>
-                    <input type="file" name="pImage2" class="form-control" >
-                </div>
-                <br>
-                <div>
-                    <label for="pid">ຮູບທີ່ 3</label>
-                    <input type="file" name="pImage3" class="form-control" >
-                </div>
-                <br>
+
+               {{--Product Images--}}
+               <div class="row">
+                   @foreach($product_images as $imageList)
+                       {{--{{$imageList}}--}}
+                       @if($imageList->productimage->count()>=1)
+                       @foreach($imageList->productimage as $pictures)
+                           {{--{{$pictures->image}}--}}
+                               <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2">
+                                   <img src="{{asset('img/'.$pictures->image)}}" alt="" style="width: 100px; height: 100px">
+                               </div>
+                           @endforeach
+                        @endif
+                       <br>
+                   @endforeach
+              </div>
+               <br>
+               <br>
+               <a href="#contentCollapse1" class="" data-toggle="collapse">Edit image</a>
+               <div id="contentCollapse1" class="collapse">
+                   <div>
+                       <label for="pid">ຮູບທີ່ 1</label>
+                       <input type="file" name="pImage1" class="form-control" >
+                   </div>
+                   <br>
+                   <div>
+                       <label for="pid">ຮູບທີ່ 2</label>
+                       <input type="file" name="pImage2" class="form-control" >
+                   </div>
+                   <br>
+                   <div>
+                       <label for="pid">ຮູບທີ່ 3</label>
+                       <input type="file" name="pImage3" class="form-control" >
+                   </div>
+                   <br>
+               </div>
+               <br>
+               <br>
                 <div>
                     <input type="submit" value="submit" name="submit" class="btn btn-success">
                 </div>
-                {{csrf_field()}}
-            </form>--}}
+               <br>
+               <br>
+               <br>
+               {{csrf_field()}}
+           </form>
+            @endforeach
         </div>
         <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
     </div>

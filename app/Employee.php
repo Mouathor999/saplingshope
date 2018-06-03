@@ -29,6 +29,6 @@ class Employee extends Model
         return $this->hasMany(Booking::class,'emp_id');
     }
     public function education(){
-        return $this->hasMany(EmployeeEducation::class,'emp_education_id');
+        return $this->hasMany(EmployeeEducation::class,'id','emp_education_id');
     }
 }

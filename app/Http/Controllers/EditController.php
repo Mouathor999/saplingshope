@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\EmployeeEducation;
 use App\Product;
 use App\ProductLevel;
 use App\ProductType;
@@ -13,39 +14,46 @@ use Illuminate\Support\Facades\DB;
 class EditController extends Controller
 {
    public function EditProduct($id){
-       $product= Product::find($id);
+       $product= Product::with('promotion')->where('id',$id)->orderBy('id')->paginate(10);
        $type  = ProductType::all();
-       $product_promotion = Product::with('promotion')->orderBy('id')->paginate(10);
-//       $promotion = Promotion::all();
-//       $currentPromotion = DB::select("SELECT * FROM promotiondetail WHERE product_id = $id ");
-       $pleve = ProductLevel::all();
+       $promotion = Promotion::all();
+       $plevel = ProductLevel::all();
+       $productAndimage = Product::with('productimage')->where('id',$id)->orderBy('id')->paginate(10);
 
 
-//    return $product_promotion;
+//    return $product;
 
-       return view('backEnd/ManageInfor/EditForm/EditProduct',
-               [
-                   'p_promotions' => $product_promotion,
-                   ]);
+//      return view('backEnd/ManageInfor/EditForm/EditProduct');
 
-
-
-
-       /* return view('backEnd/ManageInfor/EditForm/EditProduct',
+        return view('backEnd/ManageInfor/EditForm/EditProduct',
          [
-             'product'=>$product,
-             'producttype'=>$type,
-             'levels'=>$pleve,
-             ]);*/
+             'products' => $product,
+             'producttype' => $type,
+             'levels' => $plevel,
+             'promotions' => $promotion,
+             'product_images'=>$productAndimage
+             ]);
 
 
    }
 
+   public function EditProductLimit($id){
+        $product = Product::find($id);
+       return view('backEnd/ManageInfor/EditForm/EditProductLimit',['Product'=>$product]);
+   }
+   public function EditProducttype($id){
+       $Ptypes= ProductType::find($id);
+       return view('backEnd/ManageInfor/EditForm/EditProductType',['Ptypes'=>$Ptypes]);
+   }
+   public function EditPromotion($id){
+       $Ptypes= Promotion::find($id);
+       return view('backEnd/ManageInfor/EditForm/EditPromotion',['Ptypes'=>$Ptypes]);
+   }
 
    public function EditEmployee($id){
        $emp_infor = Employee::find($id);
-//           return $emp_infor->id." ". $emp_infor->emp_name;
-       return view('backEnd/ManageInfor/EditForm/EditEmployee',['EMPinfor'=>$emp_infor]);
+       $emp_education = EmployeeEducation::all();
+       return view('backEnd/ManageInfor/EditForm/EditEmployee',['EMPinfor'=>$emp_infor,'EMPeducations'=>$emp_education]);
 
    }
 
