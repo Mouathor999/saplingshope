@@ -39,20 +39,30 @@
 
                     {{--<img src="{{ asset('img/'.$imageList->productimage[0]->image)}}" alt="">--}}
                     @foreach($imageList->productimage as $pictures)
-                        {{$imageList->pro_name}}
-                        <img src="{{asset('img/'.$pictures->image)}}" alt="" style="width: 100px; height: 100px">
+                        @if(count($imageList->productimage)>=1)
+
+                           {{$pictures->image}}
+                            @else
+
+
+                        @endif()
+                        {{--{{$pictures->image}}--}}
+
+                        <br>
+
 
                     @endforeach
                     <br><br>
-                    @if(!Empty($imageList->productimage[1] ))
+                   {{-- @if(!Empty($imageList->productimage[1] ))
                         <img src="{{asset('img/'.$imageList->productimage[1]->image)}}" alt="" style="width: 100px; height: 100px">
                         @else
                         {{"Image is null"}}
-                    @endif
+                    @endif--}}
 
 
                 </li>
                     <br>
+                   ========================
                 @endforeach
             </ul>
 

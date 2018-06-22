@@ -78,9 +78,9 @@
                 <div>
                     <label for="gender">Gender</label>
                     <select name="gender" class="form-control">
-                        <option value="male">ຊາຍ</option>
-                        <option value="female">ຍິງ</option>
-                        <option value="orther">ອື່ນໆ</option>
+                        <option value="male" @if($EMPinfor->gender =='male'){{'selected'}} @else @endif>ຊາຍ</option>
+                        <option value="female" @if($EMPinfor->gender =='female'){{'selected'}} @else @endif>ຍິງ</option>
+                        <option value="other" @if($EMPinfor->gender =='other'){{'selected'}} @else @endif>ອື່ນໆ</option>
                     </select>
                 </div>
                 <div>

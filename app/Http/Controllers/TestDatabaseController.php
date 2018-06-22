@@ -19,6 +19,34 @@ class TestDatabaseController extends Controller
      */
     public function index()
     {
+       /* $a= "picture";
+        $arr = [];
+        for($i = 0 ; $i<5 ; $i++){
+            array_push($arr,['picture'=>$a.$i]);
+            if(count($arr)>=1){
+                return "Any data";
+            }else{
+
+            }
+
+
+        }*/
+
+
+
+        /*foreach ($arr as $pic){
+            return $pic;
+        }*/
+
+        /*for($j = 0; $j<= 5 ;$j++){
+            $i = $arr[$j];
+            return $i;
+
+        }*/
+
+
+
+        echo "------------------------------------------------------------------------------------";
 
 
 
@@ -26,39 +54,39 @@ class TestDatabaseController extends Controller
 //        This is for Product_level
         $testproductAndProductLevel = Product::with('productlevel')->orderBy('id','desc')->paginate(10);
 //        $testproductAndimage = Product::with('productimage')->orderBy('id')->paginate(10);
-          $testproductAndimage = Product::with('productimage')->where('id',2)->orderBy('id')->paginate(10);
+          $testproductAndimage = Product::with('productimage')->orderBy('id')->paginate(10);
 
         $products = Product::with('order')->orderBy('id','desc')->paginate(10);
-        foreach ($testproductAndimage as $image){
-            if(!empty($image->productimage[1])){
-                $imageParth = public_path().'\\img\\'.$image->productimage[1]->image;
-                echo $imageParth;
-                if(File::delete($imageParth)){
-                    $productimage = new ProductPicture();
-                    $productimage-> product_id = 2;
-                    $productimage-> image = "Test.jpg";
-                    $productimage ->timestamps =false;
-                    $productimage->save();
-
-                    echo "Deleted 1 file and insert 1 file";
-                }
-//               echo '<img src="'.public_path('img/'.$image->productimage[1]).'">';
-
-//                 $image->productimage[1]->image;
-
-            }else{
+        /*foreach ($testproductAndimage as $image){
+        if(!empty($image->productimage[1])){
+            $imageParth = public_path().'\\img\\'.$image->productimage[1]->image;
+            echo $imageParth;
+            if(File::delete($imageParth)){
                 $productimage = new ProductPicture();
                 $productimage-> product_id = 2;
                 $productimage-> image = "Test.jpg";
                 $productimage ->timestamps =false;
                 $productimage->save();
+
+                echo "Deleted 1 file and insert 1 file";
             }
+//               echo '<img src="'.public_path('img/'.$image->productimage[1]).'">';
 
+//                 $image->productimage[1]->image;
 
+        }else{
+            $productimage = new ProductPicture();
+            $productimage-> product_id = 2;
+            $productimage-> image = "Test.jpg";
+            $productimage ->timestamps =false;
+            $productimage->save();
         }
 
 
-//      return view('test/testDatabase',['product_productlevel'=>$testproductAndProductLevel,'product_images'=>$testproductAndimage,'product_oder'=>$products]);
+    }*/
+
+
+      return view('test/testDatabase',['product_productlevel'=>$testproductAndProductLevel,'product_images'=>$testproductAndimage,'product_oder'=>$products]);
 
 
 

@@ -31,48 +31,44 @@
             <div class="table-responsive">
                 <table class="table table-hover" style="width:95%">
                     <tr>
-                        <td ><div class=""><b>emp_ID</b></div></td>
-                        <td ><div class="div_in_td"><b>Picture</b></div></td>
-                        <td ><div class=""><b>name</b></div></td>
-                        <td ><div class="div_in_td"><b>lastname</b></div></td>
-                        <td ><div class=""><b>Eduction</b></div></td>
-                        <td ><div class=""><b>Gender</b></div></td>
-                        <td ><div class=""><b>Age</b></div></td>
+                        <td ><div class=""><b>SP_ID</b></div></td>
+                        <td ><div class=""><b>ShopName</b></div></td>
+                        <td ><div class="div_in_td"><b>Name</b></div></td>
+                        <td ><div class=""><b>Lastname</b></div></td>
                         <td ><div class=""><b>Village</b></div></td>
                         <td ><div class=""><b>District</b></div></td>
                         <td ><div class=""><b>Province</b></div></td>
+                        <td ><div class=""><b>country</b></div></td>
                         <td ><div class=""><b>Phone</b></div></td>
                         <td ><div class=""><b>Email</b></div></td>
-                        <td ><div class=""><b>Social card</b></div></td>
-                        <td ><div class=""><b>edit product</b></div></td>
-                        <td ><div class=""><b>delete product</b></div></td>
+                        <td ><div class=""><b>bankAccount</b></div></td>
+                        <td ><div class=""><b>edit</b></div></td>
+                        <td ><div class=""><b>delete</b></div></td>
                     </tr>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: center;width: 150px"></td>
-                            <td style="text-align: center;width: 150px">
-                                <a href=""><img src="" class="img-responsive" style="width: 100px" alt=""  ></a>
-                            </td>
-                            <td style="text-align: center;"><div></div></td>
-                            <td style="text-align: center;"><div></div></td>
-                            <td style="text-align: center;"><div></div></td>
 
-                            <td><div class=""></div></td>
-                            <td><div class=""></div></td>
-                            <td><div class=""></div></td>
-                            <td><div class=""></div></td>
-                            <td><div class=""></div></td>
-                            <td><div class=""></div></td>
-                            <td><div class=""></div></td>
-                            <td><div class=""></div></td>
+                    <tbody>
+                    @foreach($suppliers as $supplier)
+                        <tr>
+                            <td style="text-align: center;"><div>{{$supplier->id}} </div></td>
+                            <td style="text-align: center;"><div>{{$supplier->shop_name}} </div></td>
+                            <td style="text-align: center;"><div>{{$supplier->sup_name}} </div></td>
+                            <td><div class="">{{$supplier->lastname}} </div></td>
+                            <td><div class="">{{$supplier->village}} </div></td>
+                            <td><div class="">{{$supplier->district}} </div></td>
+                            <td><div class="">{{$supplier->province}} </div></td>
+                            <td><div class="">{{$supplier->country}} </div></td>
+                            <td><div class="">{{$supplier->tel}} </div></td>
+                            <td><div class="">{{$supplier->email}} </div></td>
+                            <td><div class="">{{$supplier->bankAccount}} </div></td>
                             <td>
-                                <a href="" class="btn btn-outline-warning"><i class="fas fa-pencil-alt" style="color: #1e7e34"></i> Ed</a>
+                                <a href="{{route('EditSupplier',$supplier->id)}}" class="btn btn-outline-warning"><i class="fas fa-pencil-alt" style="color: #1e7e34"></i> Ed</a>
                             </td>
                             <td >
-                                <a href="" class="btn btn-outline-danger" ><i class="far fa-times-circle"></i> Dl</a>
+                                <a href="{{route('DelSP',$supplier->id)}}" class="btn btn-outline-danger" ><i class="far fa-times-circle"></i> Dl</a>
                             </td>
                         </tr>
                     </tbody>
+                    @endforeach
                 </table>
             </div>
         </div>

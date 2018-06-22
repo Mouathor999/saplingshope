@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use App\Product;
+use App\Supplier;
 use File;
 use App\ProductType;
 use App\Promotion;
@@ -40,5 +41,10 @@ class DeleteController extends Controller
        File::delete($imageParth);
        $employee->delete();
        return redirect()->action('ManageController@getAllEmployee');
+   }
+   public function DelSupplier($id){
+        $supplier = Supplier::find($id);
+       $supplier->delete();
+       return redirect()->action('ManageController@AllSupplier');
    }
 }

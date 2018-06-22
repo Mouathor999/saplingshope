@@ -16,22 +16,26 @@ Route::get('/', [
     'as'=>'product.index'
 ]);
 
-Route::get('/detail', [
+Route::get('/detail/{id}', [
     'uses'=>'productController@productdetail',
-    'as'=>'product.productdetail'
+    'as'=>'productdetail'
 ]);
 Route::get('/sapling', [
     'uses'=>'productController@saplingtree',
-    'as'=>'product.saplingtree'
+    'as'=>'saplingtree'
 ]);
 Route::get('/flowers', [
     'uses'=>'productController@flowers',
     'as'=>'flowers'
 ]);
 
-Route::get('/cart', [
+Route::get('/cart/{id}', [
     'uses'=>'productController@cart',
     'as'=>'cart'
+]);
+Route::get('/You-cart', [
+    'uses'=>'productController@productcart',
+    'as'=>'productcart'
 ]);
 Route::get('/jars', [
     'uses'=>'productController@jars',
@@ -41,26 +45,105 @@ Route::get('/jars', [
 
 //Custommer Sign Up
 
-Route::get('/CustomerSignIn', [
-    'uses'=>'CustomerController@CustomerSignIn',
-    'as'=>'CustomerSignIn'
-]);
+
+
+
 // Customer SignUp
-Route::get('/CustomerSignUp', [
-    'uses'=>'CustomerController@CustomerSignUp',
-    'as'=>'CustomerSignUp'
-]);
-// Customer information
-Route::get('/CustomerInfor', [
-    'uses'=>'CustomerController@CustomerInfor',
-    'as'=>'CustomerInfor'
-]);
+
+Route::group(['prefix'=>'Customer'], function (){
+
+
+    Route::get('/SignIn', [
+        'uses'=>'CustomerController@CustomerSignIn',
+        'as'=>'CustomerSignIn'
+    ]);
+
+    Route::get('/SignIn/{success}', [
+        'uses'=>'CustomerController@CustomerSignIn',
+        'as'=>'Loginfail'
+    ]);
+    Route::post('/Login', [
+        'uses'=>'CustomerController@Customerlogin',
+        'as'=>'CustomerLogin'
+    ]);
+
+    Route::get('logout',[
+        'uses'=>'CustomerController@Customerlogout',
+        'as'=>'Cus_logout',
+    ]);
+
+    Route::get('cancelOrder',[
+        'uses'=>'CustomerController@cancelOrder',
+        'as'=>'CancelOrder',
+    ]);
+
+
+
+    Route::get('/SignUp', [
+        'uses'=>'CustomerController@CustomerSignUp',
+        'as'=>'CustomerSignUp'
+    ]);
+    Route::get('/Register', [
+        'uses'=>'CustomerController@CustomerSignUp',
+        'as'=>'Customer.Register'
+    ]);
+    Route::get('/Register/{success}', [
+        'uses'=>'CustomerController@CustomerSignUp',
+        'as'=>'CusRegisterFail'
+    ]);
+    Route::post('/Register', [
+        'uses'=>'CustomerController@Customer_Post_SignUp',
+        'as'=>'Customer.Register'
+    ]);
+
+    // Customer information
+    Route::get('/Customerdetail', [
+        'uses'=>'CustomerController@CustomerInfor',
+        'as'=>'CustomerInfor'
+    ]);
+    Route::post('/Customerdetail', [
+        'uses'=>'CustomerController@CustomerPostInfor',
+        'as'=>'PostCustomerInfor'
+    ]);
+
+
+
+    Route::get('/SendDate', [
+        'uses'=>'CustomerController@OrderSendDate',
+        'as'=>'orderSendDate'
+    ]);
+    Route::post('/SendDate', [
+        'uses'=>'CustomerController@PostOrderDate',
+        'as'=>'postSendDate'
+    ]);
+
+
+    Route::get('/CusOrder', [
+        'uses'=>'CustomerController@CustomerOrder',
+        'as'=>'customerOrder'
+    ]);
+
+    Route::get('/StoreCusOrder', [
+        'uses'=>'CustomerController@StoreOrder',
+        'as'=>'store.cusOrder'
+    ]);
+
+
+
+
 
 // Bill
-Route::get('/Bill', [
-    'uses'=>'CustomerController@Bill',
-    'as'=>'Bill'
-]);
+    Route::get('/Bill', [
+        'uses'=>'CustomerController@Bill',
+        'as'=>'Bill'
+    ]);
+
+});
+
+
+
+
+
 
 
 
@@ -70,7 +153,7 @@ Route::get('/Bill', [
 Route::group(['prefix'=>'admin'], function (){
     Route::get('/', [
         'uses'=>'AdminController@Admin',
-        'as'=>'admin'
+        'as'=>'admin',
     ]);
 
 
@@ -129,17 +212,15 @@ Route::group(['prefix'=>'admin'], function (){
         'uses'=>'AdminController@AddSupplier',
         'as'=>'AddSupplier'
     ]);
+    Route::get('/AddSupplier/{success}', [
+        'uses'=>'AdminController@AddSupplier',
+        'as'=>'AddSupplierSuccess'
+    ]);
     Route::post('/AddSupplier', [
         'uses'=>'AdminController@PostSupplier',
         'as'=>'PostSupplier'
     ]);
 
-
-
-    Route::get('/UserLogin', [
-        'uses'=>'AdminController@UserLogin',
-        'as'=>'UserLogin'
-    ]);
     Route::get('/ImportProduct', [
         'uses'=>'AdminController@ImportProduct',
         'as'=>'ImportProduct'
@@ -186,6 +267,7 @@ Route::group(['prefix'=>'admin'], function (){
     ]);
 
 //    Manage Information Route
+
     Route::get('/AllProduct', [
         'uses'=>'ManageController@getAllProduct',
         'as'=>'manageProduct'
@@ -231,6 +313,10 @@ Route::group(['prefix'=>'admin'], function (){
         'uses'=>'EditController@EditEmployee',
         'as'=>'Editemployee'
     ]);
+    Route::get('/EditSupplier/{id}', [
+        'uses'=>'EditController@EditSupplier',
+        'as'=>'EditSupplier'
+    ]);
 
 
 //  Update Route
@@ -256,6 +342,10 @@ Route::group(['prefix'=>'admin'], function (){
         'uses'=>'UpdateController@UpdateEmployee',
         'as'=>'EUpdate'
     ]);
+    Route::post('updateSupplier/{id}',[
+        'uses'=>'UpdateController@UpdateSupplier',
+        'as'=>'SPUpdate'
+    ]);
 
 
 //    Delete Route
@@ -275,6 +365,10 @@ Route::group(['prefix'=>'admin'], function (){
     Route::get('DelEmployee/{id}',[
         'uses'=>'DeleteController@DelEmployee',
         'as'=>'DelEmp'
+    ]);
+    Route::get('DelSuplier/{id}',[
+        'uses'=>'DeleteController@DelSupplier',
+        'as'=>'DelSP'
     ]);
 
 
@@ -317,10 +411,6 @@ Route::group(['prefix'=>'admin'], function (){
         ]);
 
 
-
-
-
-
 // Test route
 Route::get('/test', function (){
     return view("frontEnd.test");
@@ -329,3 +419,7 @@ Route::get('/test', function (){
 Route::resource( '/testDatabase','TestDatabaseController');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -37,7 +37,6 @@
                         <td ><div class="div_in_td"><b>Picture</b></div></td>
                         <td ><div class="div_in_td"><b>Product name</b></div></td>
                         <td ><div class="div_in_td"><b>Product type</b></div></td>
-                        <td ><div ><b>Product level</b></div></td>
                         <td ><div class="div_in_td"><b>price</b></div></td>
                         <td ><div><b>Stock</b></div></td>
                         <td ><div class=""><b>Limit</b></div></td>
@@ -53,7 +52,7 @@
                                         {{ $product->id}}
                                     </td>
                                     <td style="text-align: center;width: 150px">
-                                        <a href="{{route('product.productdetail')}}">
+                                        <a href="{{route('productdetail',$product->id)}}">
                                             <img src="{{asset('img/'.$product->productimage[0]->image)}}" class="img-responsive" style="width: 100px" alt=""  >
                                         </a>
                                     </td>
@@ -61,7 +60,6 @@
                                         <div style="width: 150px">{{$product->pro_name}}</div>
                                     </td>
                                     <td><div class="">{{$product->producttype->ptype_name }}</div></td>
-                                    <td><div class="">{{$product->productlevel->level }}</div></td>
                                     <td><div class="">{{$product->sale_price }}</div></td>
                                     <td><div class="">{{$product->stock }}</div></td>
                                     <td><div class="">{{$product->limit }}</div></td>
@@ -98,7 +96,7 @@
                                 {{ $product->id}}
                             </td>
                             <td style="text-align: center;width: 150px">
-                                <a href="{{route('product.productdetail')}}">
+                                <a href="{{route('productdetail')}}">
                                     <img src="{{asset('img/'.$product->productimage[0]->image)}}" class="img-responsive" style="width: 100px" alt=""  >
                                 </a>
                             </td>

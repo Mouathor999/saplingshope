@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Supplier;
 use Illuminate\Session\Store;
 use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\ProductPicture;
 use App\ProductType;
-use App\ProductLevel;
 use App\Promotion;
 use App\PromotionDetail;
 use App\EmployeeEducation;
 use App\Employee;
+use App\Image;
 use App\Http\Requests\SupplierRequests;
 use App\Http\Requests\InsertProduct_Request;
 use App\Http\Requests\EmployeeRequests;
@@ -19,12 +20,15 @@ use App\Http\Requests\ProductTypeRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Input;
-use Intervention\Image\Image;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class AdminController extends Controller
 {
+
+
 
 
     public function Admin(){
@@ -36,24 +40,22 @@ class AdminController extends Controller
 //    public function InsertProduct($success=null){ route Param
     public function InsertProduct(Request $request){
         $producttype = ProductType::all();
-        $level = ProductLevel::all();
         $promotion = Promotion::all();
 //        $getID = Product::whereRaw('pro_id = (select MAX(pro_id) from product)')->get();
 //        $text=$success; // route param
-        $text=$request -> query("success");
-        return view("backEnd/InsertProduct",['producttype'=>$producttype,'level'=>$level,'promotion'=>$promotion,'text'=>$text]);
+        $text = $request -> query("success");
+        return view("backEnd/InsertProduct",['producttype'=>$producttype,'promotion'=>$promotion,'text'=>$text]);
     }
 
     public function PostInsertProduct( Request $request){
+
             $product = new Product([
-                'id' => $request -> input('pid'),
                 'pro_name' => $request -> input('pname'),
-                'product_type_id' => $request -> input('ptypeid'),
-                'product_level_id' => $request -> input('plevel'),
                 'sale_price' => $request -> input('pprice'),
                 'stock' => $request -> input('pamount'),
-                'descript' => $request -> input('pdescription'),
                 'limit' => $request -> input('limit'),
+                'product_type_id' => $request -> input('ptypeid'),
+                'descript' => $request -> input('pdescription'),
             ]);
             $product->timestamps = false; // this for disable updated_at and created_at
             $product->save();
@@ -68,9 +70,13 @@ class AdminController extends Controller
                 $promotiondetail->timestamps = false; // this for disable updated_at and created_at
                 $promotiondetail ->save();
             }
-            $productImg1 = new ProductPicture();
-            $productImg1 -> product_id = Input::get("pid");
+
+            $productId = DB::select("select MAX(id) as pid from product ");
+            $pId = $productId[0]->pid;
+
             if (Input::hasFile('pImage1')){
+                $productImg1 = new ProductPicture();
+                $productImg1 -> product_id = $pId;
 //                  this is chang image name
                 $newfileName = str_random(15).'.'.$request->file('pImage1')->getClientOriginalExtension();
 //                  insert image new name into database
@@ -81,10 +87,9 @@ class AdminController extends Controller
             }
 
 
-
-            $productImg2 = new ProductPicture();
-            $productImg2 -> product_id = Input::get('pid');
             if (Input::hasFile('pImage2')){
+                $productImg2 = new ProductPicture();
+                $productImg2 -> product_id = $pId;
 //                this is chang image name
                 $newfileName = str_random(15).'.'.$request->file('pImage2')->getClientOriginalExtension();
 //                insert image new name into database
@@ -95,10 +100,9 @@ class AdminController extends Controller
             }
 
 
-            $productImg3 = new ProductPicture();
-            $productImg3 -> product_id = Input::get('pid');
             if (Input::hasFile('pImage3')){
-
+                $productImg3 = new ProductPicture();
+                $productImg3 -> product_id = $pId;
 //                 this is chang image name
                 $newfileName = str_random(15).'.'.$request->file('pImage3')->getClientOriginalExtension();
 //                 insert image new name into database
@@ -138,35 +142,38 @@ class AdminController extends Controller
         return view("backEnd/AddEmployee",['emp_edus'=>$emp_edu, 'text'=>$text ]);
     }
     public function PostEmployee(EmployeeRequests $requests){
-        if($requests->input('pwd')==$requests->input('Comfirm_pwd')){
-            if(Input::hasFile('img')){
 
+        if($requests->input('pwd')==$requests->input('Comfirm_pwd')){
+
+            $emp = new Employee();
+            $emp ->id = '';
+            $emp -> emp_username = $requests->input('uname');
+            $emp -> password = Crypt::encrypt($requests->input('Comfirm_pwd')) ;
+            $emp -> emp_name = $requests->input('name');
+            $emp -> emp_lastname = $requests->input('lastname');
+            $emp -> gender = $requests->input('gender');
+            $emp -> age = $requests->input('age');
+            $emp -> emp_education_id = $requests->input('E_edu');
+            $emp -> village =  $requests->input('village');
+            $emp -> district = $requests->input('district');
+            $emp -> province = $requests->input('province');
+            $emp -> tel = $requests->input('phone');
+            $emp -> email = $requests->input('email');
+            $emp ->identification_card = $requests->input('identification_card');
+            $emp -> description = $requests->input('description');
+            $emp->timestamps = false; // this for disable updated_at and created_at
+            if(Input::hasFile('img')){
 //                $file = Input::file('img');
-                $file = str_random(15).'.'.$requests->file('img')->getClientOriginalExtension();
+
                /* $filenameWithExtension = $requests->file('img')->getClientOriginalName();
                 $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
                 $extension = $requests -> file('img')->getClientOriginalExtension();
                 $fileStore = $filename."_".time().'.'.$extension;
                 Store::disk('s3')->put($fileStore,fopen($requests->file('img'),'r+'),'public');*/
-                $emp = new Employee([
-                    'id' =>$requests->input('uid'),
-                    'emp_username' =>$requests->input('uname'),
-                    'password' =>Crypt::encrypt($requests->input('Comfirm_pwd')) ,
-                    'emp_name' =>$requests->input('name'),
-                    'emp_lastname' =>$requests->input('lastname'),
-                    'gender' =>$requests->input('gender'),
-                    'age' =>$requests->input('age'),
-                    'emp_education_id' =>$requests->input('E_edu'),
-                    'village' =>$requests->input('village'),
-                    'district' =>$requests->input('district'),
-                    'province' =>$requests->input('province'),
-                    'tel' =>$requests->input('phone'),
-                    'email' =>$requests->input('email'),
-                    'identification_card' =>$requests->input('identification_card'),
-                    'image' => $file,            // 'image' => Input::file('img')->getClientOriginalName(),
-                    'description' =>$requests->input('description'),
-                ]);
-                $emp->timestamps = false; // this for disable updated_at and created_at
+
+
+                $file = str_random(15).'.'.$requests->file('img')->getClientOriginalExtension();
+                $emp-> image = $file;            // 'image' => Input::file('img')->getClientOriginalName(),
                 if($emp ->save()){
                     $requests->file('img') -> move(public_path('/img'),$file);
 //                    Image::make($file->getRealPath())->resize(100,'150')->save(public_path().'IMGResize/'.$file);
@@ -175,18 +182,20 @@ class AdminController extends Controller
                   return back()->withErrors("Error Information saved fail") ;
                 }
 
+            }else{
+                $emp ->save();
             }
 
         }else{
             return back()->withErrors(['Your Confirm password not match']);
         }
-
     }
 
 
 //    Supplier
-    public function AddSupplier(){
-        return view("backEnd/AddSupplier");
+    public function AddSupplier($success = null){
+        $text = $success;
+        return view("backEnd/AddSupplier",['text'=>$text]);
     }
 
     public function PostSupplier(SupplierRequests $requests){
@@ -204,14 +213,14 @@ class AdminController extends Controller
         $supplier->bankAccount = $requests->input('baccount');
         $supplier->timestamps= false;
         $supplier->save();
+        return redirect()->route('AddSupplierSuccess',['success'=>"Add Employee success"]);
+
     }
 
 
 
 
-    public function UserLogin(){
-        return view("backEnd/UserLogin");
-    }
+
     public function ImportProduct(){
         return view("backEnd/ImportProduct");
     }

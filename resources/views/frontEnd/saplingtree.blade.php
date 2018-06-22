@@ -16,331 +16,70 @@
 
 @include('frontEnd.masterpage.master')
 <div class="mainConten">
+   {{-- @foreach($products as $product)
+        {{$product->id}}
+            @if($product->productimage->count()>=1)
+                @foreach($product->productimage as $pic)
+                    {{$pic->image}}
+                @endforeach
+            @endif
+
+        <br>
+    @endforeach--}}
+
+
+
     <div class=""></div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="card-columns">
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
+                @foreach($products as $product)
+                    <div class="card">
+                        @if(!Empty($product->productimage[0]))
+                            <a href="{{route('productdetail',$product->id)}}" class="">
+                                <img class="img-responsive" src="{{asset('img/'.$product->productimage[0]->image)}}" alt="{{asset('img/nopic.jpg')}}" style="width: 100%; height: 210px">
+                            </a>
+                            @else
+                            <a href="{{route('productdetail',$product->id)}}" class="">
+                                <img class="img-responsive" src="{{asset('img/nopic.jpg')}}" alt="" style="width: 100%; height: 210px">
+                            </a>
+                         @endif
+                        <div class="card-body">
+                            <h4 class="card-title">{{$product->id.'  '.$product->pro_name}}</h4>
+                            <div class="card-text">
+                               {{$product->descript}}
                             </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,s
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <a href="{{route('product.productdetail')}}" class=""><img class="img-responsive" src="{{asset('img/newapling.JPG')}}" alt="" style="width: 100%; height: 10%"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">card-title</h4>
-                        <div class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta,
-                        </div>
-                        <div>$12</div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="{{route('product.productdetail')}}" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <p class="text-center"><a href="" class="nav-link" role="button"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            <br>
+                            <div>
 
+                                ລາຄາ : <b> {{$product->sale_price . "  ກີບ"}}</b>
+                                <br>
+                                <br>
+                                @if($product->promotion->count() > 0)
+                                    @foreach($product->promotion as $ppromotion)
+                                        @if($ppromotion->pivot->start_date >= date('Y-m-d') && $ppromotion->pivot->end_date >= date('Y-m-d'))
+                                           ໂປຣໂມເຊີນ :  <b>{{$ppromotion->pivot->promotion . " %" }}</b>
+                                        @endif
+                                    @endforeach
+                                @else
 
-            </div>
+                                @endif
+
+                            </div>
+
+                        </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <p class="text-center"><a href="" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <p class="text-center"><a href="{{route('productdetail',$product->id)}}" class="nav-link"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
+                                </div>
+                            </div>
+                    </div>
+
+                @endforeach
+             </div>
         </div>
     </div>
 </div>

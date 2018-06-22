@@ -27,7 +27,7 @@
                                     <a href="{{route('product.index')}}" class="nav-link">Home<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('product.saplingtree')}}" class="nav-link">Sapling tree</a>
+                                    <a href="{{route('saplingtree')}}" class="nav-link">Sapling tree</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route("flowers")}}" class="nav-link">Flowers</a>
@@ -65,14 +65,17 @@
                                     <a class="dropdown-item" href="#">User name</a>
 
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Loging</a>
-                                    <a class="dropdown-item" href="#">Register account</a>
+                                    @if(session('cus_id'))
+                                        <a class="dropdown-item" href="{{route('Cus_logout')}}">Logout</a>
+                                        @else
+                                        <a class="dropdown-item" href="{{route('Customer.Register')}}">Register account</a>
+                                    @endif
                                 </div>
                             </li>
                             <li class="nav nav-item">
-                                <a href="{{route('cart')}}" class="nav-link">
+                                <a href="{{route('productcart')}}" class="nav-link">
                                     <div class="text-right">
-                                      <i class="fas fa-shopping-cart fa-2x"></i> Cart
+                                      <i class="fas fa-shopping-cart fa-2x"></i>Cart <span class="badge" style="font-size: 18px; color: #d39e00">{{Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
                                     </div>
                                 </a>
                             </li>

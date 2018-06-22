@@ -48,7 +48,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-hover" style="">
                                             <tr>
-                                                <td>{{$ppromotion->promotion_id}}</td>
+                                                <td>{{$ppromotion->id}}</td>
                                                 <td><option value="{{$ppromotion->promotion_id}}">{{$ppromotion->promotion}} {{'%'}}</option></td>
                                                 {{--<td style="text-align: right"><a href="" class="btn btn-warning"><i class="fas fa-pencil-alt"></i>ແກ້ໄຂ</a></td>--}}
                                             </tr>

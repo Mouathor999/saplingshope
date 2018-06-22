@@ -76,9 +76,6 @@
                                         </ul>
                                 </li> -->
 
-
-                                <li class="nav-item"><a href="" class="nav-link" >A</a> </li>
-                                <li class="nav-item"><a href="" class="nav-link" >B</a> </li>
                             </ul>
                     </li>
                     <li class="nav-item dropdown main-li" >
@@ -143,8 +140,23 @@
                     <li class="nav-item main-li">
                         <a href="" class="nav-link">Help</a>
                     </li>
+
+                    {{--<li class="" style="margin-left: 20px">
+                            <a class="nav-link" style="background-color: white; border-radius: 0px; color: black; " href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                               <b>Logout</b>
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                    </li>--}}
                 </ul>
             </div>
+
+
+
         </div>
     </div>{{-- End of collapse --}}
 </nav>  {{--End of the Main Navbar--}}

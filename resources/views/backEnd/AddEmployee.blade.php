@@ -59,7 +59,7 @@
                 @endif
             </div>
             <div>
-                @if($text != null)
+                @if($text = null)
                     {{$text}}
                 @endif
             </div>
@@ -69,10 +69,10 @@
             </div>
 
             <form class="form-group" action="{{route('PostEmployee')}}" method="POST" enctype="multipart/form-data">
-                <div style="margin-top: 50px">
+                {{--<div style="margin-top: 50px">
                     <label for="uid">User ID</label>
                     <input type="text" name="uid" id="uid" class="form-control" required>
-                </div>
+                </div>--}}
                 <div>
                     <label for="uname">Username</label>
                     <input type="text" name="uname" class="form-control" required>
@@ -101,7 +101,7 @@
                         <option>ເລືອກເພດ</option>
                         <option value="male">ຊາຍ</option>
                         <option value="female">ຍິງ</option>
-                        <option value="orther">ອື່ນໆ</option>
+                        <option value="other">ອື່ນໆ</option>
                     </select>
                 </div>
                 <div>

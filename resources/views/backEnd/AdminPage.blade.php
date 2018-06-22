@@ -31,10 +31,12 @@
                 </div>
                 <div style="margin-right: 2%;margin-left: 2%">
                     <div class="Admin_them_text">
-                        &nbsp;&nbsp; Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is
-                        a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence
-                        of ideas among sentences is what constitutes a paragraph.
+                        &nbsp;&nbsp; 
+						<br>
                         <br>
+						<br>
+                        <br>
+						<br>
                         <a href="#contentCollapse1" class="" data-toggle="collapse"><i class="fas fa-eye"></i> more</a>
                         <div id="contentCollapse1" class="collapse">
                             &nbsp;&nbsp; Before you can begin to determine what the composition of a particular paragraph will be, you must first decide on an
@@ -62,10 +64,12 @@
                 </div>
                 <div style="margin-right: 2%;margin-left: 2%">
                     <div class="Admin_them_text">
-                        &nbsp;&nbsp; Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is
-                        a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence
-                        of ideas among sentences is what constitutes a paragraph.
+                        &nbsp;&nbsp; 
+						<br>
                         <br>
+						<br>
+                        <br>
+						<br>
                         <a href="#contentCollapse2" class="" data-toggle="collapse"><i class="fas fa-eye"></i> more</a>
                         <div id="contentCollapse2" class="collapse">
                             &nbsp;&nbsp; Before you can begin to determine what the composition of a particular paragraph will be, you must first decide on an
@@ -93,9 +97,11 @@
                 </div>
                 <div style="margin-right: 2%;margin-left: 2%">
                     <div class="Admin_them_text">
-                        &nbsp;&nbsp; Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is
-                        a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence
-                        of ideas among sentences is what constitutes a paragraph.
+                        &nbsp;&nbsp; 
+						<br>
+                        <br>
+						<br>
+                        <br>
                         <br>
                         <a href="#contentCollapse3" class="" data-toggle="collapse"><i class="fas fa-eye"></i> more</a>
                         <div id="contentCollapse3" class="collapse">
@@ -124,9 +130,11 @@
                 </div>
                 <div style="margin-right: 2%;margin-left: 2%">
                     <div class="Admin_them_text">
-                        &nbsp;&nbsp; Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is
-                        a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence
-                        of ideas among sentences is what constitutes a paragraph.
+                        &nbsp;&nbsp; 
+						<br>
+                        <br>
+						<br>
+                        <br>
                         <br>
                         <a href="#contentCollapse4" class="" data-toggle="collapse"><i class="fas fa-eye"></i> more</a>
                         <div id="contentCollapse4" class="collapse">

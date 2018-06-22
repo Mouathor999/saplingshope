@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>Add new Supplier</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
@@ -20,6 +20,26 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                 <h1>Insert Supplier</h1>
             </div>
+            <div>
+                @if(count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul class="nav navbar-nav">
+                            @foreach($errors->all() as $err)
+                                <li class="nav-item">- {{$err}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
+            <br>
+             <div style="color: #d39e00;">
+                 @if($text != null)
+                     <h3><b>{{$text}}</b></h3>
+                     @else
+
+                 @endif
+             </div>
+            <br>
             <form class="form-group" action="{{route('PostSupplier')}}" method="POST" enctype="">
                 <div style="margin-top: 50px">
                     <label for="shopID">Shop ID</label>

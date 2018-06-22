@@ -18,53 +18,54 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h2>Customer Infor</h2>
+                <h2>ຂໍ້ມູນລູກຄ້າ</h2>
             </div>
-            <form class="form-group" action="" method="POST" enctype="">
+            <form class="form-group" action="{{route('PostCustomerInfor')}}" method="POST" enctype="">
                 <div>
-                    <label for="cname">First Name</label>
-                    <input type="text" name="cname" class="form-control">
+                    <label for="cname">ຊື່</label>
+                    <input type="text" name="cname" class="form-control" required>
                 </div>
                 <div>
-                    <label for="clast">Last Name</label>
-                    <input type="text" name="clast" class="form-control">
+                    <label for="clast">ນາມສະກຸນ</label>
+                    <input type="text" name="clastname" class="form-control">
                 </div>
                 <div>
-                    <label for="cgender">Gender</label>
-                    <select name="cgender" class="form-control">
-                        <option></option>
-                        <option>Female</option>
-                        <option>Male</option>
+                    <label for="cgender">ເພດ</label>
+                    <select name="cgender" class="form-control" required>
+                        <option value="">ເລືອກເພດ</option>
+                        <option value="male">ຊາຍ</option>
+                        <option value="female">ຍິງ</option>
                     </select>
                 </div>
                 <div>
-                    <label for="cvillage">Village</label>
-                    <input type="text" name="cvillage" class="form-control">
+                    <label for="cvillage">ບ້ານ</label>
+                    <input type="text" name="cvillage" class="form-control" required>
                 </div>
                 <div>
-                    <label for="cdistrict">District</label>
-                    <input type="number" name="cdistrict" class="form-control">
+                    <label for="cdistrict">ເມືອງ</label>
+                    <input type="text" name="cdistrict" class="form-control" required>
                 </div>
                 <div>
-                    <label for="cprovince">Province</label>
-                    <input type="number" name="pamount" class="form-control">
+                    <label for="cprovince">ແຂວງ</label>
+                    <input type="text" name="cprovince" class="form-control" required>
                 </div>
                 <div>
-                    <label for="cphone">Tel</label>
-                    <input type="text" name="cphone" class="form-control">
+                    <label for="cphone">ໂທລະສັບ</label>
+                    <input type="number" name="cphone" class="form-control" required>
                 </div>
                 <div>
-                    <label for="cemail">Email</label>
-                    <input type="text" name="cemail" class="form-control">
+                    <label for="cemail">ອີເມວ</label>
+                    <input type="email" name="cemail" class="form-control">
                 </div>
                 <div>
-                    <label for="cpicture">Picture</label>
+                    <label for="cpicture">ຮູບຂອງທ່ານ</label>
                     <input type="file" name="cpicture" class="form-control">
                 </div>
                 <br>
                 <div>
-                    <a href="{{route('Bill')}}" type="submit" name="submit" class="btn btn-success">Submit</a>
+                    <button type="submit" name="submit" class="btn btn-success">Submit</button>
                 </div>
+                {{csrf_field()}}
             </form>
         </div>
     </div>

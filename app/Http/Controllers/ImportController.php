@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\DB;
 class ImportController extends Controller
 {
     public function getLessProduct(){
-//        $leeproduct = Product::with('')->where('limit','<=',50);
-//        return view('backEnd/Import/CheckLessStock',['lessproducts'=>$leeproduct]);
-
-        $products = Product::with('Producttype')->with('productimage')->with('productlevel')->with('promotion')->paginate(10);
+        $products = Product::with('Producttype')->with('productimage')->with('promotion')->paginate(10);
         return view("backEnd/Import/CheckLessStock",['products'=>$products]);
 
     }

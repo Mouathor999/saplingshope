@@ -8,9 +8,11 @@ use App\ProductLevel;
 use App\ProductPicture;
 use App\ProductType;
 use App\Promotion;
+use App\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use File;
 
 class UpdateController extends Controller
 {
@@ -21,74 +23,131 @@ class UpdateController extends Controller
         $product -> stock            = $request-> Input('pamount');
         $product -> limit            = $request-> Input('limit');
         $product -> product_type_id  = $request-> Input('ptypeid');
-        $product -> product_level_id = $request-> Input('plevel');
         $product -> descript         = $request-> Input('pdescription');
         $product -> timestamps       = false; // this for disable updated_at and created_at
 
 //        Check if has any promotion in current product's
-        if($request -> input('ppromotion')!= ""){
+        if($request -> input('ppromotion')!=""){
+
             $CheckPromotion = Product::find($id)->promotion()->wherePivot('product_id','=',$id)->wherePivot('promotion_id','=',$request->Input('ppromotion'))->orderBy('id')->paginate(10);
 //            return $CheckPromotion[0]->pivot->end_date;
            if($CheckPromotion-> count() >= 1 ){
-               if($CheckPromotion[0]->pivot->end_date >= $request-> Input('promotion_stopDate')){
+               if( $request-> Input('promotion_stopDate') >= $CheckPromotion[0]->pivot->end_date){
 
+                   $Promotion = DB::select("select promotion from promotion where id='".$request->Input('ppromotion')."'");
+                    $pPromotion = $Promotion[0]->promotion;
+                   DB::update("UPDATE promotiondetail SET promotion_id = '".$request->Input('ppromotion')."',product_id = $id,promotion='$pPromotion',start_date='".$request->Input('promotion_startDate')."',end_date='".$request->Input('promotion_stopDate')."'   WHERE product_id=$id AND promotion_id='".$request->Input('ppromotion')."' AND end_date >= CURRENT_DATE()");
+               }
+               else if($request-> Input('promotion_stopDate') < $CheckPromotion[0]->pivot->end_date){
+                   DB::update("UPDATE promotiondetail SET promotion_id='".$request->Input('ppromotion')."',product_id = $id,promotion=(select promotion from promotion where id='".$request->Input('ppromotion')."'),start_date='".$request->Input('promotion_startDate')."',end_date='".$request->Input('promotion_stopDate')."'   WHERE product_id=$id AND promotion_id='".$request->Input('ppromotion')."' AND end_date >= CURRENT_DATE()");
                }else{
-                   $product ->promotion()->attach($id,['start_date'=>$request-> Input('promotion_startDate'),'end_date'=>$request-> Input('promotion_stopDate')]);
+                  $promotionId = DB::select("select promotion from promotion where id = '".$request->Input('ppromotion')."'");
+                  $product ->promotion()->attach($id,['start_date'=>$request-> Input('promotion_startDate'),'end_date'=>$request-> Input('promotion_stopDate'),'promotion'=>$promotionId[0]->promotion]);
                }
 
             }else{
                 $promotion = $request -> input('ppromotion');
                 $startDate = $request -> input('promotion_startDate');
                 $endDate = $request -> input('promotion_stopDate');
-                DB::insert("INSERT INTO `promotiondetail` (`id`, `promotion_id`, `product_id`, `start_date`, `end_date`) VALUES (NULL, '".$promotion."', '".$id."', '".$startDate."', '".$endDate."')");
-                return redirect()->action('ManageController@getAllProduct');
+               $promotionId = DB::select("select promotion from promotion where id = '".$request->Input('ppromotion')."'");
+
+               DB::insert("INSERT INTO `promotiondetail` (`id`, `promotion_id`, `product_id`,`promotion`, `start_date`, `end_date`) VALUES (NULL, '".$promotion."', '".$id."','".$promotionId[0]->promotion."', '".$startDate."', '".$endDate."')");
+//                return redirect()->action('ManageController@getAllProduct');
+
+
             }
         }
-        else
-        {
+        else {
 
         }
 
+        $productAndimage = Product::with('productimage')->where('id',$id)->orderBy('id')->paginate(100);
+//        Below ia product and product image
+        $productImg = Product::with('productimage')->where('id','=',$id)->orderBy('id')->paginate(100);
         if (Input::hasFile('pImage1')){
-            $productImg1 = new ProductPicture();
-            $productImg1 -> product_id = $id;
 //                this is chang image name
             $newfileName = str_random(15).'.'.$request->file('pImage1')->getClientOriginalExtension();
-//                insert image new name into database
-            $productImg1->image = $newfileName ;
-            $productImg1->timestamps = false; // this for disable updated_at and created_at
 
-            $productImg1 ->save();
+            foreach($productAndimage as $imageList){
+//                return  $imageList;
+                if($imageList->productimage->count()>=1){
+                       if( !Empty($imageList->productimage[0])){
+                           $imgid = $imageList->productimage[0]->id;
+                           $imageParth = public_path().'\\img\\'.$productImg[0]->productimage[0]->image;
+                           File::delete($imageParth);
+                           DB::update("UPDATE image SET image ='$newfileName' WHERE product_id=$id AND id = $imgid ");
+                       }else{
+                           DB::insert("INSERT INTO image(product_id, image ) VALUES ($id,'$newfileName')");
+                       };
+
+                }else{
+                    DB::insert("INSERT INTO image(product_id, image ) VALUES ($id,'$newfileName')");
+                }
+
+            }
             $request->file('pImage1') -> move(public_path('/img'),$newfileName);
         }
+
          if (Input::hasFile('pImage2')){
-            $productImg2 = new ProductPicture();
-            $productImg2 -> product_id = $id;
+
 //                this is chang image name
-            $newfileName = str_random(15).'.'.$request->file('pImage2')->getClientOriginalExtension();
-//                insert image new name into database
-            $productImg2->image = $newfileName ;
-            $productImg2->timestamps = false; // this for disable updated_at and created_at
-            $productImg2 ->save();
-            $request->file('pImage2') -> move(public_path('/img'),$newfileName);
-        }
+             $newfileName = str_random(15).'.'.$request->file('pImage2')->getClientOriginalExtension();
+
+             foreach($productAndimage as $imageList){
+//                return  $imageList;
+                 if($imageList->productimage->count()>=1){
+                     if( !Empty($imageList->productimage[1])){
+                         $imgid = $imageList->productimage[1]->id;
+                         $imageParth = public_path().'\\img\\'.$productImg[0]->productimage[1]->image;
+                         File::delete($imageParth);
+                         DB::update("UPDATE image SET image ='$newfileName' WHERE product_id=$id AND id = $imgid ");
+                     }else{
+                         DB::insert("INSERT INTO image(product_id, image ) VALUES ($id,'$newfileName')");
+                     };
+
+                 }else{
+                     DB::insert("INSERT INTO image(product_id, image ) VALUES ($id,'$newfileName')");
+                 }
+
+             }
+
+
+
+             $request->file('pImage2') -> move(public_path('/img'),$newfileName);
+
+
+         }
          if (Input::hasFile('pImage3')){
-            $productImg3 = new ProductPicture();
-            $productImg3 -> product_id = $id;
+
 //                this is chang image name
-            $newfileName = str_random(15).'.'.$request->file('pImage3')->getClientOriginalExtension();
-//                insert image new name into database
-            $productImg3->image = $newfileName ;
-            $productImg3->timestamps = false; // this for disable updated_at and created_at
-            $productImg3 ->save();
-            $request->file('pImage3') -> move(public_path('/img'),$newfileName);
-        }
+             $newfileName = str_random(15).'.'.$request->file('pImage3')->getClientOriginalExtension();
+
+             foreach($productAndimage as $imageList){
+//                return  $imageList;
+                 if($imageList->productimage->count()>=1){
+                     if( !Empty($imageList->productimage[2])){
+                         $imgid = $imageList->productimage[2]->id;
+                         $imageParth = public_path().'\\img\\'.$productImg[0]->productimage[2]->image;
+                         File::delete($imageParth);
+                         DB::update("UPDATE image SET image ='$newfileName' WHERE product_id=$id AND id = $imgid ");
+                     }else{
+                         DB::insert("INSERT INTO image(product_id, image ) VALUES ($id,'$newfileName')");
+                     };
+
+                 }else{
+                     DB::insert("INSERT INTO image(product_id, image ) VALUES ($id,'$newfileName')");
+                 }
+
+             }
+             $request->file('pImage3') -> move(public_path('/img'),$newfileName);
+
+         }
+        $product->save();
         return redirect()->action('ManageController@getAllProduct');
-
-//         $product -> save();
-
-
     }
+
+
+
 
 
 
@@ -105,7 +164,6 @@ class UpdateController extends Controller
     public function UpdateEmployee( Request $request, $id){
 
         $employee = Employee::find($id);
-
         $employee->emp_name = $request->Input('name');
         $employee->emp_lastname = $request->Input('lastname');
         $employee->gender = $request->Input('gender');
@@ -128,7 +186,7 @@ class UpdateController extends Controller
 //      Delete database image before add a new image
 
             if($employee->image != null){
-               $imgDel = File::delete(public_path().'/img'.$employee->image); // Delete image
+               $imgDel = File::delete(public_path().'\\img\\'.$employee->image); // Delete image
                if($imgDel){
                    $employee->image = $newfileName ;
                    $employee ->save();
@@ -146,7 +204,7 @@ class UpdateController extends Controller
 
         }else{
             $employee ->save();
-            return "No image selected";
+            return redirect()->action('ManageController@getAllEmployee');
         }
 
     }
@@ -166,11 +224,23 @@ class UpdateController extends Controller
         $promotion -> save();
         return redirect()->action('ManageController@getAllPromotion');
     }
-    public function DeletePromotion($id){
-        $promotion = Promotion::find($id);
-        $promotion -> delete();
-        return redirect()->action('ManageController@getAllPromotion');
+    public function UpdateSupplier(Request $request,$id){
+        $supplier = Supplier::find($id);
+        $supplier -> shop_name  = $request->input('shopname');
+        $supplier -> sup_name = $request->input('supname');
+        $supplier -> lastname = $request->input('lastname');
+        $supplier -> village = $request->input('village');
+        $supplier -> district = $request->input('district');
+        $supplier -> province = $request->input('province');
+        $supplier -> country = $request->input('country');
+        $supplier -> tel = $request->input('tel');
+        $supplier -> email = $request->input('email');
+        $supplier -> bankAccount = $request->input('bankccount');
+        $supplier -> timestamps = false;
+        $supplier ->save();
+        return redirect()->action('ManageController@AllSupplier');
     }
+
 
 
 }

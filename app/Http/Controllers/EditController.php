@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Employee;
 use App\EmployeeEducation;
 use App\Product;
-use App\ProductLevel;
 use App\ProductType;
 use App\Promotion;
+use App\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +17,6 @@ class EditController extends Controller
        $product= Product::with('promotion')->where('id',$id)->orderBy('id')->paginate(10);
        $type  = ProductType::all();
        $promotion = Promotion::all();
-       $plevel = ProductLevel::all();
        $productAndimage = Product::with('productimage')->where('id',$id)->orderBy('id')->paginate(10);
 
 
@@ -29,7 +28,6 @@ class EditController extends Controller
          [
              'products' => $product,
              'producttype' => $type,
-             'levels' => $plevel,
              'promotions' => $promotion,
              'product_images'=>$productAndimage
              ]);
@@ -54,6 +52,11 @@ class EditController extends Controller
        $emp_infor = Employee::find($id);
        $emp_education = EmployeeEducation::all();
        return view('backEnd/ManageInfor/EditForm/EditEmployee',['EMPinfor'=>$emp_infor,'EMPeducations'=>$emp_education]);
+
+   }
+   public function EditSupplier($id){
+       $SP_infor = Supplier::find($id);
+       return view('backEnd/ManageInfor/EditForm/EditSupplier',['SP_infor'=>$SP_infor]);
 
    }
 

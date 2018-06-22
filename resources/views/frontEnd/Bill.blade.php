@@ -17,22 +17,22 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
-            <b> Order ID :</b> 0021 <br/>
-            <b> Customer ID :</b> C00012 <br/>
-            <b> Customer Name :</b> Mr.Jonh Son <br/>
-            <b> Customer Village :</b> Dongdok <br/>
-            <b> Customer District :</b> Xaythany <br/>
-            <b> Customer Province :</b> Vientaine <br/>
+            <b> Order ID :</b> 999999 <br/>
+            <b> Customer ID :</b> 999999 <br/>
+            <b> Customer Name :</b> xxxxxx <br/>
+            <b> Customer Village :</b> xxxxxx <br/>
+            <b> Customer District :</b> xxxxxx <br/>
+            <b> Customer Province :</b> xxxxxx <br/>
 
 
         </div>
         <br>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
 
-            <b> Shope name:</b> Chanphong Shope<br/>
-            <b> Shope Bank Account:</b> 1112232223453454<br/>
-            <b> Shope Contack 1 :</b> 020 55667756<br/>
-            <b> Shope Contack 2 :</b> 030 5998845<br/>
+            <b> Shope name:</b> xxxxxx<br/>
+            <b> Shope Bank Account:</b> 999999<br/>
+            <b> Shope Contack 1 :</b> 999999<br/>
+            <b> Shope Contack 2 :</b> 999999<br/>
 
         </div>
     </div>
@@ -51,22 +51,22 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @for($i=1;$i<=10;$i++)
+                    @for($i=1;$i<=5;$i++)
                         <tr>
                             <td>
-                                <div class="div_in_td"><img src="{{asset('img/flower2.jpg')}}" class="img-responsive" style="width: 90%" alt=""  ></div>
+                                <div class="div_in_td"><img src="{{asset('img/nopic.jpg')}}" class="img-responsive" style="width: 90%" alt=""  ></div>
                             </td>
                             <td>
-                                <div class="div_in_td">ສິນຄ້າທີ {{$i+1}}</div>
+                                <div class="div_in_td">xxxxxxx</div>
                             </td>
                             <td>
-                                <div class="div_in_td">{{$i+3}}</div>
+                                <div class="div_in_td">99999</div>
                             </td>
                             <td>
-                                <div class="div_in_td">{{300001+$i}}</div>
+                                <div class="div_in_td">99999</div>
                             </td>
                             <td>
-                                <div class="div_in_td">{{(30001+$i)*($i+3)}}</div>
+                                <div class="div_in_td">99999</div>
                             </td>
                         </tr>
                     @endfor
@@ -76,6 +76,9 @@
         </div>
     </div>
     <hr>
+    <div style="margin-top: 10px;margin-bottom: 10px; text-align: right; margin-right: 20px">
+        <a href="{{route('product.index')}}" class="btn btn-success" ><b>Home</b></a>
+    </div>
     <div style="background-color: #7DA0B1;" class="text-center">
         <br>
         <h3 style="color: white">
@@ -84,6 +87,7 @@
         <a class="btn btn-warning" ><b>Save As PDF</b></a>
         <h3>-----oooo-----</h3>
     </div>
+
 </div>
 
 

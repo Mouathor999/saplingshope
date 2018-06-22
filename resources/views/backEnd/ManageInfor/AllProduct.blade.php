@@ -37,12 +37,10 @@
                         <td ><div class="div_in_td"><b>Picture</b></div></td>
                         <td ><div class="div_in_td"><b>Product name</b></div></td>
                         <td ><div class="div_in_td"><b>Product type</b></div></td>
-                        <td ><div ><b>Product level</b></div></td>
                         <td ><div class="div_in_td"><b>price</b></div></td>
                         <td ><div><b>Stock</b></div></td>
                         <td ><div class=""><b>Promotion</b></div></td>
                         <td ><div class=""><b>Limit</b></div></td>
-                        <td ><div class=""><b>Descript</b></div></td>
                         <td ><div class=""><b>Edit Limit</b></div></td>
                         <td ><div class=""><b>edit product</b></div></td>
                         <td ><div class=""><b>delete product</b></div></td>
@@ -80,7 +78,7 @@
                                 {{ $product->id}}
                             </td>
                             <td style="text-align: center;width: 150px">
-                                <a href="{{route('product.productdetail')}}">
+                                <a href="">
                                     @if($product->productimage->count() > 0)
                                         <img src="{{asset('img/'.$product->productimage[0]->image)}}" class="img-responsive" style="width: 100px" alt=""  >
                                     @else
@@ -91,15 +89,14 @@
                                 <div style="width: 150px">{{$product->pro_name}}</div>
                             </td>
                             <td><div class="">{{$product->producttype->ptype_name }}</div></td>
-                            <td><div class="">{{$product->productlevel->level }}</div></td>
                             <td><div class="">{{$product->sale_price }}</div></td>
                             <td><div class="">{{$product->stock }}</div></td>
                             <td>
                                 <div class="">
                                     @if($product->promotion->count() > 0)
                                         @foreach($product->promotion as $ppromotion)
-                                            @if($ppromotion->pivot->end_date >= date('Y-m-d'))
-                                                {{$ppromotion->pivot->promotion_id . " %" }}
+                                            @if($ppromotion->pivot->start_date >= date('Y-m-d') && $ppromotion->pivot->end_date >= date('Y-m-d'))
+                                                {{$ppromotion->pivot->promotion . " %" }}
                                             @endif
                                         @endforeach
                                     @else
@@ -108,7 +105,6 @@
                                 </div>
                             </td>
                             <td><div class="">{{$product->limit }}</div></td>
-                            <td><div class="">{{$product->descript }}</div></td>
                             <td>
                                 <a href="{{route('EditPLimit',$product->id)}}" class="btn btn-outline-warning"><i class="far fa-bell"  style="color: #1e7e34"></i> Lm</a>
                             </td>

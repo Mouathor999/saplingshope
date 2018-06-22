@@ -17,84 +17,111 @@
 <div class="mainConten">
     <div class="row" style="margin-top: 2%">
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-            <div class="container">
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <td><div class="div_in_td"><b>ຮູບພາບ</b></div></td>
-                            <td><div class="div_in_td"><b>ຊື່ສິນຄ້າ</b></div></td>
-                            <td><div class="div_in_td"><b>ຈໍານວນ</b></div></td>
-                            <td><div class="div_in_td"><b>ລາຄາຕໍ່ໜ່ວຍ</b></div></td>
-                            <td><div class="div_in_td"><b>ລາຄາຕໍ່ລາຍການ</b></div></td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @for($i=1;$i<=10;$i++)
-                         <tr>
-                             <td>
-                                <div class="div_in_td">
-                                    <a href="{{route('product.productdetail')}}"><img src="{{asset('img/flower2.jpg')}}" class="img-responsive" style="width: 90%" alt=""  ></a>
-                                </div>
-                             </td>
-                             <td>
-                                 <div class="text-left" style="width: 300px">
-                                     <lable>title and description  title and description</lable>
-                                     <a href="#" class="nav-link"><i class="fas fa-trash" style="color: orangered"></i> delete</a>
-                                 </div>
+            <div class="container container-fluid">
+                @if(Session::has('cart'))
 
-                             </td>
-                             <td>
-                                 <div class="div_in_td">10</div>
-                             </td>
-                             <td>
-                                 <div class="div_in_td">1000</div>
-                             </td>
-                             <td>
-                                 <div class="div_in_td">10000</div>
-                             </td>
-                         </tr>
-                        @endfor
-                        </tbody>
-                    </table>
-                </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <td><div class="div_in_td"><b>ຮູບພາບ</b></div></td>
+                                <td><div class="div_in_td"><b>ຊື່ສິນຄ້າ</b></div></td>
+                                <td><div class="div_in_td"><b>ຈໍານວນ</b></div></td>
+                                <td><div class="div_in_td"><b>ລາຄາຕໍ່ໜ່ວຍ</b></div></td>
+                                <td><div class="div_in_td"><b>ລາຄາຕໍ່ລາຍການ</b></div></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($orderCart as $orderitems)
+                               {{-- <div>
+                                    {{$orderitems['qty']." ".$orderitems['price']." ".$orderitems['item']['pro_name']." ".$orderitems['item']['sale_price']}}
+                                </div>--}}
+                                <tr>
+                                    <td>
+                                        <div class="div_in_td">
+                                            @foreach($Products as $ProductImage)
+                                                @if($orderitems['item']['id']== $ProductImage->productimage[0]->product_id)
+                                                    <li class="list-group-item">
+                                                        <img src="{{asset('img/'.$ProductImage->productimage[0]->image)}}" alt="" style="width: 100px; height: 100px">
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-left" style="width: 300px">
+                                            <lable>{{$orderitems['item']['pro_name']}}</lable>
+                                            <a href="#" class="nav-link"><i class="fas fa-trash" style="color: orangered"></i> delete</a>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="div_in_td">{{$orderitems['qty']}}</div>
+                                    </td>
+                                    <td>
+                                        <div class="div_in_td">{{$orderitems['item']['sale_price']}}</div>
+                                    </td>
+                                    <td>
+                                        <div class="div_in_td">{{$orderitems['price']}}</div>
+                                    </td>
+                                </tr>
+
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    {{"Empty cart"}}
+                @endif
             </div>
             <br>
             <hr>
+            @if(Session::has('cart'))
             <div class="mainConten" style="margin-right: 10%">
                 <div class="" style="text-align: right">
-                    <h4><b>Total price: </b> $20</h4>
-                    <h4><b>Discount: </b> $2</h4>
-                    <h4><b>Tax: </b> 5$</h4>
-                    <h4><b>SubTotal price: </b> $23</h4>
+                    <h6><b>Total price: </b>{{$totalprice}} ກີບ</h6>
+                    <h6><b>Discount: </b> 9999 ກີບ</h6>
+                    <h6><b>Tax: </b>999999 ກີບ</h6>
+                    <h6><b>SubTotal price: </b> 9999999 ກີບ</h6>
                 </div>
+            </div>
+            @endif
+            <div style="text-align: left;margin-left: 10%">
+                <a href="{{route('CancelOrder')}}" class="btn btn-success">Cancel Order</a>
             </div>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
             <div class="card" style="height: auto">
+                <div class="card-title">
+                    <h4><b>Check out</b></h4>
+                </div>
                 <div class="card-text">
-                    <h3>Check out</h3><hr/>
                     <div class="row">
-                        <div class="" style="text-align: center; margin-left: 6%"><h6 >Subtotal ( x item ): $25</h6><hr/></div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <p class="text-center"><a href="{{route('CustomerSignIn')}}" class="btn btn-success" style="width: 100%">ສັ່ງຈອງ</a></p>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                            <a href="{{route('CustomerSignIn')}}" class="btn btn-success" style="width: 100%">ສັ່ງຈອງ</a>
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <p class="text-center"><a href="{{route('CustomerSignIn')}}" class="btn btn-success" role="button" style="width: 100%"> ສັ່ງຊື້ </a></p>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                            <a href="{{route('orderSendDate')}}" class="btn btn-success" style="width: 100%">ສັ່ງຊື້</a>
                         </div>
+                    </div>
+                    <div class="" style="margin-top: 5%">
+
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin-bottom: 3%;" id="cartAdversting">
+            <div class="row" style="margin-bottom: 3%;margin-top: 5%; background-color: #d1ecf1" id="cartAdversting">
                 @for($a=1;$a<=10;$a++)
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-top: 3%">
-                            <img src="{{asset('img/flower2.jpg')}}" class="img-responsive" alt="" style="width: 100%;height: auto">
+                            <img src="{{asset('img/nopic.jpg')}}" class="img-responsive" alt="" style="width: 100%;height: auto">
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-top: 3%">
                             product title <br>
                             <a class="btn btn-success" href="" style="font-size: 10px">add to cart</a>
                         </div>
                     @endfor
+                    <br>
+                    <br>
+                -----------------------------------------------
             </div>
         </div>
     </div>

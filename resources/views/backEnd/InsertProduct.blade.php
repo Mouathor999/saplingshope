@@ -47,11 +47,7 @@
                     {{--{{$getid}}--}}
                 </div>
                 <form class="form-group" action="{{route('InsertProduct')}}" method="POST" enctype="multipart/form-data">
-                    <div>
-                        <label for="pid">ລະຫັດສິນຄ້າ</label>
-                        <input type="number" name="pid" class="form-control">
-                    </div>
-                    <br>
+
                     <div>
                         <label for="pname">ຊື່ສິນຄ້າ</label>
                         <input type="text" name="pname" class="form-control">
@@ -63,16 +59,6 @@
                             <option value="">ເລືອກປະເພດ...</option>
                             @foreach($producttype as $ptype)
                                 <option value="{{$ptype->id}}">{{$ptype->ptype_name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <br>
-                    <div>
-                        <label for="plevel">ລະດັບສິນຄ້າ</label>
-                        <select name="plevel" id="plevel" class="form-control">
-                            <option value="">ເລືອກລະດັບສີນຄ້າ...</option>
-                            @foreach($level as $plevel)
-                                <option value="{{$plevel->id}}">{{$plevel->level}}</option>
                             @endforeach
                         </select>
                     </div>

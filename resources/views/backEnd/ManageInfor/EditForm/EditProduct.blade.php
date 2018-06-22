@@ -66,7 +66,7 @@
 
             </div>
             @foreach($products as $product)
-                {{$product}}
+                {{--{{$product}}--}}
            <form class="form-group" action="{{route('pUpdate',$product->id)}}" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="pid">ລະຫັດສິນຄ້າ</label>
@@ -91,16 +91,6 @@
                 </div>
                 <br>
                 <div>
-                    <label for="plevel">ລະດັບສິນຄ້າ</label>
-                    <select name="plevel"  id="plevel" class="form-control">
-                        <option value="">ເລືອກລະດັບສີນຄ້າ...</option>
-                        @foreach($levels as $plevel)
-                            <option value="{{$plevel->id}}" @if($plevel->id == $product->product_level_id) {{'selected'}} @endif>{{$plevel->level}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <br>
-                <div>
                     <label for="pprice">ລາຄາຂາຍ</label>
                     <input type="number" name="pprice" value="{{$product->sale_price}}" class="form-control">
                 </div>
@@ -110,51 +100,67 @@
                     <input type="number" name="pamount" value="{{$product->stock}}" class="form-control">
                 </div>
                 <br>
+
+
                 <div>
                     <label for="ppromotion">ໂປຣໂມເຊີນ</label>
                     @if($product->promotion->count() > 0)
+                        {{--<div>
+                         {{$product->promotion}}
+                        </div>--}}
                             @foreach($product->promotion as $ppromotion)
+
                                 @if($ppromotion->pivot->end_date >= date('Y-m-d'))
                                     <select name="ppromotion" id="ppromotion"  class="form-control">
                                         <option value="">ເລືອກໂປຣໂມເຊີນ...</option>
                                         @foreach($promotions as $promotion)
-                                            <option value="{{$promotion->id}}" @if($promotion->id == $product->promotion[0]->pivot->promotion_id) {{'selected'}}  @endif>{{$promotion->promotion}}</option>
+                                            <option value="{{$promotion->id}}" @if($promotion->id == $ppromotion->pivot->promotion_id) {{'selected'}}  @endif>{{$promotion->promotion}}</option>
                                         @endforeach
                                     </select>
                                     <br>
                                     <div>
                                         <label for="promotion_startDate">ວັນເລີ່ມໂປຣໂມເຊີນ</label>
-                                        <input type="date" name="promotion_startDate" value="{{$product->promotion[0]->pivot->start_date}}" class="form-control">
+                                        <input type="date" name="promotion_startDate" value="{{$ppromotion->pivot->start_date}}" class="form-control">
                                     </div>
                                     <br>
                                     <div>
                                         <label for="promotion_stopDate">ວັນໝົດໂປຣໂມເຊີນ</label>
-                                        <input type="date" name="promotion_stopDate" value="{{$product->promotion[0]->pivot->end_date}}"  class="form-control">
+                                        <input type="date" name="promotion_stopDate" value="{{$ppromotion->pivot->end_date}}"  class="form-control">
                                         <br>
                                     </div>
+                                 @else
                                 @endif
                             @endforeach
 
 
-                            @if($product->promotion[0]->pivot->end_date < date('Y-m-d'))
-                                    <select name="ppromotion" id="ppromotion"  class="form-control">
-                                            <option value="">ເລືອກໂປຣໂມເຊີນ...</option>
-                                        @foreach($promotions as $promotion)
-                                            <option value="{{$promotion->id}}">{{$promotion->promotion}}</option>
-                                        @endforeach
-                                    </select>
-                                    <br>
-                                    <div>
-                                        <label for="promotion_startDate">ວັນເລີ່ມໂປຣໂມເຊີນ</label>
-                                        <input type="date" name="promotion_startDate"  class="form-control">
-                                    </div>
-                                    <br>
-                                    <div>
-                                        <label for="promotion_stopDate">ວັນໝົດໂປຣໂມເຊີນ</label>
-                                        <input type="date" name="promotion_stopDate"  class="form-control">
-                                        <br>
-                                    </div>
-                            @endif
+
+                    {{--<div>
+                        <br>------------------------------<br>
+
+                        {{$product->promotion[$product->promotion->count()-1]->pivot->end_date}}
+                    </div>--}}
+
+                        @if($product->promotion[$product->promotion->count()-1]->pivot->end_date < date('Y-m-d'))
+                            <select name="ppromotion" id="ppromotion"  class="form-control">
+                                <option value="">ເລືອກໂປຣໂມເຊີນ...</option>
+                                @foreach($promotions as $promotion)
+                                    <option value="{{$promotion->id}}">{{$promotion->promotion}}</option>
+                                @endforeach
+                            </select>
+                            <br>
+                            <div>
+                                <label for="promotion_startDate">ວັນເລີ່ມໂປຣໂມເຊີນ</label>
+                                <input type="date" name="promotion_startDate"  class="form-control">
+                            </div>
+                            <br>
+                            <div>
+                                <label for="promotion_stopDate">ວັນໝົດໂປຣໂມເຊີນ</label>
+                                <input type="date" name="promotion_stopDate"  class="form-control">
+                                <br>
+                            </div>
+                        @else
+
+                        @endif
                     @else
                         <select name="ppromotion" id="ppromotion"  class="form-control">
                             <option value="">ເລືອກໂປຣໂມເຊີນ...</option>
@@ -176,6 +182,9 @@
                     @endif
 
                 </div>
+
+
+
                 <div>
                     <label for="limit">Limit</label>
                     <input type="number" name="limit" value="{{$product->limit}}" class="form-control">
@@ -190,10 +199,8 @@
                {{--Product Images--}}
                <div class="row">
                    @foreach($product_images as $imageList)
-                       {{--{{$imageList}}--}}
                        @if($imageList->productimage->count()>=1)
                        @foreach($imageList->productimage as $pictures)
-                           {{--{{$pictures->image}}--}}
                                <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2">
                                    <img src="{{asset('img/'.$pictures->image)}}" alt="" style="width: 100px; height: 100px">
                                </div>
