@@ -24,11 +24,12 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <td><div class="div_in_td"><b>ຮູບພາບ</b></div></td>
-                                <td><div class="div_in_td"><b>ຊື່ສິນຄ້າ</b></div></td>
-                                <td><div class="div_in_td"><b>ຈໍານວນ</b></div></td>
-                                <td><div class="div_in_td"><b>ລາຄາຕໍ່ໜ່ວຍ</b></div></td>
-                                <td><div class="div_in_td"><b>ລາຄາຕໍ່ລາຍການ</b></div></td>
+                                <td><div ><b>ຮູບພາບ</b></div></td>
+                                <td><div ><b>ຊື່ສິນຄ້າ</b></div></td>
+                                <td><div ><b>ໂປຣໂມເຊີນ</b></div></td>
+                                <td><div ><b>ຈໍານວນ</b></div></td>
+                                <td><div ><b>ລາຄາຕໍ່ໜ່ວຍ</b></div></td>
+                                <td><div ><b>ລາຄາຕໍ່ລາຍການ</b></div></td>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,11 +50,49 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="text-left" style="width: 300px">
+                                        <div class="text-left" style="width: 100px">
                                             <lable>{{$orderitems['item']['pro_name']}}</lable>
-                                            <a href="#" class="nav-link"><i class="fas fa-trash" style="color: orangered"></i> delete</a>
+
+
+                                            <ul class="navbar-nav mr-auto">
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-trash" style="color: orangered"></i> delete
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                        <a class="dropdown-item">ລົບຂໍ້ມູນ</a>
+
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="{{route('productcart.reduceOne',$orderitems['item']['id'])}}">ລົບ 1</a>
+                                                        <a class="dropdown-item" href="{{route('productcart.reduceAll',$orderitems['item']['id'])}}">ລົບລາຍການ</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+
+
+
+
+                                            {{--<a href="{{route('productcart.reduceOne',$orderitems['item']['id'])}}" class="nav-link"><i class="fas fa-trash" style="color: orangered"></i> delete</a>--}}
                                         </div>
 
+                                    </td>
+                                    <td>
+                                        <div class="div_in_td">
+                                            @if(count($orderitems['item']->promotion) !=0)
+                                                @foreach($orderitems['item']->promotion as $ppromotion)
+
+                                                    @if($ppromotion->pivot->end_date >= date('Y-m-d'))
+                                                        {{$ppromotion->pivot->promotion." %"}}
+                                                    @else
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                {{"0"}}
+                                            @endif
+
+
+                                        </div>
                                     </td>
                                     <td>
                                         <div class="div_in_td">{{$orderitems['qty']}}</div>
@@ -79,10 +118,10 @@
             @if(Session::has('cart'))
             <div class="mainConten" style="margin-right: 10%">
                 <div class="" style="text-align: right">
-                    <h6><b>Total price: </b>{{$totalprice}} ກີບ</h6>
-                    <h6><b>Discount: </b> 9999 ກີບ</h6>
-                    <h6><b>Tax: </b>999999 ກີບ</h6>
-                    <h6><b>SubTotal price: </b> 9999999 ກີບ</h6>
+                    <h6><b>Total price: </b><span style=" color: mediumblue; font-size: 16px">{{$totalprice}}</span> ກີບ</h6>
+                    <h6><b>Discount: </b><span style=" color: mediumblue; font-size: 16px"> 0 </span>ກີບ</h6>
+                    <h6><b>Tax: </b><span style=" color: mediumblue; font-size: 16px">0 </span>ກີບ</h6>
+                    <h6><b>SubTotal price: </b><span style=" color: mediumblue; font-size: 16px"> {{$totalprice}} </span>ກີບ</h6>
                 </div>
             </div>
             @endif

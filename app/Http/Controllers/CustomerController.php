@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Session;
 use File;
+use PDF;
 
 
 
@@ -225,23 +226,6 @@ class CustomerController extends Controller
 
     }
     public function StoreOrder(Request $request){
-
-       /* $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
-        $orderCart = $cart->items;
-//        return $orderCart;
-        foreach ($orderCart as $item)
-        {
-        //    return $item['item']->productimage[0]->image;
-            if(count($item['item']->productimage)){
-                return $item['item']->productimage[0]->image;
-            }
-
-        }*/
-
-//        return session('cus_id')." ".session('username')." ".session('username')." ".session('sendDate');
-
-
        $Now_date = date('Y-m-d');
         $product = Product::with('productimage')->with('Producttype')->with('promotion')->orderBy('id')->paginate(10);
         if(!Session::has('cart')){
@@ -279,6 +263,7 @@ class CustomerController extends Controller
                       $storeOrderdetail-> description = $orderitem['item']['descript'];
                     $storeOrderdetail-> timestamps = false;
                     $storeOrderdetail->save();
+                    session(['maxorderidwhileStoreOrder'=>$maxOrderID]);
                     $a++;
                     if($a==count($orderCart)){
                      return redirect()->route('Bill');
@@ -302,16 +287,68 @@ class CustomerController extends Controller
 
 
     public function Bill(){
-        return view('frontEnd/Bill');
+        if(session('cus_id')!=null && session('username')!=null &&session('password')!=null ){
+            $product = Product::with('productimage')->with('Producttype')->with('promotion')->orderBy('id')->paginate(10);
+            if(!Session::has('cart')){
+                return view('frontEnd/cart');
+            }
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            $orderCart = $cart->items;
+//        return count($orderCart);
+            $totalprice = 0;
+            $a=0;
+            foreach ($orderCart as $orderitem){
+                $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
+                $a++;
+                if($a==count($orderCart)){
+                    return view('frontEnd/Bill',['orderCart'=>$cart->items,'Products'=>$product, 'totalprice'=>$totalprice]);
+                }
+            }
+            return view('frontEnd/Bill');
+        }else{
+            return redirect()->route('product.index');
+        }
+
     }
 
 
+    public function SaveOrderBill(){
+
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $orderCart = $cart->items;
+        $Product = Product::with('productimage')->with('Producttype')->with('promotion')->orderBy('id')->paginate(10);
+        $customerInfor = Customer::find(session('cus_id'));
+
+//        $data =['orderCart'=>$orderCart];
+        $totalprice=0;
+        foreach ($orderCart as $orderitem) {
+            if (count($orderitem['item']->promotion) != 0){
+                foreach ($orderitem['item']->promotion as $ppromotion){
+                    if ($ppromotion->pivot->end_date >= date('Y-m-d')) {
+//                        echo  $ppromotion->pivot->promotion;
+                        $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'] - ((($orderitem['qty']*$orderitem['item']['sale_price'])*$ppromotion->pivot->promotion)/100);
+                    }else{
+
+                    }
+                }
+
+             }else{
+                $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
+                }
+        }
+        $maxorderidwhileStoreOrder = session('maxorderidwhileStoreOrder');
+          $pdf = PDF::loadView('frontEnd.orderPDF', ['orderCart'=>$orderCart,'Products'=>$Product,'subTotalPrice'=>$totalprice,'orderID'=>$maxorderidwhileStoreOrder[0]->maxID,'customerInfor'=>$customerInfor]);
+        return $pdf->stream();
 
 
 
+//        return view('frontEnd.orderPDF',['orderCart'=>$orderCart,'Products'=>$Product,'subTotalPrice'=>$totalprice,'orderID'=>$maxorderidwhileStoreOrder[0]->maxID,'customerInfor'=>$customerInfor]);
+//       return $customerInfor;
 
 
-
+    }
 
 
 }

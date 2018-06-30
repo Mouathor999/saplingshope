@@ -20,9 +20,22 @@ class Cart {
             }
         }
        $storeItem['qty'] += $qauntity;
-        $storeItem['price']= $item->sale_price * $storeItem['qty'];
+        $storeItem['price'] = $item->sale_price * $storeItem['qty'];
         $this->items[$id]=$storeItem;
         $this->totalQty++;
+    }
+    public function ReduceByOne($id){
+        $this->items[$id]['qty']--;
+        $this->items[$id]['price'] -= $this->items[$id]['item']['sale_price'];
+        $this->totalQty--;
+        if($this->items[$id]['qty']<=0){
+            unset($this->items[$id]);
+        }
+    }
+
+    public function ReduceAll($id){
+        $this->totalQty -= $this->items[$id]['qty'];
+        unset($this->items[$id]);
     }
 
 

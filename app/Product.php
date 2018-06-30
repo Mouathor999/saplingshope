@@ -39,4 +39,8 @@ class Product extends Model
         return $this->belongsToMany(Promotion::class,'promotiondetail','product_id','promotion_id')
             ->withPivot('start_date','end_date','product_id','promotion_id','promotion');
     }
+    public function import(){
+        $this->belongsToMany(Image::class,'importdetail','import_id')
+            ->withPivot('import_id','product_id','pro_name','quatity','imp_price','total_price','image','description');
+    }
 }

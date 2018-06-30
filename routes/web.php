@@ -37,6 +37,17 @@ Route::get('/You-cart', [
     'uses'=>'productController@productcart',
     'as'=>'productcart'
 ]);
+Route::get('/Cart-ReduceOne/{id}', [
+    'uses'=>'productController@getReduceByOne',
+    'as'=>'productcart.reduceOne'
+]);
+Route::get('/Cart-ReduceAll/{id}', [
+    'uses'=>'productController@getReduceAll',
+    'as'=>'productcart.reduceAll'
+]);
+
+
+
 Route::get('/jars', [
     'uses'=>'productController@jars',
     'as'=>'jars'
@@ -137,6 +148,12 @@ Route::group(['prefix'=>'Customer'], function (){
         'uses'=>'CustomerController@Bill',
         'as'=>'Bill'
     ]);
+    Route::get('/SaveBill', [
+        'uses'=>'CustomerController@SaveOrderBill',
+        'as'=>'orderBill'
+    ]);
+
+
 
 });
 
@@ -151,11 +168,27 @@ Route::group(['prefix'=>'Customer'], function (){
 // back end
 
 Route::group(['prefix'=>'admin'], function (){
-    Route::get('/', [
-        'uses'=>'AdminController@Admin',
-        'as'=>'admin',
+
+    Route::get('/Login', [
+        'uses'=>'AdminController@AdmingetLogin',
+        'as'=>'admingetLogin',
+    ]);
+    Route::get('/Login/{success}', [
+        'uses'=>'AdminController@AdmingetLogin',
+        'as'=>'Loginfail'
+    ]);
+    Route::post('/AdminPostLogin', [
+        'uses'=>'AdminController@AdminPostLogin',
+        'as'=>'adminPostLogin',
     ]);
 
+
+
+
+    Route::get('/index', [
+        'uses'=>'AdminController@Admin',
+        'as'=>'adminPage',
+    ]);
 
 //    Product
 
@@ -239,6 +272,13 @@ Route::group(['prefix'=>'admin'], function (){
     ]);
 
 
+//        Admin Logout
+    Route::get('/AdminLogout', [
+        'uses'=>'AdminController@AdminLogout',
+        'as'=>'addminLogout'
+    ]);
+
+
 //    Customer order Route
     Route::get('/CusOrder', [
         'uses'=>'CustomerOrderController@CusOrder',
@@ -301,11 +341,11 @@ Route::group(['prefix'=>'admin'], function (){
         'uses'=>'EditController@EditProductLimit',
         'as'=>'EditPLimit'
     ]);
-   Route::get('/EditProducttype/{id}', [
+    Route::get('/EditProducttype/{id}', [
         'uses'=>'EditController@EditProducttype',
         'as'=>'EditPtype'
     ]);
-   Route::get('/EditPromotion/{id}', [
+    Route::get('/EditPromotion/{id}', [
         'uses'=>'EditController@EditPromotion',
         'as'=>'EditPromotion'
     ]);
@@ -374,6 +414,26 @@ Route::group(['prefix'=>'admin'], function (){
 
 
 
+// Import product
+
+    Route::get('LessProduct',[
+        'uses' => 'ImportController@getLessProduct',
+        'as'=>'lessproduct',
+    ]);
+
+    //     Load Import product amount form
+    Route::get('Amount/{id}',[
+        'uses' => 'ImportController@AddProductImportAmount',
+        'as'=>'pAmount',
+    ]);
+
+
+    Route::get('order-product',[
+        'uses' => 'ImportController@postOrderOut',
+        'as'=>'postOrderOut',
+    ]);
+
+
 
 //    Report Route
 
@@ -389,27 +449,31 @@ Route::group(['prefix'=>'admin'], function (){
         'as'=>'employeeInfor'
     ]);
 
+
+
 });
+    Route::get('Admin order out',[
+        'uses' => 'ImportController@OrderOutForm',
+        'as'=>'orderOutForm',
+    ]);
+    Route::post('postajax', 'ImportController@MyAjaxTest');
 
-// Check less product in stock
-
-     Route::get('LessProduct',[
-        'uses' => 'ImportController@getLessProduct',
-         'as'=>'lessproduct',
-     ]);
-
-
-
-
-
-
-//     Load Import product amount form
-
-        Route::get('Amount/{id}',[
-            'uses' => 'ImportController@AddProductImportAmount',
-            'as'=>'pAmount',
-        ]);
-
+    Route::get('storeOrderOut',[
+        'uses'=>'ImportController@StoreOrderOutList',
+        'as'=>'storeOrderOut'
+    ]);
+    Route::get('cancelOrderOut',[
+        'uses'=>'ImportController@CanclOrderOutList',
+        'as'=>'cancelOrderOut'
+    ]);
+    Route::get('OrderOutBill',[
+        'uses'=>'ImportController@OrderOutBill',
+        'as'=>'orderOutBill'
+    ]);
+    Route::get('SaveOrderOutBill',[
+        'uses'=>'ImportController@SaveOrderOutBill',
+        'as'=>'saveOrderOutBill'
+    ]);
 
 // Test route
 Route::get('/test', function (){

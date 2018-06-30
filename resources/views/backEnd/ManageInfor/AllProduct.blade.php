@@ -95,7 +95,7 @@
                                 <div class="">
                                     @if($product->promotion->count() > 0)
                                         @foreach($product->promotion as $ppromotion)
-                                            @if($ppromotion->pivot->start_date >= date('Y-m-d') && $ppromotion->pivot->end_date >= date('Y-m-d'))
+                                            @if($ppromotion->pivot->end_date >= date('Y-m-d'))
                                                 {{$ppromotion->pivot->promotion . " %" }}
                                             @endif
                                         @endforeach

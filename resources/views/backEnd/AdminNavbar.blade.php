@@ -11,7 +11,7 @@
             <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 mymenu"> {{--Navbar col-11 --}}
                 <ul class="nav navbar-nav" style="margin-left: 5px;margin-right: 5px">
                     <li class="nav-item active main-li">
-                        <a href="{{route('admin')}}" class="nav-link">ໜ້າຫຼັກ<span class="sr-only">(current)</span></a>
+                        <a href="{{route('adminPage')}}" class="nav-link">ໜ້າຫຼັກ<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown main-li" >
                         <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
@@ -92,7 +92,8 @@
                             ສັ່ງຊື້ສິນຄ້ານເຂົ້າຮ້ານ
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="">
-                            <li class="nav-item"><a href="{{route('lessproduct')}}" class="nav-link" >ສິນຄ້າເຫຼືອໜ້ອຍ</a> </li>
+                            <li class="nav-item"><a href="{{route('lessproduct')}}" class="nav-link" >ກວດສອບສິນຄ້າ</a> </li>
+                            <li class="nav-item"><a href="{{route('orderOutForm')}}" class="nav-link" >ອອກໃບຈັດຊື້ສິນຄ້າ</a> </li>
                             <li class="nav-item"><a href="" class="nav-link" >ນໍາເຂົ້າສິນຄ້າ</a> </li>
                         </ul>
                     </li>
@@ -140,6 +141,21 @@
                     <li class="nav-item main-li">
                         <a href="" class="nav-link">Help</a>
                     </li>
+                    <li class="nav-item dropdown main-li" >
+
+                        <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                            <i class="fas fa-user"></i>  ຂໍ້ມູນຜູ້ໃຊ້
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="" style="width: auto">
+                            <li class="nav-item dropdown-sub-menu">
+
+                                <a href="{{route('addminLogout')}}" class="nav-link" >ອອກຈາກລະບົບ</a>
+
+
+                            </li>
+                        </ul>
+                    </li>
+
 
                     {{--<li class="" style="margin-left: 20px">
                             <a class="nav-link" style="background-color: white; border-radius: 0px; color: black; " href="{{ route('logout') }}"

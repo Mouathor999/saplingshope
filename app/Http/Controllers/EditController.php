@@ -10,54 +10,75 @@ use App\Promotion;
 use App\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 class EditController extends Controller
 {
    public function EditProduct($id){
-       $product= Product::with('promotion')->where('id',$id)->orderBy('id')->paginate(10);
-       $type  = ProductType::all();
-       $promotion = Promotion::all();
-       $productAndimage = Product::with('productimage')->where('id',$id)->orderBy('id')->paginate(10);
+       if(Session::has('user_id')){
+           $product= Product::with('promotion')->where('id',$id)->orderBy('id')->paginate(10);
+           $type  = ProductType::all();
+           $promotion = Promotion::all();
+           $productAndimage = Product::with('productimage')->where('id',$id)->orderBy('id')->paginate(10);
 
-
-//    return $product;
-
-//      return view('backEnd/ManageInfor/EditForm/EditProduct');
-
-        return view('backEnd/ManageInfor/EditForm/EditProduct',
-         [
-             'products' => $product,
-             'producttype' => $type,
-             'promotions' => $promotion,
-             'product_images'=>$productAndimage
-             ]);
-
-
+           return view('backEnd/ManageInfor/EditForm/EditProduct',
+               [
+                   'products' => $product,
+                   'producttype' => $type,
+                   'promotions' => $promotion,
+                   'product_images'=>$productAndimage
+               ]);
+       }else{
+           return redirect()->route('admingetLogin');
+       }
    }
 
    public function EditProductLimit($id){
-        $product = Product::find($id);
-       return view('backEnd/ManageInfor/EditForm/EditProductLimit',['Product'=>$product]);
+       if(Session::has('user_id')){
+           $product = Product::find($id);
+           return view('backEnd/ManageInfor/EditForm/EditProductLimit',['Product'=>$product]);
+       }else{
+           return redirect()->route('admingetLogin');
+       }
+
    }
    public function EditProducttype($id){
-       $Ptypes= ProductType::find($id);
-       return view('backEnd/ManageInfor/EditForm/EditProductType',['Ptypes'=>$Ptypes]);
+       if(Session::has('user_id')){
+           $Ptypes= ProductType::find($id);
+           return view('backEnd/ManageInfor/EditForm/EditProductType',['Ptypes'=>$Ptypes]);
+       }else{
+           return redirect()->route('admingetLogin');
+       }
+
    }
    public function EditPromotion($id){
-       $Ptypes= Promotion::find($id);
-       return view('backEnd/ManageInfor/EditForm/EditPromotion',['Ptypes'=>$Ptypes]);
+       if(Session::has('user_id')){
+           $Ptypes= Promotion::find($id);
+           return view('backEnd/ManageInfor/EditForm/EditPromotion',['Ptypes'=>$Ptypes]);
+       }else{
+           return redirect()->route('admingetLogin');
+       }
+
    }
 
    public function EditEmployee($id){
-       $emp_infor = Employee::find($id);
-       $emp_education = EmployeeEducation::all();
-       return view('backEnd/ManageInfor/EditForm/EditEmployee',['EMPinfor'=>$emp_infor,'EMPeducations'=>$emp_education]);
+       if(Session::has('user_id')){
+           $emp_infor = Employee::find($id);
+           $emp_education = EmployeeEducation::all();
+           return view('backEnd/ManageInfor/EditForm/EditEmployee',['EMPinfor'=>$emp_infor,'EMPeducations'=>$emp_education]);
+       }else{
+           return redirect()->route('admingetLogin');
+       }
+
 
    }
    public function EditSupplier($id){
-       $SP_infor = Supplier::find($id);
-       return view('backEnd/ManageInfor/EditForm/EditSupplier',['SP_infor'=>$SP_infor]);
-
+       if(Session::has('user_id')){
+           $SP_infor = Supplier::find($id);
+           return view('backEnd/ManageInfor/EditForm/EditSupplier',['SP_infor'=>$SP_infor]);
+       }else{
+           return redirect()->route('admingetLogin');
+       }
    }
 
 }

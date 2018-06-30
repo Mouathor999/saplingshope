@@ -8,34 +8,60 @@ use App\ProductType;
 use App\Promotion;
 use App\Supplier;
 use Illuminate\Http\Request;
+use Session;
 
 class ManageController extends Controller
 {
     public function getAllProduct(){
-          $products = Product::with('Producttype')->with('productimage')->with('promotion')->paginate(1000);
-          return view("backEnd/ManageInfor/AllProduct",['products'=>$products]);
+        if(Session::has('user_id')){
+            $products = Product::with('Producttype')->with('productimage')->with('promotion')->paginate(1000);
+            return view("backEnd/ManageInfor/AllProduct",['products'=>$products]);
+        }else{
+            return redirect()->route('admingetLogin');
+        }
+
     }
 
     public function getAllProductType(){
-        $producttype = ProductType::all();
-        return view('backEnd/ManageInfor/ManageProductType',['producttype' => $producttype]);
+        if(Session::has('user_id')){
+            $producttype = ProductType::all();
+            return view('backEnd/ManageInfor/ManageProductType',['producttype' => $producttype]);
+        }else{
+            return redirect()->route('admingetLogin');
+        }
+
     }
 
 
     public function getAllPromotion(){
-        $promotion = Promotion::all();
-        return view('backEnd/ManageInfor/ManagePromotion',['promotions'=>$promotion]);
+        if(Session::has('user_id')){
+            $promotion = Promotion::all();
+            return view('backEnd/ManageInfor/ManagePromotion',['promotions'=>$promotion]);
+        }else{
+            return redirect()->route('admingetLogin');
+        }
+
     }
 
 
     public function getAllEmployee(){
-        $employees = Employee::with('education')->orderBy('id')->paginate(10);
+        if(Session::has('user_id')){
+             $employees = Employee::with('education')->orderBy('id')->paginate(10);
         return view('backEnd/ManageInfor/ManageEmployee',['employees'=>$employees]);
+        }else{
+            return redirect()->route('admingetLogin');
+        }
+
     }
 
 
     public function AllSupplier(){
-        $suppliers = Supplier::all();
-        return view('backEnd/ManageInfor/ManageSupplier',['suppliers'=>$suppliers]);
+        if(Session::has('user_id')){
+            $suppliers = Supplier::all();
+            return view('backEnd/ManageInfor/ManageSupplier',['suppliers'=>$suppliers]);
+        }else{
+            return redirect()->route('admingetLogin');
+        }
+
     }
 }

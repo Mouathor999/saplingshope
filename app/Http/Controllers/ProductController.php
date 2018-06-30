@@ -33,18 +33,27 @@ class productController extends Controller
         $totalprice = 0;
         $a=0;
         foreach ($orderCart as $orderitem){
-            $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
+            if (count($orderitem['item']->promotion) != 0){
+                foreach ($orderitem['item']->promotion as $ppromotion){
+                    if ($ppromotion->pivot->end_date >= date('Y-m-d')) {
+//                        echo  $ppromotion->pivot->promotion;
+                        $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'] - ((($orderitem['qty']*$orderitem['item']['sale_price'])*$ppromotion->pivot->promotion)/100);
+                    }else{
+
+                    }
+                }
+
+            }else{
+                $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
+            }
             $a++;
             if($a==count($orderCart)){
                 return view('frontEnd/cart',['orderCart'=>$cart->items,'Products'=>$product, 'totalprice'=>$totalprice]);
             }
         }
-
-
-
     }
     public function cart(Request $request,$id){
-        $product = Product::with('productimage')->find($id);
+        $product = Product::with('productimage')->with('promotion')->find($id);
         $qauntity = $request->input('quantity');
         $oldCart = Session::has('cart')? Session::get('cart'):null;
 //        $cart = new Cart($oldCart,$request->input('quantity'));
@@ -57,6 +66,34 @@ class productController extends Controller
         return redirect()->back();
     }
 
+
+    public function getReduceByOne($id){
+
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->ReduceByOne($id);
+        if(count($cart->items)> 0){
+            Session::put('cart',$cart);
+        }else{
+            Session::forget('cart');
+        }
+        return redirect()->route('productcart');
+
+    }
+    public function getReduceAll($id){
+
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->ReduceAll($id);
+        if(count($cart->items)> 0){
+            Session::put('cart',$cart);
+        }else{
+            Session::forget('cart');
+        }
+        return redirect()->route('productcart');
+
+    }
+
     public function Postcart($id){
         return $id;
 //        return view("frontEnd\cart");
@@ -67,6 +104,9 @@ class productController extends Controller
     public  function jars(){
         return view("frontEnd\Jars");
     }
+
+
+
 
 
 }

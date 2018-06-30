@@ -39,40 +39,61 @@
 
     <div class="row" style="margin-top: 2%">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <td><div class="div_in_td"><b>ຮູບພາບ</b></div></td>
-                        <td><div class="div_in_td"><b>ຊື່ສີນຄ້າ</b></div></td>
-                        <td><div class="div_in_td"><b>ຈໍານວນທີ່ສັ່ງ</b></div></td>
-                        <td><div class="div_in_td"><b>ລາຄາຕໍ່ໜ່ວຍ</b></div></td>
-                        <td><div class="div_in_td"><b>ລາຄາຕໍ່ລາຍການ</b></div></td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @for($i=1;$i<=5;$i++)
+            @if(Session::has('cart'))
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
                         <tr>
-                            <td>
-                                <div class="div_in_td"><img src="{{asset('img/nopic.jpg')}}" class="img-responsive" style="width: 90%" alt=""  ></div>
-                            </td>
-                            <td>
-                                <div class="div_in_td">xxxxxxx</div>
-                            </td>
-                            <td>
-                                <div class="div_in_td">99999</div>
-                            </td>
-                            <td>
-                                <div class="div_in_td">99999</div>
-                            </td>
-                            <td>
-                                <div class="div_in_td">99999</div>
-                            </td>
+                            <td><div class="div_in_td"><b>ຮູບພາບ</b></div></td>
+                            <td><div class="div_in_td"><b>ຊື່ສິນຄ້າ</b></div></td>
+                            <td><div class="div_in_td"><b>ຈໍານວນ</b></div></td>
+                            <td><div class="div_in_td"><b>ລາຄາຕໍ່ໜ່ວຍ</b></div></td>
+                            <td><div class="div_in_td"><b>ລາຄາຕໍ່ລາຍການ</b></div></td>
                         </tr>
-                    @endfor
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                        @foreach($orderCart as $orderitems)
+                            {{-- <div>
+                                 {{$orderitems['qty']." ".$orderitems['price']." ".$orderitems['item']['pro_name']." ".$orderitems['item']['sale_price']}}
+                             </div>--}}
+                            <tr>
+                                <td>
+                                    <div class="div_in_td">
+                                        @foreach($Products as $ProductImage)
+                                            @if($orderitems['item']['id']== $ProductImage->productimage[0]->product_id)
+                                                <li class="list-group-item">
+                                                    <img src="{{asset('img/'.$ProductImage->productimage[0]->image)}}" alt="" style="width: 100px; height: 100px">
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-left" style="width: 300px">
+                                        <lable>{{$orderitems['item']['pro_name']}}</lable>
+                                        <a href="#" class="nav-link"><i class="fas fa-trash" style="color: orangered"></i> delete</a>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div class="div_in_td">{{$orderitems['qty']}}</div>
+                                </td>
+                                <td>
+                                    <div class="div_in_td">{{$orderitems['item']['sale_price']}}</div>
+                                </td>
+                                <td>
+                                    <div class="div_in_td">{{$orderitems['price']}}</div>
+                                </td>
+                            </tr>
+
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @else
+                {{"Empty cart"}}
+            @endif
         </div>
     </div>
     <hr>
@@ -84,7 +105,7 @@
         <h3 style="color: white">
            <b>Don't Forget save your Bill</b>
         </h3>
-        <a class="btn btn-warning" ><b>Save As PDF</b></a>
+        <a href="{{route('orderBill')}}" class="btn btn-warning" ><b>Save As PDF</b></a>
         <h3>-----oooo-----</h3>
     </div>
 

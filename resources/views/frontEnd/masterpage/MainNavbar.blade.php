@@ -23,23 +23,23 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
                             <ul class="navbar-nav" style="margin-left: 5px">
-                                <li class="nav-item active">
-                                    <a href="{{route('product.index')}}" class="nav-link">Home<span class="sr-only">(current)</span></a>
+                                <li class="nav-item  home_li" id="home_li">
+                                    <a href="{{route('product.index')}}" class="nav-link">ໜ້າຫຼັກ<span class="sr-only">(current)</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{route('saplingtree')}}" class="nav-link">Sapling tree</a>
+                                <li class="nav-item sp_li">
+                                    <a href="{{route('saplingtree')}}" class="nav-link">ຕົ້ນໄມ້</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{route("flowers")}}" class="nav-link">Flowers</a>
+                                <li class="nav-item f_li">
+                                    <a href="{{route("flowers")}}" class="nav-link">ດອກໄມ</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{route("jars")}}" class="nav-link">Jar</a>
+                                <li class="nav-item ja_li">
+                                    <a href="{{route("jars")}}" class="nav-link">ໄຫປຸກຕົ້ນໄມ້</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Fertilizer</a>
+                                <li class="nav-item fi_li">
+                                    <a href="" class="nav-link">ປຸຍ</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Help</a>
+                                <li class="nav-item help_li">
+                                    <a href="" class="nav-link">ຊ່ວຍເຫຼືອ</a>
                                 </li>
                             </ul>
                         </div>
@@ -59,16 +59,16 @@
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-user fa-2x"></i> User
+                                    <i class="fas fa-user fa-2x"></i> ຂໍ້ມູນຜູ້ໃຊ້
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">User name</a>
 
                                     <div class="dropdown-divider"></div>
                                     @if(session('cus_id'))
-                                        <a class="dropdown-item" href="{{route('Cus_logout')}}">Logout</a>
+                                        <a class="dropdown-item" href="{{route('Cus_logout')}}">ອອກຈາກລະບົບ</a>
                                         @else
-                                        <a class="dropdown-item" href="{{route('Customer.Register')}}">Register account</a>
+                                        <a class="dropdown-item" href="{{route('Customer.Register')}}">ລົງທະບຽນ</a>
                                     @endif
                                 </div>
                             </li>
