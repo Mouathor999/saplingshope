@@ -33,10 +33,10 @@
                                     <a href="{{route("flowers")}}" class="nav-link">ດອກໄມ</a>
                                 </li>
                                 <li class="nav-item ja_li">
-                                    <a href="{{route("jars")}}" class="nav-link">ໄຫປຸກຕົ້ນໄມ້</a>
+                                    <a href="{{route("jars")}}" class="nav-link">ໂຖປຸກຕົ້ນໄມ້</a>
                                 </li>
                                 <li class="nav-item fi_li">
-                                    <a href="" class="nav-link">ປຸຍ</a>
+                                    <a href="{{route('fertilizer')}}" class="nav-link">ປຸຍ</a>
                                 </li>
                                 <li class="nav-item help_li">
                                     <a href="" class="nav-link">ຊ່ວຍເຫຼືອ</a>

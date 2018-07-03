@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ດອກໄມ້</title>
+    <title>ປຸຍ</title>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
 
 </head>
-<body onresize="screenReSize()" class="">
+<body onresize="screenReSize()" class="co">
 
 @include('frontEnd.masterpage.master')
 <div class="mainConten">
@@ -58,7 +58,7 @@
                                 <img class="img-responsive" src="{{asset('img/nopic.jpg')}}" alt="" style="width: 100%; height: 210px">
                             </a>
                         @endif
-                        <div class="card-body" style="background-color: whitesmoke">
+                        <div class="card-body"  style="background-color: whitesmoke">
                             <h4 class="card-title">{{$product->id.'  '.$product->pro_name}}</h4>
                             <div class="card-text">
                                 {{--{{$product->descript}}--}}
@@ -80,7 +80,7 @@
                                 @endif
 
                             </div>
-                            <div class="row" >
+                            <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                     <p class="text-center"><a href="" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
                                 </div>

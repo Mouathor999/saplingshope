@@ -51,33 +51,33 @@
                     <th style="  padding: 10px; background-color: #B3E5FC" ><div style=" text-align: center;">Sale price</div></th>
                     <th style="  padding: 10px; background-color: #B3E5FC" ><div style=" text-align: center;">Total price</div></th>
                 </tr>
-                @foreach($orderCart as $cartItem)
+                  @foreach($CusOrderList as $OrderItem)
 
-                    <tr>
-                        {{--<td style="text-align: center"><img src="{{asset(public_path().'img/')}}" alt="" style="width: 100px;height: 100px"></td>--}}
-                        <td style=" padding: 10px;text-align: center;">{{$cartItem['item']->pro_name}}</td>
-                        <td style=" padding: 10px;text-align: center;">
-                        @if(count($cartItem['item']->promotion) !=0)
-                                @foreach($cartItem['item']->promotion as $ppromotion)
-
-                                        @if($ppromotion->pivot->end_date >= date('Y-m-d'))
-                                            {{$ppromotion->pivot->promotion." %"}}
-                                        @else
-                                        @endif
-                                @endforeach
-                           @else
-                                {{"0"}}
-                        @endif
-                        </td>
-                        <td style=" padding: 10px;text-align: center;">{{$cartItem['qty']}}</td>
-                        <td style=" padding: 10px;text-align: center;">{{$cartItem['item']->sale_price}}</td>
-                        <td style=" padding: 10px;text-align: center;">{{$cartItem['qty']*$cartItem['item']->sale_price}}</td>
-                    </tr>
+                  <tr>
+                          {{--<td style="text-align: center"><img src="{{asset(public_path('img/'),$OrderItem->image)}}" alt="" style="width: 100px;height: 100px"></td>--}}
+                          <td style=" padding: 10px;text-align: center;">{{$OrderItem->pro_name}}</td>
+                          <td style=" padding: 10px;text-align: center;">{{$OrderItem->product_promotion}}&nbsp; %</td>
+                          <td style=" padding: 10px;text-align: center;">{{$OrderItem->quantity}}</td>
+                          <td style=" padding: 10px;text-align: center;">{{$OrderItem->sale_price}}</td>
+                          <td style=" padding: 10px;text-align: center;">{{$OrderItem->total_price}}</td>
+                      </tr>
                 @endforeach
             </table>
         </div>
+        {{--<div>
+
+            @foreach($CusOrderList as $OrderItem)
+                <div>
+                    {{$OrderItem->pro_name." ".$OrderItem->quantity." ".$OrderItem->sale_price." ".$OrderItem->total_price." ".$OrderItem->image}}
+                </div>
+                <br>
+                <br>
+            @endforeach
+
+
+        </div>--}}
         <div style="margin-top: 10%; float: right; width: 200px;">
-            <span style=" color: mediumblue; font-size: 16px">Sub total price :</span>  {{$subTotalPrice." ກີບ"}}
+            <span style=" color: mediumblue; font-size: 16px">Sub total price :</span>  {{Session('totalprice')}} ກີບ
 
         </div>
 

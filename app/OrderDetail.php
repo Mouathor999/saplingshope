@@ -16,5 +16,6 @@ class OrderDetail extends Model
         'total_price',
         'image',
         'description',
+        'product_promotion',
     ];
 }

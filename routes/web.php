@@ -28,6 +28,10 @@ Route::get('/flowers', [
     'uses'=>'productController@flowers',
     'as'=>'flowers'
 ]);
+Route::get('/Fertilizer', [
+    'uses'=>'productController@Fertilizer',
+    'as'=>'fertilizer'
+]);
 
 Route::get('/cart/{id}', [
     'uses'=>'productController@cart',
@@ -140,28 +144,23 @@ Route::group(['prefix'=>'Customer'], function (){
     ]);
 
 
-
-
-
 // Bill
     Route::get('/Bill', [
         'uses'=>'CustomerController@Bill',
         'as'=>'Bill'
     ]);
-    Route::get('/SaveBill', [
+    Route::get('/GetTotalPrice', [
+        'uses'=>'CustomerController@GetTotalPrice',
+        'as'=>'getTotalPrice'
+    ]);
+    Route::get('/SaveOrderBill', [
         'uses'=>'CustomerController@SaveOrderBill',
-        'as'=>'orderBill'
+        'as'=>'saveOrderBill'
     ]);
 
 
 
 });
-
-
-
-
-
-
 
 
 
@@ -413,8 +412,50 @@ Route::group(['prefix'=>'admin'], function (){
 
 
 
+//    Report Route
 
-// Import product
+//    Show customer order in backEnd
+    Route::get('/Customer-Order', [
+        'uses'=>'ReportController@Customer_Order',
+        'as'=>'showCustomerOrder'
+    ]);
+    Route::get('/Customer-Order-detail/{id}', [
+        'uses'=>'ReportController@Customer_Order_Detail',
+        'as'=>'showCustomerOrderDetail'
+    ]);
+    Route::get('/Report-product', [
+        'uses'=>'ReportController@Report_Product',
+        'as'=>'reportProduct'
+    ]);
+    Route::get('/Report-productType', [
+        'uses'=>'ReportController@getAllProductType',
+        'as'=>'reportProducttype'
+    ]);
+
+
+
+
+
+//    Employee work
+    Route::get('/ReportEmpWork', [
+        'uses'=>'ReportController@ReportEmpWork',
+        'as'=>'ReportEmpWork'
+    ]);
+
+//    Employee Information
+    Route::get('/EmployeeInfor', [
+        'uses'=>'ReportController@EmployeeInfor',
+        'as'=>'employeeInfor'
+    ]);
+
+
+
+
+
+});
+
+
+    // Import product
 
     Route::get('LessProduct',[
         'uses' => 'ImportController@getLessProduct',
@@ -427,31 +468,12 @@ Route::group(['prefix'=>'admin'], function (){
         'as'=>'pAmount',
     ]);
 
-
     Route::get('order-product',[
         'uses' => 'ImportController@postOrderOut',
         'as'=>'postOrderOut',
     ]);
 
 
-
-//    Report Route
-
-//    Employee work
-    Route::get('/ReportEmpWork', [
-        'uses'=>'ReportController@ReportEmpWork',
-        'as'=>'ReportEmpWork'
-    ]);
-
-//    Employee Inforation
-    Route::get('/EmployeeInfor', [
-        'uses'=>'ReportController@EmployeeInfor',
-        'as'=>'employeeInfor'
-    ]);
-
-
-
-});
     Route::get('Admin order out',[
         'uses' => 'ImportController@OrderOutForm',
         'as'=>'orderOutForm',
@@ -473,6 +495,22 @@ Route::group(['prefix'=>'admin'], function (){
     Route::get('SaveOrderOutBill',[
         'uses'=>'ImportController@SaveOrderOutBill',
         'as'=>'saveOrderOutBill'
+    ]);
+//      Import product
+    Route::get('Import-product',[
+        'uses' => 'ImportController@AddImport_product',
+        'as'=>'importproduct',
+    ]);
+
+    Route::get('Detail/{id}',[
+        'uses' => 'ImportController@OrderoutDetail',
+        'as'=>'orderoutDetail',
+    ]);
+    Route::post('postorderOutAjax','ImportController@Post_orderOut_Ajax');
+
+    Route::get('ImportOrderOutProduct',[
+        'uses' => 'ImportController@ImportOrderOutProduct',
+        'as'=>'importOrderOutProduct',
     ]);
 
 // Test route

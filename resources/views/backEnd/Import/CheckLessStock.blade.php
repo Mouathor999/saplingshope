@@ -9,7 +9,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
 </head>
 <body>
@@ -41,7 +40,7 @@
                         <td ><div><b>Stock</b></div></td>
                         <td ><div class=""><b>Limit</b></div></td>
                         <td ><div class=""><b>Descript</b></div></td>
-                        <td ><div class=""><b>Import</b></div></td>
+                        {{--<td ><div class=""><b>Import</b></div></td>--}}
                     </tr>
 
                     @foreach($products as $product)
@@ -65,7 +64,7 @@
                                     <td><div class="">{{$product->limit }}</div></td>
                                     <td><div class="">{{$product->descript }}</div></td>
                                     <td>
-                                        <a href="{{route('pAmount',$product->id)}}" class="btn btn-outline-warning">ສັ່ງຊື້ </a>
+                                        {{--<a href="{{route('pAmount',$product->id)}}" class="btn btn-outline-warning">ສັ່ງຊື້ </a>--}}
                                     </td>
                                 </tr>
                             </tbody>

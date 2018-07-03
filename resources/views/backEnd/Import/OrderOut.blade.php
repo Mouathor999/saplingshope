@@ -14,37 +14,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
-    {{--
-
-        <script !src="" type="text/javascript">
-
-           $(document).ready(function(){
-               var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-               $("#submit").click(function(){
-                   myajax('');
-               });
-               var myajax = function () {
-                   $.ajax({
-                       /* the route pointing to the post function */
-                       url: '/postajax',
-                       type: 'POST',
-                       /* send the csrf-token and the input to the controller */
-    //                   data: {_token: CSRF_TOKEN, message:$('input[name="'+groupName+'"]').val()},
-                       data: {_token: CSRF_TOKEN, message:$(".skills").val()},
-                       dataType: 'JSON',
-                       /* remind that 'data' is the response of the AjaxController */
-                       success: function (data) {
-                           $("#shodiv").append(data.msg);
-                       }
-                   });
-               }
-           });
-        </script>
-    --}}
-
-
-
-
 
 </head>
 <body>
@@ -180,8 +149,6 @@
                 </div>
             </div>
             <br>
-
-
             <div>
                 <h6 style="color: #d39e00" id="Notification"></h6>
             </div>
@@ -252,12 +219,14 @@
 
     $(function () {
         $('.cbChoose').click(function () {
+
             var choose = $(this)['0']['checked'];
             var id = $(this).parent().parent().children('td.id').text();
             var productName = $(this).parent().parent().children('td.pro_name').text();
             var pro_type = $(this).parent().parent().children('td.tdQty').children('input.productType').val();
             if(choose) {
                 $(this).parent().parent().children('td.tdQty').children('input.qty').val(1);
+                $(this).parent().parent().children('td.tdQty').children('input.qty').focus();
                 order['order_no']= $("#billOrderId").val();
                 order['LoginUser']= $('#LoginUser').val();
                 order['detail'].push({

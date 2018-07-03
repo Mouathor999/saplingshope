@@ -3,28 +3,45 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\OrderDetail;
 use App\Product;
 use App\ProductPicture;
+use App\ProductType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Session;
 
 class productController extends Controller
 {
-   public function index(){
-       return view("frontEnd\index");
+    /**
+     * @return array
+     */
+    public function index(){
+       $bestSale = DB::select("SELECT  product_id, SUM(quantity) AS totalquatity  FROM orderdetail GROUP BY product_id  order BY SUM(quantity) DESC LIMIT 12"); //saledetail
+
+        $new_product = Product::with('productimage')->orderBy('id','DESC')->paginate(12);
+
+        $recomment = Product::with('productimage')->orderBy('id','ASC')->paginate(12);
+
+       return view("frontEnd\index",['NewProduct'=>$new_product,'bestSale'=>$bestSale,'Recomment'=>$recomment]);
+
    }
    public function productdetail($id){
        $product = Product::with('Producttype')->with('productimage')->with('promotion')->where('id','=',$id)->orderBy('id')->paginate(100);
        return view("frontEnd/productdetail",['productinfor'=>$product]);
    }
     public function saplingtree(){
-       $product = Product::with('productimage')->with('promotion')->orderBy('id')->paginate(1000);
-        return view("frontEnd\saplingtree",['products'=>$product]);
+
+        $adverting_product = Product::with('productimage')->orderBy('id','DESC')->paginate(12);
+        $product = Product::with('productimage')->with('promotion')->where('product_type_id','LIKE','pt003')->orWhere('product_type_id','LIKE','pt004')->orWhere('product_type_id','LIKE','pt005')->orderBy('id')->paginate(1000);
+        return view("frontEnd\saplingtree",['products'=>$product,'Adverting_product'=>$adverting_product]);
     }
     public function productcart(Request $request){
+
         $product = Product::with('productimage')->with('Producttype')->with('promotion')->orderBy('id')->paginate(10);
+        $adverting_product = Product::with('productimage')->orderBy('id','DESC')->paginate(10);
         if(!Session::has('cart')){
-            return view('frontEnd/cart');
+            return view('frontEnd/cart',['Adverting'=>$adverting_product]);
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
@@ -35,11 +52,13 @@ class productController extends Controller
         foreach ($orderCart as $orderitem){
             if (count($orderitem['item']->promotion) != 0){
                 foreach ($orderitem['item']->promotion as $ppromotion){
-                    if ($ppromotion->pivot->end_date >= date('Y-m-d')) {
+                    if ($ppromotion->pivot->end_date >= date('Y-m-d') && $ppromotion->pivot->start_date <= date('Y-m-d')) {
 //                        echo  $ppromotion->pivot->promotion;
                         $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'] - ((($orderitem['qty']*$orderitem['item']['sale_price'])*$ppromotion->pivot->promotion)/100);
                     }else{
-
+                        if ($ppromotion->pivot->end_date >= date('Y-m-d') && $ppromotion->pivot->start_date > date('Y-m-d')) {
+                            $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
+                        }
                     }
                 }
 
@@ -48,18 +67,26 @@ class productController extends Controller
             }
             $a++;
             if($a==count($orderCart)){
-                return view('frontEnd/cart',['orderCart'=>$cart->items,'Products'=>$product, 'totalprice'=>$totalprice]);
+
+                return view('frontEnd/cart',['orderCart'=>$cart->items,'Products'=>$product, 'totalprice'=>$totalprice,'Adverting'=>$adverting_product]);
             }
         }
     }
     public function cart(Request $request,$id){
         $product = Product::with('productimage')->with('promotion')->find($id);
-        $qauntity = $request->input('quantity');
+        $postqty = $request->input('quantity');
+
+
         $oldCart = Session::has('cart')? Session::get('cart'):null;
 //        $cart = new Cart($oldCart,$request->input('quantity'));
         $cart = new Cart($oldCart);
 //        dd($cart);
 
+        if($postqty ==""){
+            $qauntity = 1;
+        }else{
+            $qauntity = $postqty;
+        }
         $cart->add($product,$qauntity,$product->id);
         $request->session()->put('cart',$cart);
 //        dd($request->session()->get('cart'));
@@ -99,10 +126,21 @@ class productController extends Controller
 //        return view("frontEnd\cart");
     }
     public  function flowers(){
-        return view("frontEnd\Flowers");
+        $adverting_product = Product::with('productimage')->orderBy('id','DESC')->paginate(12);
+
+        $product = Product::with('productimage')->with('promotion')->where('product_type_id','LIKE','pt001')->orWhere('product_type_id','LIKE','pt002')->orderBy('id')->paginate(1000);
+
+        return view("frontEnd/Flowers",['products'=>$product,'Adverting_product'=>$adverting_product]);
     }
     public  function jars(){
-        return view("frontEnd\Jars");
+        $adverting_product = Product::with('productimage')->orderBy('id','DESC')->paginate(12);
+        $product = Product::with('productimage')->with('promotion')->where('product_type_id','LIKE','pt006')->orWhere('product_type_id','LIKE','pt007')->orWhere('product_type_id','LIKE','pt008')->orderBy('id')->paginate(1000);
+        return view("frontEnd/Jars",['products'=>$product,'Adverting_product'=>$adverting_product]);
+    }
+    public  function Fertilizer(){
+        $adverting_product = Product::with('productimage')->orderBy('id','DESC')->paginate(12);
+        $product = Product::with('productimage')->with('promotion')->where('product_type_id','LIKE','pt009')->orWhere('product_type_id','LIKE','pt010')->orderBy('id')->paginate(1000);
+        return view("frontEnd/fertilizer",['products'=>$product,'Adverting_product'=>$adverting_product]);
     }
 
 

@@ -31,4 +31,8 @@ class Employee extends Model
     public function education(){
         return $this->hasMany(EmployeeEducation::class,'id','emp_education_id');
     }
+    public function import(){
+        return $this->hasMany(Import::class);
+    }
+
 }

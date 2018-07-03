@@ -53,7 +53,7 @@ class CustomerController extends Controller
                 if($CustomerInfor[$i]->username == $usename && Crypt::decrypt($CustomerInfor[$i]->password) == $password){
                     session(['cus_id'=>$CustomerInfor[$i]->id,'username'=>$CustomerInfor[$i]->username,'password'=>$CustomerInfor[$i]->password,'cus_name'=>$CustomerInfor[$i]->cus_name,'cus_lastname'=>$CustomerInfor[$i]->cus_lastname,'cus_tel'=>$CustomerInfor[$i]->tel,'cus_email'=>$CustomerInfor[$i]->email]);
                     $data = $request->session()->all();
-                    if($data['cus_id'] != null && $data['cus_name'] != null && $data['cus_lastname'] != null &&  $data['cus_tel'] != null){
+                    if($data['username'] != null && $data['password'] != null  && $data['cus_id'] != null && $data['cus_name'] != null && $data['cus_lastname'] != null &&  $data['cus_tel'] != null){
                          if(session::has('cart')){
                              return redirect()->route('store.cusOrder');
                         }else{
@@ -226,29 +226,42 @@ class CustomerController extends Controller
 
     }
     public function StoreOrder(Request $request){
+
+
+
        $Now_date = date('Y-m-d');
-        $product = Product::with('productimage')->with('Producttype')->with('promotion')->orderBy('id')->paginate(10);
+//        $product = Product::with('productimage')->with('Producttype')->with('promotion')->orderBy('id')->paginate(10);
         if(!Session::has('cart')){
             return view('frontEnd/cart');
-        }else{
-            $oldCart = Session::get('cart');
-            $cart = new Cart($oldCart);
-            $orderCart = $cart->items;
+        }else {
+
+
 //    insert into database
             $storeOrder = new Order();
             $storeOrder -> order_date = $Now_date;
             $storeOrder -> send_date = session('sendDate');
-           $storeOrder -> status = '1';
+            $storeOrder -> status = '1';
             $storeOrder -> customer_id = session('cus_id');
             $storeOrder -> timestamps = false;
             if($storeOrder->save()){
+
                 $maxOrderID = DB::select("SELECT MAX(id) as maxID FROM `order`");
-                $totalprice = 0;
                 $a=0;
+                $oldCart = Session::get('cart');
+                $cart = new Cart($oldCart);
+                $orderCart = $cart->items;
+
                 foreach ($orderCart as $orderitem){
-//                    $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
+
+//                    return $orderCart;
+//                    return $orderitem;
+//                    return array_flatten($orderitem);
+//                    return count(array_flatten($orderitem));
+//                    return count(array_flatten($orderitem)[2]->promotion);
+//                    return count(array_flatten($orderitem)[2]->promotion);
 
                     $storeOrderdetail = new OrderDetail();
+                    $product_promotion=0;
                       $storeOrderdetail-> order_id = $maxOrderID[0]->maxID;
                       $storeOrderdetail-> product_id = $orderitem['item']['id'];
                       $storeOrderdetail-> pro_name = $orderitem['item']['pro_name'];
@@ -261,6 +274,23 @@ class CustomerController extends Controller
                             $storeOrderdetail-> image= '';
                         }
                       $storeOrderdetail-> description = $orderitem['item']['descript'];
+                    for($i=0;$i<count(array_flatten($orderitem)[2]->promotion);$i++){
+//                        return array_flatten($orderitem)[2]->promotion[$i];
+
+                        if(count(array_flatten($orderitem)[2]->promotion)!=0){
+                            if(array_flatten($orderitem)[2]->promotion[$i]->pivot->end_date >= date('Y-m-d') && array_flatten($orderitem)[2]->promotion[$i]->pivot->start_date <= date('Y-m-d')){
+//                                $product_promotion = $orderitem['item']->promotion[$i]->pivot->promotion;
+                                $product_promotion = array_flatten($orderitem)[2]->promotion[$i]->pivot->promotion;
+                            }
+                            else{
+                                $product_promotion=0;
+                            }
+                        }else{
+                            break;
+                        }
+
+                    }
+                    $storeOrderdetail->product_promotion = $product_promotion;
                     $storeOrderdetail-> timestamps = false;
                     $storeOrderdetail->save();
                     session(['maxorderidwhileStoreOrder'=>$maxOrderID]);
@@ -273,6 +303,7 @@ class CustomerController extends Controller
 
             }
         }
+
 
     }
     public function Customerlogout(Request $request){
@@ -290,7 +321,8 @@ class CustomerController extends Controller
         if(session('cus_id')!=null && session('username')!=null &&session('password')!=null ){
             $product = Product::with('productimage')->with('Producttype')->with('promotion')->orderBy('id')->paginate(10);
             if(!Session::has('cart')){
-                return view('frontEnd/cart');
+//                return " ທ່ານໄດ້ບັກທືກໃບສັ່ງຊື້ສິນຄ້າແລ້ວ.";
+                return redirect()->route('product.index');
             }
             $oldCart = Session::get('cart');
             $cart = new Cart($oldCart);
@@ -307,47 +339,57 @@ class CustomerController extends Controller
             }
             return view('frontEnd/Bill');
         }else{
-            return redirect()->route('product.index');
+
         }
 
     }
 
 
+    public function GetTotalPrice(Request $request){
+
+        if(Session::has('cart')){
+             $oldCart = Session::get('cart');
+             $cart = new Cart($oldCart);
+             $orderCart = $cart->items;
+             $totalprice=0;
+             foreach ($orderCart as $orderitem) {
+                 if (count($orderitem['item']->promotion) != 0){
+                     foreach ($orderitem['item']->promotion as $ppromotion){
+                         if ($ppromotion->pivot->end_date >= date('Y-m-d') && $ppromotion->pivot->start_date <= date('Y-m-d')) {
+ //                        echo  $ppromotion->pivot->promotion;
+                             $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'] - ((($orderitem['qty']*$orderitem['item']['sale_price'])*$ppromotion->pivot->promotion)/100);
+                         }else{
+                             if ($ppromotion->pivot->end_date >= date('Y-m-d') && $ppromotion->pivot->start_date >= date('Y-m-d')) {
+                                 $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
+                             }
+
+                         }
+                     }
+
+                 }else{
+                     $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
+                 }
+             }
+
+             session(['totalprice'=>$totalprice]) ;
+             $request ->session()->forget('cart');
+            return redirect()->route('saveOrderBill');
+         }else{
+
+            return redirect()->route('Bill');
+
+         }
+
+    }
     public function SaveOrderBill(){
 
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
-        $orderCart = $cart->items;
-        $Product = Product::with('productimage')->with('Producttype')->with('promotion')->orderBy('id')->paginate(10);
         $customerInfor = Customer::find(session('cus_id'));
-
-//        $data =['orderCart'=>$orderCart];
-        $totalprice=0;
-        foreach ($orderCart as $orderitem) {
-            if (count($orderitem['item']->promotion) != 0){
-                foreach ($orderitem['item']->promotion as $ppromotion){
-                    if ($ppromotion->pivot->end_date >= date('Y-m-d')) {
-//                        echo  $ppromotion->pivot->promotion;
-                        $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'] - ((($orderitem['qty']*$orderitem['item']['sale_price'])*$ppromotion->pivot->promotion)/100);
-                    }else{
-
-                    }
-                }
-
-             }else{
-                $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
-                }
-        }
+        $Product = Product::with('productimage')->with('Producttype')->with('promotion')->orderBy('id')->paginate(10);
         $maxorderidwhileStoreOrder = session('maxorderidwhileStoreOrder');
-          $pdf = PDF::loadView('frontEnd.orderPDF', ['orderCart'=>$orderCart,'Products'=>$Product,'subTotalPrice'=>$totalprice,'orderID'=>$maxorderidwhileStoreOrder[0]->maxID,'customerInfor'=>$customerInfor]);
+        $CusorderinOrderdetail = OrderDetail::all()->where('order_id','LIKE',$maxorderidwhileStoreOrder[0]->maxID);
+
+        $pdf = PDF::loadView('frontEnd.orderPDF', ['CusOrderList'=>array_flatten($CusorderinOrderdetail),'Products'=>$Product,'orderID'=>$maxorderidwhileStoreOrder[0]->maxID,'customerInfor'=>$customerInfor]);
         return $pdf->stream();
-
-
-
-//        return view('frontEnd.orderPDF',['orderCart'=>$orderCart,'Products'=>$Product,'subTotalPrice'=>$totalprice,'orderID'=>$maxorderidwhileStoreOrder[0]->maxID,'customerInfor'=>$customerInfor]);
-//       return $customerInfor;
-
-
     }
 
 

@@ -20,4 +20,8 @@ class Supplier extends Model
         'email',
         'bankAccount',
     ];
+
+    public function import(){
+       return $this->hasMany(Import::class);
+    }
 }

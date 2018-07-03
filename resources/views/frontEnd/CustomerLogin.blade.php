@@ -66,16 +66,14 @@
                     </div>
                     <br>
                     <div>
-                        {{--<a href="{{route('CustomerInfor')}}" type="submit"  name="submit" class="btn btn-success">Submit</a>--}}
-
                         <input type="submit" name="Clogin" value="Login" class="btn btn-success">
                         <input type="submit" name="cancel" value="cancel" class="btn btn-danger">
                     </div>
                     {{csrf_field()}}
                 </form>
-                <div class="col-xs-12 col-sm-12 col-sm-12 col-md-12 col-lg-12">
+
                     <p>Create new account : <a href="{{route('CustomerSignUp')}}">register</a></p>
-                </div>
+
             </div>
             <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
         </div>

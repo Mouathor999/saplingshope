@@ -86,7 +86,6 @@
                                     <div class="div_in_td">{{$orderitems['price']}}</div>
                                 </td>
                             </tr>
-
                         @endforeach
                         </tbody>
                     </table>
@@ -105,9 +104,30 @@
         <h3 style="color: white">
            <b>Don't Forget save your Bill</b>
         </h3>
-        <a href="{{route('orderBill')}}" class="btn btn-warning" ><b>Save As PDF</b></a>
+        <a href="{{route('getTotalPrice')}}" class="btn btn-warning" ><b>Save As PDF</b></a>
         <h3>-----oooo-----</h3>
     </div>
+
+
+
+
+
+    <div>
+        @if(session('username') == "null" && session('password'=='null'))
+            <div style="text-align: center">
+                <br>
+                <br>
+                <h3 style="color: #d39e00">
+                    ທ່ານໄດ້ບັກທືກໃບສັ່ງຊື້ສິນຄ້າແລ້ວ.
+                </h3>
+            </div>
+        @else
+
+        @endif
+    </div>
+
+
+
 
 </div>
 

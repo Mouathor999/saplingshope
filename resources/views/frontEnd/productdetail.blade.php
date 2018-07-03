@@ -101,7 +101,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                             <div class="productlevel">
-                                <label>ລາຄາ: {{$product->sale_price}}</label>
+                                <label>ລາຄາ: {{$product->sale_price." "." ກີບ"}}</label>
                             </div>
                             <hr/>
                             <div>
@@ -131,7 +131,7 @@
                                             <li>ໂປຣໂມເຊີນ :
                                                 @if($product->promotion->count() > 0)
                                                     @foreach($product->promotion as $ppromotion)
-                                                        @if($ppromotion->pivot->start_date >= date('Y-m-d') && $ppromotion->pivot->end_date >= date('Y-m-d'))
+                                                        @if($ppromotion->pivot->end_date >= date('Y-m-d') && $ppromotion->pivot->start_date <= date('Y-m-d'))
                                                             <b>{{$ppromotion->pivot->promotion . " %" }}</b>
                                                         @endif
 
@@ -142,8 +142,6 @@
 
                                             </li>
                                             <li>ຄ່າຂົນສົ່ງ  : 0 ກີບ</li>
-                                            <li>ຄ່າຂົນສົ່ງ  : 0 ກີບ</li>
-                                            <li>ຄ່າພາສີ   : 0 ກີບ</li>
                                         </ul>
                                     </div>
                                 </form>
@@ -154,7 +152,7 @@
                 </div>
             </div>
         </div>
-        @endforeach
+
         <div class="row" style="margin-top: 1%">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="bd-example bd-example-tabs">
@@ -165,21 +163,19 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade active show" id="description" role="tabpanel" aria-labelledby="nav-description-tab" aria-expanded="true" >
                             <p>
-                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                                {{--sapling one needs to be aware of measurement parameters like DBH which stands for Diameter at Breast Height.  It is used as an evaluation criteria for comparing the dimensions of different trees. It is basically the diameter of tree trunk which is measured at breast level.--}}
+                                {{$product->descript}}
                             </p>
                         </div>
                         <div class="tab-pane fade" id="nav-rule" role="tabpanel" aria-labelledby="nav-rule-tab" aria-expanded="false">
                             <p>
-                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                                {{--To be observed by all students using room F212 Parkview. 1. Safety glasses, cover goggles, or face shields are required when in any shop area, whether working or not!! 2. Shoes must be worn in any shop area. No one wearing sandals will be allowed to enter any shop area.--}}
+                                &nbsp; sapling one needs to be aware of measurement parameters like DBH which stands for Diameter at Breast Height.  It is used as an evaluation criteria for comparing the dimensions of different trees. It is basically the diameter of tree trunk which is measured at breast level.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        @endforeach
       <div style="margin-top: 2%">
           {{--Start swiper slide   Advertising--}}
           <div class="swiper-container">

@@ -83,8 +83,8 @@
                             ລາຍການສັ່ງຂອງລູກຄ້າ
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="">
-                            <li class="nav-item"><a href="" class="nav-link" >ລາຍການສັ່ງຊື້</a> </li>
-                            <li class="nav-item"><a href="" class="nav-link" >ລາຍການສັ່ງຈອງ</a> </li>
+                            <li class="nav-item"><a href="{{route('showCustomerOrder')}}" class="nav-link" >ລາຍການສັ່ງຊື້</a> </li>
+                            <li class="nav-item" ><a href="" class="nav-link">ລາຍການສັ່ງຈອງ</a> </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown main-li" >
@@ -94,7 +94,7 @@
                         <ul class="dropdown-menu" aria-labelledby="">
                             <li class="nav-item"><a href="{{route('lessproduct')}}" class="nav-link" >ກວດສອບສິນຄ້າ</a> </li>
                             <li class="nav-item"><a href="{{route('orderOutForm')}}" class="nav-link" >ອອກໃບຈັດຊື້ສິນຄ້າ</a> </li>
-                            <li class="nav-item"><a href="" class="nav-link" >ນໍາເຂົ້າສິນຄ້າ</a> </li>
+                            <li class="nav-item"><a href="{{route('importproduct')}}" class="nav-link" >ນໍາເຂົ້າສິນຄ້າ</a> </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown main-li" >
@@ -104,8 +104,12 @@
                         <ul class="dropdown-menu" aria-labelledby="" style="width: auto">
                             <li class="nav-item dropdown-sub-menu">
                                 <a href="" class="nav-link" data-toggle="dropdown" style="color: black; width: 100%" id="" aria-haspopup="true" aria-expanded="false">
-                                    ຂໍ້ມູນສິນຄ້າ
+                                    ຂໍ້ມູນສິນຄ້າ <i class="fa fa-caret-right" style="color: black; float: right"></i>
                                 </a>
+                                <ul class="dropdown-menu" aria-labelledby="">
+                                    <li class="nav-item"><a href="{{route('reportProduct')}}" class="nav-link" >ຂໍ້ມູນສິນຄ້າທັງໝົດ</a> </li>
+                                    <li class="nav-item"><a href="{{route('reportProducttype')}}" class="nav-link" >ຂໍ້ມູນປະເພດສິນຄ້າ</a> </li>
+                                </ul>
                             </li>
                             <li class="nav-item dropdown-sub-menu">
                                 <a href="" class="nav-link" data-toggle="dropdown" style="color: black; width: 100%" id="" aria-haspopup="true" aria-expanded="false">

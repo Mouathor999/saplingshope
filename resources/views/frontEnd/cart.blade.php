@@ -69,10 +69,6 @@
                                                 </li>
                                             </ul>
 
-
-
-
-
                                             {{--<a href="{{route('productcart.reduceOne',$orderitems['item']['id'])}}" class="nav-link"><i class="fas fa-trash" style="color: orangered"></i> delete</a>--}}
                                         </div>
 
@@ -80,15 +76,19 @@
                                     <td>
                                         <div class="div_in_td">
                                             @if(count($orderitems['item']->promotion) !=0)
-                                                @foreach($orderitems['item']->promotion as $ppromotion)
+                                              {{--  {{$orderitems['item']->promotion}}
+                                                <br>
+                                                <br>--}}
+                                                @for($i=0 ;$i< count($orderitems['item']->promotion);$i++)
+                                                    {{--{{$orderitems['item']->promotion[$i]->pivot}}<br>--}}
+                                                    @if($orderitems['item']->promotion[$i]->pivot->end_date >= date('Y-m-d') && $orderitems['item']->promotion[$i]->pivot->start_date <= date('Y-m-d') )
+                                                        {{$orderitems['item']->promotion[$i]->pivot->promotion}} &nbsp;%
+                                                        @else
 
-                                                    @if($ppromotion->pivot->end_date >= date('Y-m-d'))
-                                                        {{$ppromotion->pivot->promotion." %"}}
-                                                    @else
                                                     @endif
-                                                @endforeach
+                                                @endfor
                                             @else
-                                                {{"0"}}
+
                                             @endif
 
 
@@ -104,6 +104,7 @@
                                         <div class="div_in_td">{{$orderitems['price']}}</div>
                                     </td>
                                 </tr>
+
 
                             @endforeach
                             </tbody>
@@ -149,15 +150,17 @@
                 </div>
             </div>
             <div class="row" style="margin-bottom: 3%;margin-top: 5%; background-color: #d1ecf1" id="cartAdversting">
-                @for($a=1;$a<=10;$a++)
+                @foreach($Adverting as $product_adverting)
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-top: 3%">
-                            <img src="{{asset('img/nopic.jpg')}}" class="img-responsive" alt="" style="width: 100%;height: auto">
+                            <img src="{{asset('img/'.$product_adverting->productimage[0]->image)}}" class="img-responsive" alt="" style="width: 100%;height: auto">
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-top: 3%">
-                            product title <br>
-                            <a class="btn btn-success" href="" style="font-size: 10px">add to cart</a>
+                            {{--{{$product_adverting->pro_name}}--}}
+                            {{--{{$product_adverting->id}}--}}
+                            <br>
+                            <a class="btn btn-success" href="{{route('cart',$product_adverting->id)}}" style="font-size: 10px">add to cart</a>
                         </div>
-                    @endfor
+                    @endforeach
                     <br>
                     <br>
                 -----------------------------------------------

@@ -13,4 +13,8 @@ class Order extends Model
         return $this->belongsToMany(Product::class,'promotiondetail','promotion_id','product_id')
             ->withPivot('start_date', 'end_date');
     }
+
+    public function customer(){
+        return $this->belongsTo(Customer::class,'customer_id');
+    }
 }

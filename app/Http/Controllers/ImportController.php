@@ -63,7 +63,7 @@ class ImportController extends Controller
             if(session('OrderOutList')['LoginUser'] != "null"){
                 $Now_date = date('Y-m-d');
                 $import = new Import();
-                $import->import_date = $Now_date;
+                $import->orderOut_date = $Now_date;
                 $import->status = '1';
                 $import->employee_id  = session('OrderOutList')['LoginUser'];
                 $import-> supplier_id = session('OrderOutList')['supplier_no'];
@@ -76,9 +76,8 @@ class ImportController extends Controller
 
 
 //                return session('OrderOutList')['detail'][3]['pro_name'];
-
-                   /* Session::put('OrderOutList.LoginUser','null');
-                    return redirect()->route('saveOrderOutBill');*/
+                    Session::put('OrderOutList.LoginUser','null');
+                    return redirect()->route('saveOrderOutBill');
 
             }else{
                 return redirect()->route('orderOutBill');
@@ -123,6 +122,50 @@ class ImportController extends Controller
             return redirect()->route('admingetLogin');
         }
 
+    }
+
+    public function AddImport_product(){
+        if(Session::has('user_id')){
+        $orderOutList = Import::with('supplier')->with('employee')->where('status','=','1')->orderBy('id')->paginate(10000);
+//        return $orderOutList;
+        return view('backEnd/Import/importproduct',['OrderOutList'=>$orderOutList]);
+        }else{
+            return redirect()->route('admingetLogin');
+        }
+    }
+    public function OrderoutDetail($id){
+        $orderOut_user=Import::with('employee')->where('id','=',$id)->orderBy('id')->paginate(10);
+        $orderOutdetail = ImportDetail::all()->where('import_id','like',$id);
+        $username = $orderOut_user[0]->employee->emp_name;
+        $import_id =  array_flatten($orderOutdetail)[0]->import_id;
+        return view('backEnd/Import/OrderoutDetail',['orderOutDetail'=>$orderOutdetail,'import_id'=>$import_id,'username'=>$username]);
+    }
+
+    public function Post_orderOut_Ajax(Request $request){
+        if(Session::has('user_id')){
+            $data = $request->all(); // This will get all the request data.
+            session(['ImportOrderOutList'=>$data]);
+//            return redirect()->route('importproduct');
+            return response()->json("ທ່ານພ້ອມນໍາເຂົ້າສິນຄ້າບໍ ?. ກົດຕົກລົງເພື່ອນໍາເຂົ້າສິນຄ້າ");
+        }else{
+            return redirect()->route('admingetLogin');
+        }
+    }
+
+    public function ImportOrderOutProduct(){
+//        return session('ImportOrderOutList')['detail'][0];
+        if (count(session('ImportOrderOutList')['detail']) > 0 ){
+           for ( $i=0 ; $i< count(session('ImportOrderOutList')['detail']); $i++){
+//               return session('ImportOrderOutList');
+//               return session('ImportOrderOutList')['detail'][$i];
+               DB::update("UPDATE importdetail set quatity='".session('ImportOrderOutList')['detail'][$i]['orderout_qty']."', imp_price='".session('ImportOrderOutList')['detail'][$i]['bought_price']."', total_price='".session('ImportOrderOutList')['detail'][$i]['orderout_qty']*session('ImportOrderOutList')['detail'][$i]['bought_price']."' WHERE import_id='".session('ImportOrderOutList')['order_id']."' AND product_id='".session('ImportOrderOutList')['detail'][$i]['product_id']."'");
+               DB::update("UPDATE import set getIn_date = '".date('Y-m-d')."', status='0' WHERE id='".session('ImportOrderOutList')['order_id']."'");
+               $product_id =  DB::select("SELECT stock FROM product WHERE id='".session('ImportOrderOutList')['detail'][$i]['product_id']."'");
+               $product_stock = $product_id[0]->stock;
+               DB::update("UPDATE product SET stock ='".($product_stock + session('ImportOrderOutList')['detail'][$i]['orderout_qty'])."' WHERE id ='".session('ImportOrderOutList')['detail'][$i]['product_id']."'");
+           }
+            return redirect()->route('importproduct');
+        }
     }
 
 }

@@ -17,7 +17,7 @@
             var ToDate = new Date();
 
             if (new Date(CusDate).getTime() <= ToDate.getTime()) {
-                alert("The Date must be Bigger or Equal to today date");
+                alert("ວັນທີກໍານົດສົ່ງຕ້ອງໃຫຍ່ກ່ວາວັນສັ່ງຊື້ຢ່າງໜ້ອຍ 1 ວັນ");
                 document.getElementById("cusDate").value='';
                 return false;
             }
@@ -43,6 +43,7 @@
                 </form>
             </div>
         </div>
+        <div><h6><b><u>ໝາຍເຫດ</u> : ວັນທີກໍານົດສົ່ງຕ້ອງໃຫຍ່ກ່ວາວັນສັ່ງຊື້ຢ່າງໜ້ອຍ 1 ວັນ</b></h6></div>
     </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
