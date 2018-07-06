@@ -47,7 +47,7 @@ class AdminController extends Controller
 
            foreach ($empInfor as $emp){
 //               echo $emp->emp_username." ".Crypt::decrypt($emp->password)."<br/>";
-               if($emp->emp_username == $usename && Crypt::decrypt($emp->password) == $password){
+               if($emp->emp_username == $usename && $emp->password == md5($password)){
                     session(['user_id'=>$emp->id,'emp_username'=>$emp->emp_username,'password'=>$emp->password]);
                     return redirect()->route('adminPage');
                }else{
@@ -217,7 +217,7 @@ class AdminController extends Controller
 
                 $emp = new Employee();
                 $emp -> emp_username = $requests->input('uname');
-                $emp -> password = Crypt::encrypt($requests->input('Comfirm_pwd')) ;
+                $emp -> password = md5($requests->input('Comfirm_pwd')) ;
                 $emp -> emp_name = $requests->input('name');
                 $emp -> emp_lastname = $requests->input('lastname');
                 $emp -> gender = $requests->input('gender');
@@ -245,7 +245,6 @@ class AdminController extends Controller
                     $emp-> image = $file;            // 'image' => Input::file('img')->getClientOriginalName(),
                     if($emp ->save()){
                         $requests->file('img') -> move(public_path('/img'),$file);
-//                    Image::make($file->getRealPath())->resize(100,'150')->save(public_path().'IMGResize/'.$file);
                         return redirect()->route('AddEmployeeSuccess',['success'=>"Add Employee success"]);
                     }else{
                         return back()->withErrors("Error Information saved fail") ;

@@ -59,8 +59,8 @@
                 @endif
             </div>
             <div>
-                @if($text = null)
-                    {{$text}}
+                @if($text != null)
+                    <p style="color: #c82333; font-size: 2em">{{$text}}</p>
                 @endif
             </div>
 

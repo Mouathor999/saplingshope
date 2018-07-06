@@ -116,7 +116,7 @@
                                     ລາຍງານການຂາຍ <i class="fa fa-caret-right" style="color: black; float: right"></i>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="">
-                                    <li class="nav-item"><a href="" class="nav-link" >ລາຍງານຍອດຂາຍ</a> </li>
+                                    <li class="nav-item"><a href="{{route('reportmoneyReceive')}}" class="nav-link" >ລາຍງານຍອດຂາຍ</a> </li>
                                     <li class="nav-item"><a href="" class="nav-link" >ລາຍງານສິນຄ້າຂາຍດີ</a> </li>
                                 </ul>
                             </li>
@@ -131,12 +131,12 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link" >
+                                <a href="{{route('reportImportProduct')}}" class="nav-link" >
                                     ລາຍງານສິນຄ້ານໍາເຂົ້າ
                                 </a>
                             </li>
                             <li class="nav-item dropdown-sub-menu">
-                                <a href="" class="nav-link" data-toggle="dropdown" style="color: black; width: 100%" id="" aria-haspopup="true" aria-expanded="false">
+                                <a href="{{route('reportCustomer')}}" class="nav-link">
                                     ລາຍງານຂໍ້ມູນລູກຄ້າ
                                 </a>
                             </li>

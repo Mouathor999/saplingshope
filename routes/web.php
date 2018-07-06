@@ -11,6 +11,12 @@
 |
 */
 
+// Search route
+Route::get('',[
+    'uses'=>'SearchController@Allproduct',
+    'as'=>'searchAllproduct'
+]);
+
 Route::get('/', [
     'uses'=>'productController@index',
     'as'=>'product.index'
@@ -431,6 +437,38 @@ Route::group(['prefix'=>'admin'], function (){
         'uses'=>'ReportController@getAllProductType',
         'as'=>'reportProducttype'
     ]);
+    Route::get('/Report-MoneyReveive', [
+        'uses'=>'ReportController@Report_MoneyRecieve',
+        'as'=>'reportmoneyReceive'
+    ]);
+    Route::post('/moneyReceiveOne/{date1}','ReportController@MoneyRecieveOne');
+
+    Route::get('/moneyReceive/{date1}',[
+        'uses'=>'ReportController@MoneyRecieve',
+        'as'=>'moneyReceiveOne',
+    ]);
+    Route::post('/moneyReceiveTwo/{date2}/{date3}','ReportController@MoneyRecieveTwo');
+
+
+    Route::get('/moneyReceiveTwo/{date2}/{date3}',[
+        'uses'=>'ReportController@MoneyRecieveTwo',
+        'as'=>'moneyReceiveTwo',
+    ]);
+    Route::get('/Report-Import-product',[
+        'uses'=>'ReportController@ReportImportProduct',
+        'as'=>'reportImportProduct',
+    ]);
+
+    Route::post('/reportImportProduct/{date1}/{date2}','ReportController@AjaxReportImportProduct');
+
+
+
+
+    Route::get('Report-Customer',[
+        'uses'=>'ReportController@ReportCustomer',
+        'as'=>'reportCustomer'
+    ]);
+
 
 
 
@@ -447,9 +485,6 @@ Route::group(['prefix'=>'admin'], function (){
         'uses'=>'ReportController@EmployeeInfor',
         'as'=>'employeeInfor'
     ]);
-
-
-
 
 
 });

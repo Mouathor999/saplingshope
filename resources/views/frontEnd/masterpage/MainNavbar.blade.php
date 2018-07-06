@@ -13,7 +13,7 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <form class="navbar-form" role="search" action="" method="post">
                             <div class="input-group add-on">
-                                <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+                                <input type="search" name="q" class="form-control" placeholder="Search" autocomplete="off">
                                 <div class="input-group-btn">
                                     <button class="btn btn-default" type="button"><i class="fas fa-search"></i></button>
                                 </div>

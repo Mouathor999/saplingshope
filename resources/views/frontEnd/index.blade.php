@@ -11,11 +11,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
-    <script type="text/javascript">
-        (document).onload(function () {
-            $('#home_li').addClass('active');
-        });
-    </script>
+
 </head>
 <body>
   @include('frontEnd.masterpage.master')

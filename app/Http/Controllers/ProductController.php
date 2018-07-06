@@ -10,6 +10,7 @@ use App\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
+use Hash;
 
 class productController extends Controller
 {
@@ -17,11 +18,20 @@ class productController extends Controller
      * @return array
      */
     public function index(){
-       $bestSale = DB::select("SELECT  product_id, SUM(quantity) AS totalquatity  FROM orderdetail GROUP BY product_id  order BY SUM(quantity) DESC LIMIT 12"); //saledetail
+//        $bestSale = DB::select("SELECT  product_id, image, SUM(quantity) AS totalquatity  FROM orderdetail GROUP BY product_id  order BY SUM(quantity) DESC LIMIT 12")
+       $bestSale = DB::select("SELECT  product_id, SUM(quantity) AS totalquatity  FROM orderdetail GROUP BY product_id order BY SUM(quantity) DESC LIMIT 12"); //saledetail
 
         $new_product = Product::with('productimage')->orderBy('id','DESC')->paginate(12);
 
         $recomment = Product::with('productimage')->orderBy('id','ASC')->paginate(12);
+
+     /*   $a = Hash::make("ABC");
+
+        if (Hash::check('ABC', $a))
+        {
+            echo "Password martch";
+        }
+     */
 
        return view("frontEnd\index",['NewProduct'=>$new_product,'bestSale'=>$bestSale,'Recomment'=>$recomment]);
 
