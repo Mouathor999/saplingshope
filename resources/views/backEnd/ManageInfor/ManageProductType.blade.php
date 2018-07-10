@@ -15,12 +15,7 @@
 @include('backEnd.AdminNavbar')
 <div class="container container-fluid">
     <br><br>
-    <div >
-        <form action="" method="" class="form-group">
-            <input type="text" name="searchPtype" class="form-control" placeholder="search product type" autofocus>
-        </form>
 
-    </div>
    <div class="">
            <ul class="list-group">
 

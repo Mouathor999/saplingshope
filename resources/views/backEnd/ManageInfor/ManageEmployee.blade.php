@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>All product</title>
+    <title>ຂໍ້ມູນພະນັກງານ</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
@@ -16,36 +16,27 @@
 <div class="mainContent">
     {{--class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2--}}
     <br>
-    <div class="container">
-        <form class="navbar-form" role="search" action="" method="post">
-            <div class="input-group add-on">
-                <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" style="box-shadow: 1px 1px 2px 1px #1e7e34">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="button" style="box-shadow: 1px 1px 2px 1px #1e7e34"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </form>
-    </div>
+
     <div class="row" style="margin-top: 1%; margin-right: 1%">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="table-responsive">
                 <table class="table table-hover" style="width:95%">
                     <tr>
-                        <td ><div class=""><b>emp_ID</b></div></td>
-                        <td ><div class="div_in_td"><b>Picture</b></div></td>
-                        <td ><div class=""><b>name</b></div></td>
-                        <td ><div class="div_in_td"><b>lastname</b></div></td>
-                        <td ><div class=""><b>Eduction</b></div></td>
-                        <td ><div class=""><b>Gender</b></div></td>
-                        <td ><div class=""><b>Age</b></div></td>
-                        <td ><div class=""><b>Village</b></div></td>
-                        <td ><div class=""><b>District</b></div></td>
-                        <td ><div class=""><b>Province</b></div></td>
-                        <td ><div class=""><b>Phone</b></div></td>
-                        <td ><div class=""><b>Email</b></div></td>
-                        <td ><div class=""><b>Social card</b></div></td>
-                        <td ><div class=""><b>edit product</b></div></td>
-                        <td ><div class=""><b>delete product</b></div></td>
+                        <td ><div class=""><b>ລະຫັດ</b></div></td>
+                        <td ><div class="div_in_td"><b>ຮູບ</b></div></td>
+                        <td ><div class=""><b>ຊື່</b></div></td>
+                        <td ><div class="div_in_td"><b>ນາມສະກຸນ</b></div></td>
+                        <td ><div class="div_in_td"><b>ລະດັບການສືກສາ</b></div></td>
+                        <td ><div class=""><b>ເພດ</b></div></td>
+                        <td ><div class=""><b>ອາຍຸ</b></div></td>
+                        <td ><div class=""><b>ບ້ານ</b></div></td>
+                        <td ><div class=""><b>ເມືອງ</b></div></td>
+                        <td ><div class=""><b>ແຂວງ</b></div></td>
+                        <td ><div class=""><b>ໂທລະສັບ</b></div></td>
+                        <td ><div class=""><b>ອີເມວ</b></div></td>
+                        <td ><div class=""><b>ເລກບັດປະຈໍາຕົວ</b></div></td>
+                        <td ><div class=""><b>ແກ້ໄຂຂໍ້ມູນ</b></div></td>
+                        <td ><div class=""><b>ລົບ</b></div></td>
                     </tr>
                     <tbody>
                     @foreach($employees as $employee )

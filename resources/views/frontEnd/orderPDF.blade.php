@@ -24,19 +24,19 @@
         <div>
 
             <div style="float: left; width: 300px" >
-                <b> Order ID :</b> {{$orderID}} <br/>
-                <b> Customer ID :</b> {{$customerInfor->id}} <br/>
-                <b> Customer Name :</b>{{$customerInfor->cus_name}} <br/>
-                <b> Customer Village :</b> {{$customerInfor->village}}<br/>
-                <b> Customer District :</b> {{$customerInfor->district}} <br/>
-                <b> Customer Province :</b> {{$customerInfor->province}} <br/>
-                <b> Customer Tel :</b> {{$customerInfor->tel}} <br/>
+                <b> ລະຫັດສັ່ງຊື້ :</b> {{$orderID}} <br/>
+                <b> ລະຫັດລູກຄ້າ :</b> {{$customerInfor->id}} <br/>
+                <b> ຊື່ :</b>{{$customerInfor->cus_name}} <br/>
+                <b> ບ້ານ :</b> {{$customerInfor->village}}<br/>
+                <b> ເມືອງ :</b> {{$customerInfor->district}} <br/>
+                <b> ແຂວງ :</b> {{$customerInfor->province}} <br/>
+                <b> ໂທລະສັບ :</b> {{$customerInfor->tel}} <br/>
             </div>
-            <div  style="float: right; width: 300px">
-                <b>Shope name:</b> Chanphong Shop<br/>
-                <b>Bank account : </b>160120001029770001<br/>
-                <b> Shope Contack 1 :</b> 021 200342<br/>
-                <b>Contack 2 :</b> 0305989990<br/>
+            <div  style="float: right; width: 200px; margin-right: 0px">
+                <b>ຊື່ຮ້ານ:</b> ຮ້ານ ຈັນຟອງ<br/>
+                <b>ບັນຊີທະນາຄານ : </b>160120001029770001<br/>
+                <b> ໂທລະສັບ :</b> 021 200342<br/>
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</b> 0305989990<br/>
             </div>
         </div>
         <br>
@@ -44,7 +44,6 @@
         <div class="container">
             <table style="width: 100%">
                 <tr>
-                    {{--<th  style="  padding: 10px;"><div style="width: 50px">Picture</div></th>--}}
                     <th style="  padding: 10px; background-color: #B3E5FC" ><div style=" text-align: center;">Product name</div></th>
                     <th style="  padding: 10px; background-color: #B3E5FC" ><div style=" text-align: center;">Promotion</div></th>
                     <th style="  padding: 10px; background-color: #B3E5FC" ><div style=" text-align: center;">Quantity</div></th>
@@ -52,10 +51,8 @@
                     <th style="  padding: 10px; background-color: #B3E5FC" ><div style=" text-align: center;">Total price</div></th>
                 </tr>
                   @foreach($CusOrderList as $OrderItem)
-
                   <tr>
-                          {{--<td style="text-align: center"><img src="{{asset(public_path('img/'),$OrderItem->image)}}" alt="" style="width: 100px;height: 100px"></td>--}}
-                          <td style=" padding: 10px;text-align: center;">{{$OrderItem->pro_name}}</td>
+                      <td style=" padding: 10px;text-align: center;">{{$OrderItem->pro_name}}</td>
                           <td style=" padding: 10px;text-align: center;">{{$OrderItem->product_promotion}}&nbsp; %</td>
                           <td style=" padding: 10px;text-align: center;">{{$OrderItem->quantity}}</td>
                           <td style=" padding: 10px;text-align: center;">{{$OrderItem->sale_price}}</td>
@@ -64,62 +61,11 @@
                 @endforeach
             </table>
         </div>
-        {{--<div>
-
-            @foreach($CusOrderList as $OrderItem)
-                <div>
-                    {{$OrderItem->pro_name." ".$OrderItem->quantity." ".$OrderItem->sale_price." ".$OrderItem->total_price." ".$OrderItem->image}}
-                </div>
-                <br>
-                <br>
-            @endforeach
-
-
-        </div>--}}
         <div style="margin-top: 10%; float: right; width: 200px;">
             <span style=" color: mediumblue; font-size: 16px">Sub total price :</span>  {{Session('totalprice')}} ກີບ
 
         </div>
-
-
-
-         {{--test product promotion--}}
-        {{--@foreach($orderCart as $cartItem)
-            @if(count($cartItem['item']->promotion) !=0)
-                <div>
-                    @foreach($cartItem['item']->promotion as $ppromotion)
-                       --}}{{-- @if($ppromotion)
-
-                         @else
-                        @endif  --}}{{--
-                        <div>
-                            @if($ppromotion->pivot->end_date >= date('Y-m-d'))
-                                {{$ppromotion->pivot->promotion}}
-                             @else
-                            @endif
-
-                        </div>
-                        <br>
-                     @endforeach
-                    --}}{{--{{$cartItem['item']->promotion}}--}}{{--
-                </div>
-             @else
-
-            @endif
-
-        @endforeach--}}
-
-
-
-
-        <div>
-
-        </div>
-
     </div>
-
-
-
 
 </body>
 </html>

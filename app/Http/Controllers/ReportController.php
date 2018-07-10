@@ -178,4 +178,52 @@ class ReportController extends Controller
         return response()->json($Arr);
     }
 
+
+
+
+    public function BestProductSale(){
+
+       /* $myarray = [];
+        $data= DB::select("SELECT sd.product_id, sum(sd.quantity) as total_sale from saledetail as sd GROUP BY sd.product_id ORDER BY total_sale DESC LIMIT 12");
+        foreach ($data as $item){
+            $product = DB::select("select sd.product_id,sd.pro_nam as pro_name,sd.image from saledetail as sd WHERE product_id='".$item->product_id."'  ");
+            array_push($myarray,$product);
+        }
+        return array_flatten($myarray);*/
+
+
+        return view("backEnd/Report/BestProductSale");
+
+    }
+
+    public function AjaxBestProductSale1(Request $request, $date1){
+
+        $myarray = [];
+        $data= DB::select("SELECT sd.product_id, sum(sd.quantity) as total_sale from saledetail as sd INNER JOIN sale as sa ON sd.sale_id = sa.id WHERE  sa.sale_date >='".$date1."' GROUP BY sd.product_id ORDER BY total_sale DESC LIMIT 12");
+
+        foreach ($data as $item){
+            $product = DB::select("select sd.product_id as product_id ,sd.pro_nam as productName,sd.image from saledetail as sd  WHERE product_id='".$item->product_id."'  ");
+            array_push($myarray,$product);
+        }
+        return response()->json($myarray);
+
+    }
+    public function AjaxBestProductSale2(Request $request, $date2, $date3){
+
+        $myarray = [];
+        $data= DB::select("SELECT sd.product_id, sum(sd.quantity) as total_sale from saledetail as sd INNER JOIN sale as sa ON sd.sale_id = sa.id WHERE  sa.sale_date BETWEEN '".$date2."' AND '".$date3."' GROUP BY sd.product_id ORDER BY total_sale DESC LIMIT 12");
+
+        foreach ($data as $item){
+            $product = DB::select("select sd.product_id as product_id ,sd.pro_nam as productName,sd.image from saledetail as sd  WHERE product_id='".$item->product_id."'  ");
+            array_push($myarray,$product);
+        }
+        return response()->json($myarray);
+
+
+
+    }
+
+
+
+
 }

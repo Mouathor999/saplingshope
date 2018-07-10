@@ -36,7 +36,7 @@
                 <p><h5><b>ຂໍ້ມູນເພີ່ມເຕີມ</b></h5></p>
                 <hr style="width: 50%; margin-right: 0px; background-color: #c82333">
                 <b>ລະຫັດໃບບິນ:</b><label style="margin-left: 20px">{{Session::get('OrderOutList')['order_no']}}</label><br/>
-                <b>ສັ່ງຊື້ໂດຍ : </b><label style="margin-left: 20px">{{Session::get('OrderOutList')['LoginUser']}}</label><br/>
+                <b>ສັ່ງຊື້ໂດຍ : </b><label style="margin-left: 20px">{{session('emp_username')}}</label><br/>
             </div>
         </div>
 

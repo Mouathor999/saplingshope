@@ -51,7 +51,7 @@ class CustomerController extends Controller
         if($Countcustom>=1){
             for ($i=0; $i<=$Countcustom-1;$i++){
                 if($CustomerInfor[$i]->username == $usename && Crypt::decrypt($CustomerInfor[$i]->password) == $password){
-                    session(['cus_id'=>$CustomerInfor[$i]->id,'username'=>$CustomerInfor[$i]->username,'password'=>$CustomerInfor[$i]->password,'cus_name'=>$CustomerInfor[$i]->cus_name,'cus_lastname'=>$CustomerInfor[$i]->cus_lastname,'cus_tel'=>$CustomerInfor[$i]->tel,'cus_email'=>$CustomerInfor[$i]->email]);
+                    session(['cus_id'=>$CustomerInfor[$i]->id,'username'=>$CustomerInfor[$i]->username,'password'=>$CustomerInfor[$i]->password,'cus_name'=>$CustomerInfor[$i]->cus_name,'cus_lastname'=>$CustomerInfor[$i]->cus_lastname,'cus_tel'=>$CustomerInfor[$i]->tel,'village'=>$CustomerInfor[$i]->village ,'district'=>$CustomerInfor[$i]->district ,'province'=>$CustomerInfor[$i]->province ,'cus_email'=>$CustomerInfor[$i]->email ]);
                     $data = $request->session()->all();
                     if($data['username'] != null && $data['password'] != null  && $data['cus_id'] != null && $data['cus_name'] != null && $data['cus_lastname'] != null &&  $data['cus_tel'] != null){
                          if(session::has('cart')){
@@ -359,9 +359,7 @@ class CustomerController extends Controller
  //                        echo  $ppromotion->pivot->promotion;
                              $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'] - ((($orderitem['qty']*$orderitem['item']['sale_price'])*$ppromotion->pivot->promotion)/100);
                          }else{
-                             if ($ppromotion->pivot->end_date >= date('Y-m-d') && $ppromotion->pivot->start_date >= date('Y-m-d')) {
-                                 $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
-                             }
+                             $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
 
                          }
                      }

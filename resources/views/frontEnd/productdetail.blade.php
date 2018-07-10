@@ -123,7 +123,7 @@
                                     </div>
                                     <hr/>
                                     <div>
-                                        <p class="" style="text-align: center"><button class="btn btn-success btn-xs"><i class="fas fa-cart-plus"></i> Add to cart</button></p>
+                                        <p class="" style="text-align: center"><button class="btn btn-success btn-xs"><i class="fas fa-cart-plus"></i> ໃສ່ກະຕ່າ</button></p>
                                     </div>
                                     <div class="promotionDIV">
                                         <h3>promotion detail</h3>
@@ -176,27 +176,40 @@
             </div>
         </div>
         @endforeach
-      <div style="margin-top: 2%">
+      <div style="margin-top: 1%">
           {{--Start swiper slide   Advertising--}}
           <div class="swiper-container">
               <div class="swiper-wrapper">
-                 @for($i=1;$i<=12;$i++)
+                 @foreach($advertising as $ad)
                       <div class="swiper-slide">
                           <div class="thumbnail">
                               <div class="productImage">
                                   <a href="{{route('productdetail',2 )}}">
-                                      <img class="ns-img" src="{{asset('img/53b0150c46fd23eb14d2c025b09e579d.jpg')}}" alt="">
+                                      <img class="ns-img" src="{{asset('img/'.$ad->productimage[0]->image )}}" alt="">
                                   </a>
                               </div>
                               <div class="caption">
-                                  <h4 class="producttitle">Thumbnail label</h4>
-                                  <div class="producttext">All Text hereAll Text hereAll Text hereAll Text here</div>
-                                  <div>$12</div>
-                                  <p><a href="" class="btn btn-info btn-xs" role="button">Add to cart</a></p>
+                                  <h6 class="producttitle" style="margin-top: 4%">{{$ad->pro_name}}</h6>
+                                  <div class="producttext">
+                                      @if(count($ad->promotion) !=0)
+                                          @for($i=0 ;$i< count($ad->promotion);$i++)
+                                              @if($ad->promotion[$i]->pivot->end_date >= date('Y-m-d') && $ad->promotion[$i]->pivot->start_date <= date('Y-m-d') )
+                                                  {{$ad->promotion[$i]->pivot->promotion}} &nbsp;%
+                                              @else
+
+                                              @endif
+                                          @endfor
+                                      @else
+
+                                      @endif
+                                  </div>
+                                  <div style="margin-top: 3%"><b>ລາຄາ: </b> {{$ad->sale_price}}&nbsp;ກີບ </div>
+                                  <br>
+                                  <p><a href="{{route('cart',$ad->id)}}" class="btn btn-success">ໃສ່ກະຕ່າ</a></p>
                               </div>
                           </div>
                       </div>
-                 @endfor
+                 @endforeach
               </div>
           </div>
           {{--End of swiper slide--}}

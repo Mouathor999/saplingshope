@@ -14,6 +14,7 @@ class ManageController extends Controller
 {
     public function getAllProduct(){
         if(Session::has('user_id')){
+
             $products = Product::with('Producttype')->with('productimage')->with('promotion')->paginate(1000);
 //            return array_flatten($products) ;
             return view("backEnd/ManageInfor/AllProduct",['products'=>$products]);

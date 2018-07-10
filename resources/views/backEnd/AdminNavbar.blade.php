@@ -117,7 +117,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="">
                                     <li class="nav-item"><a href="{{route('reportmoneyReceive')}}" class="nav-link" >ລາຍງານຍອດຂາຍ</a> </li>
-                                    <li class="nav-item"><a href="" class="nav-link" >ລາຍງານສິນຄ້າຂາຍດີ</a> </li>
+                                    <li class="nav-item"><a href="{{route('bestproductsale')}}" class="nav-link" >ລາຍງານສິນຄ້າຂາຍດີ</a> </li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown-sub-menu">

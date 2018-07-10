@@ -18,23 +18,14 @@
     <br>
     <div class="text-center"><h3>ລາຍງານຂໍ້ມູນປະເພດສິນຄ້າ</h3></div>
     <br>
-   <div id="searchTap">
-       <form class="navbar-form" role="search" action="" method="post">
-           <div class="input-group add-on">
-               <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" style="box-shadow: 1px 1px 2px 1px #1e7e34">
-               <div class="input-group-btn">
-                   <button class="btn btn-default" type="button" style="box-shadow: 1px 1px 2px 1px #1e7e34"><i class="fas fa-search"></i></button>
-               </div>
-           </div>
-       </form>
-   </div>
+
    <div style="margin-top: 3%">
            <ul class="list-group">
                <li class="list-group-item">
                    <div class="table-responsive" id="tableResponsive">
                        <table class="table table-hover" style="">
                            <tr>
-                               <td><b>ລະຫັດປະເພດສິນຄ້່າ</b>ລ</td>
+                               <td><b>ລະຫັດປະເພດສິນຄ້່າ</b></td>
                                <td style="text-align: left"><b>ຊື່ປະເພດສິນຄ້າ</b></td>
                            </tr>
                            @foreach($producttype as $ptype)

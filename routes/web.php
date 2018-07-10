@@ -12,10 +12,17 @@
 */
 
 // Search route
-Route::get('',[
-    'uses'=>'SearchController@Allproduct',
-    'as'=>'searchAllproduct'
-]);
+Route::post('/searchAllproduct/{query}','SearchController@SearchAllproduct');
+
+// test search route
+
+Route::get('/SpecificSearch','SearchController@SpecificSearch');
+
+
+Route::get('/AjaxAllproduct','SearchController@AjaxAllproducts');
+
+Route::get('/SaplingSearch','SearchController@SaplingSearch');
+
 
 Route::get('/', [
     'uses'=>'productController@index',
@@ -459,7 +466,21 @@ Route::group(['prefix'=>'admin'], function (){
         'as'=>'reportImportProduct',
     ]);
 
+    Route::get('/Best-Product-Sale',[
+        'uses'=>'ReportController@BestProductSale',
+        'as'=>'bestproductsale',
+    ]);
     Route::post('/reportImportProduct/{date1}/{date2}','ReportController@AjaxReportImportProduct');
+
+    Route::post('/BestProductSaleOne/{date1}','ReportController@AjaxBestProductSale1');
+
+    Route::post('/BestProductSaleTwo/{date2}/{date3}','ReportController@AjaxBestProductSale2');
+
+//  Ajax Search product
+
+    Route::get('/ajaxSearchProduct_Admin','SearchController@AjaxSearchProduct_Admin');
+
+
 
 
 

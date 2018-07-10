@@ -13,24 +13,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 </head>
 <body onresize="screenReSize()" class="">
 
 @include('frontEnd.masterpage.master')
-<div class="mainConten">
-    {{-- @foreach($products as $product)
-         {{$product->id}}
-             @if($product->productimage->count()>=1)
-                 @foreach($product->productimage as $pic)
-                     {{$pic->image}}
-                 @endforeach
-             @endif
-
-         <br>
-     @endforeach--}}
-
-
-
+<div class="mainConten" id="maincontent">
     <div class="row" style="margin-top: 2%; margin-bottom: 2%">
         <div class="col-md-1 col-lg-1 col-xl-1">
 
@@ -98,6 +89,12 @@
     </div>
 </div>
 
+
+<div class="container container-fluid" style="margin-bottom: 1%">
+    <div class="row" id="showSeach" style="display: none">
+
+    </div>
+</div>
 
 {{--Start swiper slide   Advertising--}}
 <div class="swiper-container">
@@ -183,4 +180,96 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
+
+<script type="text/javascript">
+
+    $("#searchAll").keyup(function () {
+        var search_data = $("#search").val();
+        if(!search_data) {
+            $('#maincontent').show();
+            $('#saplingSearchFrame').show();
+            $('#showSeach').hide();
+        }else {
+
+        }
+    });
+
+
+    $("#searchAll").autocomplete({
+        source: "{{URL::to('/SpecificSearch')}}",
+        minLength:1,
+        select:function (key, value) {
+            console.log(value);
+
+            var data = value.item;
+
+            console.log(data['promotion'].length);
+
+            var dataContent ='';
+            if( data['promotion'][0] ){
+                dataContent += `
+                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3" style="margin-top: 1%" xmlns="http://www.w3.org/1999/html">
+                                <div class="card">
+                                   <a href="http://localhost:8000/detail/${data['id']}" class="">
+                                        <img class="img-responsive" src="http://localhost:8000/img/${data['image']}" alt="" style="width: 100%; height: 210px">
+                                    </a>
+                                   <div class="card-body" style="background-color: whitesmoke">
+                                         <div style="margin-left: 5px">
+                                           <h5><b>ຊື້ສິນຄ້າ : ${data['value']}</b></h5>
+                                         </div>
+                                         <div style="margin-left: 7px">
+                                          <h6><b>ລາຄາ: </b>${data['price']} &nbsp; ກິບ</h6>
+                                         </div>
+                                         <div style="margin-left: 7px">
+                                          <h6><b>ໂປຣໄມເຊີນ: </b>${data['promotion'][0]['promotion']} &nbsp; %</h6>
+                                         </div>
+                                         <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                <p class="text-center"><a href="" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                <p class="text-center"><a href="http://localhost:8000/detail/${data['id']}" class="nav-link"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
+                                            </div>
+                                          </div>
+                                   </div>
+                                </div>
+                     </div>
+                `;
+            }else{
+                dataContent += `
+                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3" style="margin-top: 1%" xmlns="http://www.w3.org/1999/html">
+                                <div class="card">
+                                   <a href="http://localhost:8000/detail/${data['id']}" class="">
+                                        <img class="img-responsive" src="http://localhost:8000/img/${data['image']}" alt="" style="width: 100%; height: 210px">
+                                    </a>
+                                   <div class="card-body" style="background-color: whitesmoke">
+                                         <div style="margin-left: 5px">
+                                           <h5><b>ຊື້ສິນຄ້າ : ${data['value']}</b></h5>
+                                         </div>
+                                         <div style="margin-left: 7px">
+                                          <h6><b>ລາຄາ: </b>${data['price']} &nbsp; ກິບ</h6>
+                                         </div>
+
+                                         <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                <p class="text-center"><a href="" class="nav-link"><i class="fas fa-eye"></i> view</a></p>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                <p class="text-center"><a href="http://localhost:8000/detail/${data['id']}" class="nav-link"><i class="fas fa-cart-plus fa-2x" style="color: green"></i></a></p>
+                                            </div>
+                                          </div>
+                                   </div>
+                                </div>
+                     </div>
+                `;
+            }
+
+            $('#maincontent').hide();
+            $('#showSeach').show();
+            $('#showSeach').html(dataContent);
+        }
+    });
+</script>
+
+
 </html>

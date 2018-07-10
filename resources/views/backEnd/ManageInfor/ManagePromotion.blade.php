@@ -15,22 +15,23 @@
 @include('backEnd.AdminNavbar')
 <div class="container container-fluid">
     <br><br>
-    <div >
-        <form action="" method="" class="form-group">
-            <input type="text" name="searchPromotion" class="form-control" placeholder="search product type" autofocus>
-        </form>
 
-    </div>
     <div class="">
         <div class="table-responsive">
             <table class="table table-hover" style="">
-                @foreach($promotions as $promotion)
                 <tr>
+                    <td>ລະຫັດ</td>
+                    <td>ໂປຣໂມເຊີນ</td>
+                    <td style="text-align: right">ແກ້ໄຂ</td>
+                    <td style="text-align: left">ລົບ</td>
+                </tr>
+                @foreach($promotions as $promotion)
+                <tbody>
                     <td>{{$promotion->id}}</td>
                     <td>{{$promotion->promotion}}% </td>
                     <td style="text-align: right"><a href="{{route('EditPromotion',$promotion->id)}}" class="btn btn-warning"> <i class="fas fa-pencil-alt"></i> </a></td>
                     <td style="text-align: left"><a href="{{route('DelPromotion',$promotion->id)}}" class="btn btn-danger"> X </a></td>
-                </tr>
+                </tbody>
                 @endforeach
             </table>
         </div>

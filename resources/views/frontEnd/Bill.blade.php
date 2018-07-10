@@ -17,22 +17,22 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
-            <b> Order ID :</b> 999999 <br/>
-            <b> Customer ID :</b> 999999 <br/>
-            <b> Customer Name :</b> xxxxxx <br/>
-            <b> Customer Village :</b> xxxxxx <br/>
-            <b> Customer District :</b> xxxxxx <br/>
-            <b> Customer Province :</b> xxxxxx <br/>
+            <b>ລະຫັດສັ່ງຊື້ :</b>  <br/>
+            <b> ຊື້່ :</b> {{session('cus_name')}} <br/>
+            <b> ບ້ານ :</b> {{session('village')}} <br/>
+            <b> ເມືອງ :</b> {{session('district')}} <br/>
+            <b> ແຂວງ :</b> {{session('province')}} <br/>
+            <b> ໂທລະສັບ :</b> {{session('cus_tel')}} <br/>
 
 
         </div>
         <br>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
 
-            <b> Shope name:</b> xxxxxx<br/>
-            <b> Shope Bank Account:</b> 999999<br/>
-            <b> Shope Contack 1 :</b> 999999<br/>
-            <b> Shope Contack 2 :</b> 999999<br/>
+            <b> ຊື່ຮ້ານ :</b> ຮ້ານ ຈັນຟອງ<br/>
+            <b> ບັນຊີທະນາຄານ:</b> 160120001029770001<br/>
+            <b> ໂທລະສັບ  :</b> 021 200342<br/>
+            <b>&nbsp;&nbsp;&nbsp;&nbsp; :</b> 0305989990<br/>
 
         </div>
     </div>
@@ -72,7 +72,6 @@
                                 <td>
                                     <div class="text-left" style="width: 300px">
                                         <lable>{{$orderitems['item']['pro_name']}}</lable>
-                                        <a href="#" class="nav-link"><i class="fas fa-trash" style="color: orangered"></i> delete</a>
                                     </div>
 
                                 </td>

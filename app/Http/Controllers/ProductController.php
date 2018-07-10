@@ -18,27 +18,28 @@ class productController extends Controller
      * @return array
      */
     public function index(){
-//        $bestSale = DB::select("SELECT  product_id, image, SUM(quantity) AS totalquatity  FROM orderdetail GROUP BY product_id  order BY SUM(quantity) DESC LIMIT 12")
-       $bestSale = DB::select("SELECT  product_id, SUM(quantity) AS totalquatity  FROM orderdetail GROUP BY product_id order BY SUM(quantity) DESC LIMIT 12"); //saledetail
 
+        $myarray = [];
+        $data= DB::select("SELECT sd.product_id, sum(sd.quantity) as total_sale from saledetail as sd GROUP BY sd.product_id ORDER BY total_sale DESC LIMIT 12");
+
+        foreach ($data as $item){
+            $product = DB::select("select sd.product_id,sd.pro_nam ,sd.image from saledetail as sd WHERE product_id='".$item->product_id."'  ");
+             array_push($myarray,$product);
+        }
+
+//                return array_flatten($myarray);
         $new_product = Product::with('productimage')->orderBy('id','DESC')->paginate(12);
 
         $recomment = Product::with('productimage')->orderBy('id','ASC')->paginate(12);
-
-     /*   $a = Hash::make("ABC");
-
-        if (Hash::check('ABC', $a))
-        {
-            echo "Password martch";
-        }
-     */
-
-       return view("frontEnd\index",['NewProduct'=>$new_product,'bestSale'=>$bestSale,'Recomment'=>$recomment]);
+       return view("frontEnd\index",['NewProduct'=>$new_product,'bestSale'=>array_flatten($myarray),'Recomment'=>$recomment]);
 
    }
    public function productdetail($id){
        $product = Product::with('Producttype')->with('productimage')->with('promotion')->where('id','=',$id)->orderBy('id')->paginate(100);
-       return view("frontEnd/productdetail",['productinfor'=>$product]);
+       $ptype_id= DB::select("select pro.product_type_id as p_id from product as pro WHERE pro.id='".$id."' ");
+       $advertising = Product::with('Producttype')->with('productimage')->with('promotion')->where('product_type_id','LIKE',$ptype_id[0]->p_id)->orderBy('id','DESC')->paginate(12);
+
+       return view("frontEnd/productdetail",['productinfor'=>$product,'advertising'=>$advertising]);
    }
     public function saplingtree(){
 
@@ -59,6 +60,8 @@ class productController extends Controller
 //        return count($orderCart);
         $totalprice = 0;
         $a=0;
+
+
         foreach ($orderCart as $orderitem){
             if (count($orderitem['item']->promotion) != 0){
                 foreach ($orderitem['item']->promotion as $ppromotion){
@@ -66,9 +69,10 @@ class productController extends Controller
 //                        echo  $ppromotion->pivot->promotion;
                         $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'] - ((($orderitem['qty']*$orderitem['item']['sale_price'])*$ppromotion->pivot->promotion)/100);
                     }else{
-                        if ($ppromotion->pivot->end_date >= date('Y-m-d') && $ppromotion->pivot->start_date > date('Y-m-d')) {
+                        /*if ($ppromotion->pivot->end_date >= date('Y-m-d') && $ppromotion->pivot->start_date > date('Y-m-d')) {
                             $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
-                        }
+                        }*/
+                        $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
                     }
                 }
 

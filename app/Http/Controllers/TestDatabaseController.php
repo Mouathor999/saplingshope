@@ -52,7 +52,7 @@ class TestDatabaseController extends Controller
 
 
 //        This is for Product_level
-        $testproductAndProductLevel = Product::with('productlevel')->orderBy('id','desc')->paginate(10);
+//        $testproductAndProductLevel = Product::with('productlevel')->orderBy('id','desc')->paginate(10);
 //        $testproductAndimage = Product::with('productimage')->orderBy('id')->paginate(10);
           $testproductAndimage = Product::with('productimage')->orderBy('id')->paginate(10);
 
@@ -86,7 +86,8 @@ class TestDatabaseController extends Controller
     }*/
 
 
-      return view('test/testDatabase',['product_productlevel'=>$testproductAndProductLevel,'product_images'=>$testproductAndimage,'product_oder'=>$products]);
+//      return view('test/testDatabase',['product_productlevel'=>$testproductAndProductLevel,'product_images'=>$testproductAndimage,'product_oder'=>$products]);
+      return view('test/testDatabase');
 
 
 
