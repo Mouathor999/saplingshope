@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Insert</title>
+    <title>ເພີ່ມໂປຣໂມເຊີນ</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
@@ -14,31 +14,32 @@
 <body>
 @include('backEnd.AdminNavbar')
 
-<div class="container container-fluid">
+<div class="container container-fluid"  style="margin-top: 20px">
     <div class="row">
         <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <h2>Add Promotion</h2>
+                <h2>ເພີ່ມຂໍ້ມູນໂປຣໂມເຊີນ</h2>
             </div>
             <form class="form-group" action="{{route('AddPromotion')}}" method="POST" enctype="multipart/form-data">
                 <div>
-                    <label for="promotion_id">Promotion ID</label>
+                    <label for="promotion_id">ລະຫັດໂປໂມເຊີນ</label>
                     <input type="text" name="promotion_id" class="form-control">
                 </div>
                 <div>
-                    <label for="pname">Promotion</label>
+                    <label for="pname">ໂປຣໂມເຊີນ</label>
                     <input type="text" name="promotion" class="form-control">
                 </div>
                 <br>
                 <div>
-                    <input type="submit" value="submit" name="submit" class="btn btn-success">
+                    <input type="submit" value=" ຕົກລົງ " name="submit" class="btn btn-success">
                 </div>
                 {{csrf_field()}}
             </form>
             <div class="card" style="height: auto">
                 <div class="card-title">
-                   <h4><b>Promotion list</b></h4>
+                    <br>
+                   <h4><b>ລາຍການໂປຣໂມເຊີນ</b></h4>
                 </div>
                 <div class="card-body">
                     <div  style="overflow: scroll;height: 500px">

@@ -26,9 +26,8 @@
                                     <img src="{{asset('img/nopic.jpg')}}" alt="" style="width: 120px;margin-bottom: 10px">
                                 </div>
                                 <div class="col-md-8 col-lg-8 col-xl-8">
-                                    <h4>ຄົ້ນຫາຂໍ້ມູນສິນຄ້າ</h4>
-
-                                    <input type="text" name="searchProduct" id="searchProduct" class="form-control" autofocus>
+                                    &nbsp;
+                                    &nbsp;
 
                                 </div>
                                 <div class="col-md-2 col-lg-2 col-xl-2">

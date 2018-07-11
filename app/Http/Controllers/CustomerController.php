@@ -324,20 +324,32 @@ class CustomerController extends Controller
 //                return " ທ່ານໄດ້ບັກທືກໃບສັ່ງຊື້ສິນຄ້າແລ້ວ.";
                 return redirect()->route('product.index');
             }
-            $oldCart = Session::get('cart');
-            $cart = new Cart($oldCart);
-            $orderCart = $cart->items;
+            else{
+                $oldCart = Session::get('cart');
+                $cart = new Cart($oldCart);
+                $orderCart = $cart->items;
+                return view('frontEnd/Bill',['orderCart'=>$cart->items,'Products'=>$product, 'totalprice'=>session('Cus_TotalMoney')]);
+
+            }
+
+
+
+         /*
+
 //        return count($orderCart);
             $totalprice = 0;
             $a=0;
+
             foreach ($orderCart as $orderitem){
                 $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
                 $a++;
                 if($a==count($orderCart)){
-                    return view('frontEnd/Bill',['orderCart'=>$cart->items,'Products'=>$product, 'totalprice'=>$totalprice]);
+                    return view('frontEnd/Bill',['orderCart'=>$cart->items,'Products'=>$product, 'totalprice'=>session('Cus_TotalMoney')]);
                 }
             }
             return view('frontEnd/Bill');
+
+            */
         }else{
 
         }
@@ -351,25 +363,6 @@ class CustomerController extends Controller
              $oldCart = Session::get('cart');
              $cart = new Cart($oldCart);
              $orderCart = $cart->items;
-             $totalprice=0;
-             foreach ($orderCart as $orderitem) {
-                 if (count($orderitem['item']->promotion) != 0){
-                     foreach ($orderitem['item']->promotion as $ppromotion){
-                         if ($ppromotion->pivot->end_date >= date('Y-m-d') && $ppromotion->pivot->start_date <= date('Y-m-d')) {
- //                        echo  $ppromotion->pivot->promotion;
-                             $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'] - ((($orderitem['qty']*$orderitem['item']['sale_price'])*$ppromotion->pivot->promotion)/100);
-                         }else{
-                             $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
-
-                         }
-                     }
-
-                 }else{
-                     $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
-                 }
-             }
-
-             session(['totalprice'=>$totalprice]) ;
              $request ->session()->forget('cart');
             return redirect()->route('saveOrderBill');
          }else{

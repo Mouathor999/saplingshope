@@ -62,7 +62,7 @@
             </table>
         </div>
         <div style="margin-top: 10%; float: right; width: 200px;">
-            <span style=" color: mediumblue; font-size: 16px">Sub total price :</span>  {{Session('totalprice')}} ກີບ
+            <span style=" color: mediumblue; font-size: 16px">Sub total price :</span>  {{session('Cus_TotalMoney')}} ກີບ
 
         </div>
     </div>

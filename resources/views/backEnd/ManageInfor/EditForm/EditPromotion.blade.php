@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit promotion</title>
+    <title>ແກ້ໄຂຂໍ້ມູນໂປຣໂມເຊີນ</title>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -16,19 +16,20 @@
 @include('backEnd.AdminNavbar')
 <div class="container container-fluid">
     <br><br>
+    <h2 style="text-align: center"><b>ແກ້ໄຂຂໍ້ມູນໂປຣໂມເຊີນ</b></h2>
     <div >
         <form class="form-group" action="{{route('PromotionUpdate',$Ptypes->id)}}" method="POST" enctype="multipart/form-data">
             <div>
-                <label for="promotion_id">Promotion ID</label>
+                <label for="promotion_id">ລະຫັດ</label>
                 <input type="text" name="promotion_id" value="{{$Ptypes->id}}" disabled class="form-control">
             </div>
             <div>
-                <label for="pname">Promotion</label>
+                <label for="pname">ໂປຣໂມເຊີນ</label>
                 <input type="text" name="promotion" value="{{$Ptypes->promotion}}" class="form-control">
             </div>
             <br>
             <div>
-                <input type="submit" value="submit" name="submit" class="btn btn-success">
+                <input type="submit" value="ຕົກລົງ" name="submit" class="btn btn-success">
             </div>
             {{csrf_field()}}
         </form>

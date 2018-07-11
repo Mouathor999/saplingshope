@@ -38,7 +38,7 @@ class ImportController extends Controller
             $prducttype = ProductType::all();
             $suppliers = Supplier::all();
             $maxImportID = DB::select("select max(id) as maxImportID from import");
-            $products = Product::with('Producttype')->with('productimage')->with('promotion')->paginate(100);
+            $products = Product::with('Producttype')->with('productimage')->with('promotion')->orderBy('stock','ASC')->paginate(100);
 //                  return $maxImportID[0]->maxImportID;
             return view("backEnd/Import/OrderOut",['products'=>$products,'producttypes'=>$prducttype,'suppliers'=>$suppliers,'maxImportID'=>$maxImportID[0]->maxImportID+1]);
 
@@ -46,6 +46,21 @@ class ImportController extends Controller
             return redirect()->route('admingetLogin');
         }
     }
+
+//    While ptypeBox in admin orderOut chang
+   public function AdminOrderOutTypeChang($id){
+
+        $product = Product::with('Producttype')->with('productimage')->where('product_type_id','LIKE',$id)->orderBy('id')->paginate(1000);
+        return response()->json(array_flatten($product));
+
+   }
+
+
+
+
+
+
+
     public function MyAjaxTest(Request $request){
         if(Session::has('user_id')){
             $data = $request->all(); // This will get all the request data.
@@ -162,7 +177,7 @@ class ImportController extends Controller
                DB::update("UPDATE import set getIn_date = '".date('Y-m-d')."', status='0' WHERE id='".session('ImportOrderOutList')['order_id']."'");
                $product_id =  DB::select("SELECT stock FROM product WHERE id='".session('ImportOrderOutList')['detail'][$i]['product_id']."'");
                $product_stock = $product_id[0]->stock;
-               DB::update("UPDATE product SET stock ='".($product_stock + session('ImportOrderOutList')['detail'][$i]['orderout_qty'])."' WHERE id ='".session('ImportOrderOutList')['detail'][$i]['product_id']."'");
+               DB::update("UPDATE product SET stock ='".($product_stock + session('ImportOrderOutList')['detail'][$i]['orderout_qty'])."',sale_price='".session('ImportOrderOutList')['detail'][$i]['bought_price']."' WHERE id ='".session('ImportOrderOutList')['detail'][$i]['product_id']."'");
            }
             return redirect()->route('importproduct');
         }

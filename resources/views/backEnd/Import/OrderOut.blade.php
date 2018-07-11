@@ -15,6 +15,12 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
 
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 </head>
 <body>
 @include('backEnd/AdminNavbar')
@@ -31,10 +37,8 @@
                                     <img src="{{asset('img/nopic.jpg')}}" alt="" style="width: 120px;margin-bottom: 10px">
                                 </div>
                                 <div class="col-md-8 col-lg-8 col-xl-8">
-                                    <h4>ຄົ້ນຫາຂໍ້ມູນສິນຄ້າ</h4>
-
-                                    <input type="text" name="searchProduct" id="searchProduct" class="form-control" autofocus>
-
+                                    &nbsp;
+                                    &nbsp;
                                 </div>
                                 <div class="col-md-2 col-lg-2 col-xl-2">
 
@@ -61,7 +65,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body" style="height: auto; box-shadow: 1px 1px 1px 1px #B3E5FC">
+                    <div class="card-body" style="height: auto; box-shadow: 1px 1px 1px 1px #B3E5FC" id="maincontain">
                         <div  style="overflow: scroll;height: 800px">
                             <ul class="list-group">
                                 <li class="list-group-item">
@@ -76,10 +80,6 @@
                                                 <th style="background-color: #B3E5FC;text-align: center">qty</th>
                                             </tr>
                                             @foreach($products as $product)
-                                                {{--<div>
-                                                    {{$product->producttype->ptype_name}}
-                                                </div>
-                                                <br>--}}
                                                 <tr>
                                                     <td class="id">{{$product->id}}</td>
                                                     <td class="choose"><input class="cbChoose" type="checkbox" name="checkproduct"></td>
@@ -98,6 +98,34 @@
                             </ul>
                         </div>
                     </div>
+
+                    {{--While producttype chang--}}
+
+                    <div class="card-body" style="height: auto; box-shadow: 1px 1px 1px 1px #B3E5FC; display: none" id="searContent">
+                        <div  style="overflow: scroll;height: 800px">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" style="">
+                                            <tr>
+                                                <th style="background-color: #B3E5FC;text-align: center">ລະຫັດສິນຄ້າ</th>
+                                                <th style="background-color: #B3E5FC;text-align: center">ເລືອກ</th>
+                                                <th style="background-color: #B3E5FC;text-align: center">ຮູບພາບ</th>
+                                                <th style="background-color: #B3E5FC;text-align: center">ຊື່ສິນຄ້າ</th>
+                                                <th style="background-color: #B3E5FC;text-align: center">stock</th>
+                                                <th style="background-color: #B3E5FC;text-align: center">qty</th>
+                                            </tr>
+                                            <tbody id="searchTable">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -288,6 +316,51 @@
             });
         }else{
             $('#Notification').html("ກລູນາກໍານົດຂໍ້ມູນໃຫ້ຄົບຖ້ວນ");
+        }
+
+    });
+
+    $('#productType').change(function () {
+//        console.log($(this).val());
+        if($(this).val() != ""){
+            var ptype_id = $(this).val();
+            $.ajax({
+                url:'/AdminOrderOutTypeChang/'+ptype_id,
+                type:'POST',
+                dataType:'JSON',
+                success: function(data){
+                    console.log(data);
+
+                    if(data.length>0){
+                        var seardetail = '';
+                        for (var i=0;i<data.length;i++){
+                            console.log(data);
+                            seardetail += `
+                                <tr>
+                                    <td  class="id"> ${data[i]['id']} </td>
+                                    <td  class="choose"> <input class="cbChoose" type="checkbox" name="checkproduct"> </td>
+                                    <td>  <img class="img-responsive" src="http://localhost:8000/img/${data[i]['productimage'][0]['image']}" alt="http://localhost:8000/img/nopic.jpg" style="width: 90px; height: 100px">  </td>
+                                    <td  class="pro_name"> ${data[i]['pro_name']} </td>
+                                    <td> ${data[i]['stock']}  </td>
+                                    <td class="tdQty">
+                                        <input class="qty" type="number" name="qty">
+                                        <input class="productType" type="text" name="productType" value="${data[i]['producttype']['ptype_name']}" hidden>
+                                    </td>
+                                </tr>
+
+                            `;
+                        }
+                        $('#searContent').show();
+                        $('#searchTable').html(seardetail);
+                    }
+
+                    $('#maincontain').hide();
+
+                }
+            });
+        }else{
+            $('#maincontain').show();
+            $('#searContent').hide();
         }
 
     });

@@ -18,7 +18,7 @@
         <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <h1>Improt Form</h1>
+                <h1></h1>
             </div>
             <form class="form-group" action="" method="POST" enctype="">
                 <div style="margin-top: 50px">

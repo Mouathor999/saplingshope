@@ -28,10 +28,10 @@
             <b>  ແຂວງ :</b> {{$supplier[0]->province}} <br/>
             <b>  ໂທລະສັບ :</b> {{$supplier[0]->tel}} <br/>
         </div>
-        <div  style="float: right; width: 300px">
-            <b>Shope name:</b> Chanphong Shop<br/>
-            <b> Shope Contack 1 :</b> 021 200342<br/>
-            <b>Contack 2 :</b> 0305989990<br/>
+        <div  style="float: right; width: 150px">
+            <b>ຊື່ຮ້ານ :</b> ຮ້ານຈັນຟອງ<br/>
+            <b> ໂທ :</b> 021 200342<br/>
+            <b>&nbsp;&nbsp;&nbsp;&nbsp; :</b> 0305989990<br/>
         </div>
     </div>
     <br>
@@ -58,6 +58,12 @@
     </div>
 </div>
 
+<div style="float: right;margin-top: 10%; margin-right: 5%; width: 200px">
+   ລາຍເຊັນຜູ້ບໍລິຫານ
+    <br>
+    <br>
+    ........................................
+</div>
 
 
 

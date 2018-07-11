@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Limit</title>
+    <title>ແກ້ໄຂ Limit</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
@@ -19,7 +19,7 @@
         <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <h2>Edit product limit</h2>
+                <h2 style="text-align: center">ແກ້ໄຂ Limit</h2>
             </div>
             <form class="form-group" action="{{route('pLimitUpdate',$Product->id)}}" method="POST" enctype="multipart/form-data">
                 <div>

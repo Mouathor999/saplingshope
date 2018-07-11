@@ -534,6 +534,11 @@ Route::group(['prefix'=>'admin'], function (){
         'uses' => 'ImportController@OrderOutForm',
         'as'=>'orderOutForm',
     ]);
+
+//    While ptypechang route
+    Route::post('/AdminOrderOutTypeChang/{sid}','ImportController@AdminOrderOutTypeChang');
+
+
     Route::post('postajax', 'ImportController@MyAjaxTest');
 
     Route::get('storeOrderOut',[
@@ -552,6 +557,9 @@ Route::group(['prefix'=>'admin'], function (){
         'uses'=>'ImportController@SaveOrderOutBill',
         'as'=>'saveOrderOutBill'
     ]);
+
+
+
 //      Import product
     Route::get('Import-product',[
         'uses' => 'ImportController@AddImport_product',
@@ -568,6 +576,14 @@ Route::group(['prefix'=>'admin'], function (){
         'uses' => 'ImportController@ImportOrderOutProduct',
         'as'=>'importOrderOutProduct',
     ]);
+
+
+
+
+
+
+
+
 
 // Test route
 Route::get('/test', function (){

@@ -122,7 +122,7 @@
                         <td style="text-align: center;" ><b>ລົບ</b></td>
                     </tr>
                     <tbody id="searchTable">
-                    
+
                     </tbody>
                 </table>
             </div>

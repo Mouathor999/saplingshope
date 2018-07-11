@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit product</title>
+    <title>ແກ້ໄຂຂໍ້ມູນສິນຄ້າ</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
@@ -16,37 +16,12 @@
 @include('backEnd.AdminNavbar')
 <br>
 
-<br>
-{{--Chect promotion with product --}}
-    <div>
-        <ul>
-           {{-- @foreach($p_promotions as $p_promotion)
-                    <li>  @if($p_promotion->promotion->count() > 0)
-                              @if($p_promotion->promotion[0]->pivot->end_date >= date('Y-m-d'))
-                                  --}}{{--{{date('d-m-Y')}}--}}{{--
-                                  {{$p_promotion->promotion[0]->pivot->end_date }}
-                               @endif
-
-                        @endif
-                    </li>
-                <br>
-            @endforeach--}}
-        </ul>
-    </div>
-
-    <div>
-        <ul>
-
-        </ul>
-    </div>
-
-
-<div class="container container-fluid">
+<div class="container container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <h2><b>Edit Product Information</b></h2>
+                <h2><b>ແກ້ໄຂຂໍ້ມູນສິນຄ້າ</b></h2>
                 <br>
 
             </div>

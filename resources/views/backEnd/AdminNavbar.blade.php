@@ -80,11 +80,10 @@
                     </li>
                     <li class="nav-item dropdown main-li" >
                         <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            ລາຍການສັ່ງຂອງລູກຄ້າ
+                            ລາຍການສັ່ງຊື້ຂອງລູກຄ້າ
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="">
                             <li class="nav-item"><a href="{{route('showCustomerOrder')}}" class="nav-link" >ລາຍການສັ່ງຊື້</a> </li>
-                            <li class="nav-item" ><a href="" class="nav-link">ລາຍການສັ່ງຈອງ</a> </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown main-li" >
@@ -126,8 +125,6 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="">
                                     <li class="nav-item"><a href="{{route('employeeInfor')}}" class="nav-link" >ຂໍ້ມູນຫຼັກຂອງ ພ/ງ</a> </li>
-                                    <li class="nav-item"><a href="" class="nav-link" >ຂໍ້ມູນການມາເຮັດວຽກ</a> </li>
-                                    <li class="nav-item"><a href="" class="nav-link" >ສະຫຼູບເງີນເດືອນ</a> </li>
                                 </ul>
                             </li>
                             <li class="nav-item">

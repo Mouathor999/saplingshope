@@ -11,16 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="{{asset('css/customCSS.css')}}">
-    {{--<script>
-        $(document).ready(function() {
-            // SET AUTOMATIC PAGE RELOAD TIME TO 5000 MILISECONDS (5 SECONDS).
-            setInterval('refreshPage()', 5000);
-        });
 
-        function refreshPage() {
-            location.reload();
-        }
-    </script>--}}
 </head>
 <body>
 @include('backEnd.AdminNavbar')

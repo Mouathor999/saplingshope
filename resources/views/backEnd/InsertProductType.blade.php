@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Insert</title>
+    <title>ເພີ່ມປະເພດສິນຄ້າ</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css">
@@ -14,12 +14,12 @@
 <body>
 @include('backEnd.AdminNavbar')
 
-<div class="container container-fluid">
+<div class="container container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <h2>Insert Product Type</h2>
+                <h2>ເພີ່ມຂໍ້ມູນປະເພດສິນຄ້າ</h2>
             </div>
             <div>
 
@@ -27,16 +27,16 @@
             <form class="form-group" action="{{route('InsertProductType')}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div>
-                    <label for="pid">Product type ID</label>
+                    <label for="pid">ລະຫັດ</label>
                     <input type="text" name="ptid" class="form-control">
                 </div>
                 <div>
-                    <label for="pname">Type Name</label>
+                    <label for="pname">ປະເພດສິນຄ້າ</label>
                     <input type="text" name="ptname" class="form-control">
                 </div>
                 <br>
                 <div>
-                    <input type="submit" value="submit" name="submit" class="btn btn-success">
+                    <input type="submit" value="ຕົກລົງ" name="submit" class="btn btn-success">
                 </div>
 
             </form>

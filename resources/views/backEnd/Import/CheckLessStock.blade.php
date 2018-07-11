@@ -16,17 +16,8 @@
 <div class="mainContent">
     {{--class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2--}}
     <br>
-    <div class="container">
-        <form class="navbar-form" role="search" action="" method="post">
-            <div class="input-group add-on">
-                <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" style="box-shadow: 1px 1px 2px 1px #1e7e34">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="button" style="box-shadow: 1px 1px 2px 1px #1e7e34"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </form>
-    </div>
-
+    <h3 style="text-align: center"><b>ຂໍ້ມູນສິນຄ້າເຫຼືອໜ້ອຍ</b></h3>
+    <br>
     <div class="row" style="margin-top: 1%; margin-right: 1%">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="table-responsive">

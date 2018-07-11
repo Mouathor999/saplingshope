@@ -61,30 +61,40 @@ class productController extends Controller
         $totalprice = 0;
         $a=0;
 
+//        return $orderCart;
+
+
+
 
         foreach ($orderCart as $orderitem){
+
             if (count($orderitem['item']->promotion) != 0){
-                foreach ($orderitem['item']->promotion as $ppromotion){
-                    if ($ppromotion->pivot->end_date >= date('Y-m-d') && $ppromotion->pivot->start_date <= date('Y-m-d')) {
-//                        echo  $ppromotion->pivot->promotion;
-                        $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'] - ((($orderitem['qty']*$orderitem['item']['sale_price'])*$ppromotion->pivot->promotion)/100);
-                    }else{
-                        /*if ($ppromotion->pivot->end_date >= date('Y-m-d') && $ppromotion->pivot->start_date > date('Y-m-d')) {
-                            $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
-                        }*/
-                        $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
-                    }
+
+                $promotion = DB::select("select prom.promotion as promotion from promotiondetail as prom WHERE prom.product_id ='".$orderitem['item']['id']."' AND prom.start_date <= CURRENT_DATE AND prom.end_date >= CURRENT_DATE");
+                if(array_flatten($promotion)[0]->promotion){
+                    $totalprice += ( ( $orderitem['qty']*$orderitem['item']['sale_price']) - (( array_flatten($promotion)[0]->promotion * ( $orderitem['qty']*$orderitem['item']['sale_price']) )/100)  )  ;
+                }else{
+                    $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
                 }
 
             }else{
+
                 $totalprice += $orderitem['qty']*$orderitem['item']['sale_price'];
             }
             $a++;
             if($a==count($orderCart)){
-
-                return view('frontEnd/cart',['orderCart'=>$cart->items,'Products'=>$product, 'totalprice'=>$totalprice,'Adverting'=>$adverting_product]);
+                session(['Cus_TotalMoney'=>$totalprice]);
+                return view('frontEnd/cart',['orderCart'=>$cart->items,'Products'=>$product, 'totalprice'=>session('Cus_TotalMoney'),'Adverting'=>$adverting_product]);
             }
         }
+
+
+
+//        return view('frontEnd/cart',['orderCart'=>$cart->items,'Products'=>$product, 'totalprice'=>$totalprice,'Adverting'=>$adverting_product]);
+
+
+
+
     }
     public function cart(Request $request,$id){
         $product = Product::with('productimage')->with('promotion')->find($id);
